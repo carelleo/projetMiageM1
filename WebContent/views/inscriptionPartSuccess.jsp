@@ -72,7 +72,15 @@
 			<p id="result" class="succes"><s:property value="cp.type"/></p>
 			<p id="result" class="succes"><s:property value="cp.mail"/></p> 
 			<p id="result" class="succes"><s:property value="cp.mdp"/></p>
-			<p id="result" class="succes">Welcome on CoproManager ! You have created an account.</p>
+			
+			<p id="result" class="succes">Merci de votre inscription.</p>
+			<br>
+			<p id="result" class="succes">Votre demande est en cours de validation.</p>
+			<p id="result" class="succes">Un mail vous sera envoyé lorsque ce sera fait.</p>
+			<br>
+			<p id="result" class="succes">Cordialement</p>
+			<br>
+			<p id="result" class="succes">L'équipe de CoproManager</p>
 			
 		</section>
 			

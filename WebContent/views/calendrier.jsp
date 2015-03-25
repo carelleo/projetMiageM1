@@ -200,11 +200,11 @@
 			  	<div class="modal-body">
 			    	<s:textfield label="Titre" name="event.titre" required="required"/>
 					
-					<s:textfield label="Date de début" name="event.dateD" class="datepicker"  required="required"/>
+					<s:textfield label="Date de début" name="event.dateD" class="datepicker" disabled="isDisabled" required="required"/>
 					
-					<s:textfield label="Date de fin" name="event.dateF" class="datepicker"  required="required"/>
+					<s:textfield label="Date de fin" name="event.dateF" class="datepicker" disabled="isDisabled" required="required"/>
 					
-					<s:submit key="Valider" name="submitAj" class="btn btn-large btn-primary"/>
+					<s:submit value="Valider" name="submitAj" class="btn btn-large btn-primary"/>
 			  	</div>
 		
 			</s:form> 		
@@ -218,15 +218,15 @@
 		    	<h3>Supprimer un évenement</h3>
 		  	</div>
 		
-		  	<form method="post" action="calendrier?page=calendrier">
+		  	<s:form action="calendrierFormSup">
 		
 			  	<div class="modal-body">
-			    	<s:textfield label="Titre" name="event.titre" required="required"/>
+			    	<s:textfield label="Titre" name="titre" required="required"/>
 						
-					<s:submit key="Valider" name="submitAj" class="btn btn-large btn-primary"/>
+					<s:submit value="Valider" name="submitAj" class="btn btn-large btn-primary"/>
 			  	</div>
 		
-			</form> 
+			</s:form> 
 		</div>	
 
         <!-- Le javascript

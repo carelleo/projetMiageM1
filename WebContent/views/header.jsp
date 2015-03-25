@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <div class="container">
 	<div class="row-fluid">
@@ -14,10 +15,24 @@
 				<div class="header-text" id="herder-compte" style="">
 							<ul id="compte" class="nav">
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
+									<c:choose>
+										<c:when test="${sessionScope.mail != null}">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><c:out value="${sessionScope.mail}"></c:out> <b class="caret"></b></a>
+										</c:when>
+										<c:otherwise>
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">Compte <b class="caret"></b></a>
+										</c:otherwise>
+									</c:choose>
 									<ul class="dropdown-menu">
 										<li>
-												<a href="#myModal" data-toggle="modal">Connection</a>
+											<c:choose>
+												<c:when test="${sessionScope.mail != null}">
+													<a href="deconnexion">Déconnexion</a>
+												</c:when>
+												<c:otherwise>
+													<a href="#myModal" data-toggle="modal">Connexion</a>
+												</c:otherwise>
+											</c:choose>
 										</li>
 										<li>
 												<a href="inscription">Nouveau</a>
@@ -46,30 +61,16 @@
     	<h3>Se connecter</h3>
   	</div>
 
-  	<form method="post" action="page">
+  	<s:form action="connexion">
 
 	  	<div class="modal-body">
-	    	<label for="emailMod">Email</label>
-			<input type="text" id="emailMod" name="emailMod" value="<c:out value="${param.emailMod}"/>" size="20" maxlength="20" /> 
-				<span class="erreur">${erreursMod['emailMod']}</span>
-			<br />
+	    	<s:textfield label="Email" name="mail" required="required"/>
 
-			<label for="mdpMod">Mot de passe</label>
-			<input type="text" id="mdpMod" name="mdpMod" value="<c:out value="${param.mdpMod}"/>" size="20" maxlength="20" />
-				<span class="erreur">${erreursMod['mdpMod']}</span>
+			<s:password label="Mot de passe" name="mdp" required="required"/>
+			
+			<s:submit key="Valider" name="submitPart" class="btn btn-large btn-primary"/>
 	  	</div>
 
-	</form> 
-
-	  	<div class="modal-footer">
-	  		<div class="sansLabel">
-	  			<form method="post" action="page">
-	  			
-	    			<a href="#" class="btn" data-dismiss="modal">Annuler</a>
-					<input type="submit" name="subMod" value="Se connecter" class="btn btn-primary" />
-
-				</form> 
-			</div>
-	  	</div>  
+	</s:form> 
 
 </div>

@@ -7,13 +7,26 @@ import java.io.Serializable;
  */
 public class Syndic implements InterfaceReclamation, InterfaceResolution, InterfaceDemandeTravaux, Serializable{
 	
-	//private int numeroLogement;
+	private String type = "syndic";
     private String nom;
     private String prenom;
     private String mail;
     private String mdp;
     private String mdpc;
     private boolean condition;
+    
+    public Syndic(){
+    }
+    
+    public Syndic(String n,String p,String m,String md){
+        type = "syndic";
+        nom=n;
+        prenom=p;
+        mail=m;
+        mdp=md;
+        mdpc=md;
+        condition=true;
+    }
     
 	/**
 	 * @param RQ 
@@ -25,7 +38,7 @@ public class Syndic implements InterfaceReclamation, InterfaceResolution, Interf
 	}
 
 	@Override
-	public Demandetravaux CreerDemandeTravaux( String de) {
+	public DemandeTravaux CreerDemandeTravaux( String de) {
 		return null;
 		// TODO Auto-generated method stub
 		
@@ -124,4 +137,12 @@ public class Syndic implements InterfaceReclamation, InterfaceResolution, Interf
     public void setMdpc( String mdpc ) {
         this.mdpc = mdpc;
     }
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }

@@ -7,6 +7,8 @@ import org.apache.struts2.interceptor.SessionAware;
 import beans.Coproprietaire;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import dao.UtilisateurDao;
  
 public class InscriptionPA extends ActionSupport implements SessionAware{
      
@@ -16,12 +18,18 @@ public class InscriptionPA extends ActionSupport implements SessionAware{
     //la session
     private Map<String, Object> session;
     
+    //dao
+    private UtilisateurDao uDao = new UtilisateurDao();
+    
     private Coproprietaire cp;
      
  
     @Override
     public String execute() throws Exception {
         session.put("cp",cp);
+        
+        uDao.addAttCoproprietaire(cp);
+        
         return SUCCESS;  
     }
     

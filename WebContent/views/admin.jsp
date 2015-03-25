@@ -4,9 +4,9 @@
 
 <!DOCTYPE html>
 <html>
-	 <head>
+    <head>
         <meta charset="utf-8"/>
-        <title>CoproManager - Inscription Réussi</title>
+        <title>CoproManager - Administation</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Christopher Boudier">
@@ -52,8 +52,8 @@
         <link rel="apple-touch-icon-precomposed" href="<c:url value="/resources/img/ico/apple-touch-icon-57-precomposed.png" />">
     </head>
 
-	 <body>
-		<section id="header">
+    <body>
+        <section id="header">
         <!-- Include the header bar -->
             <%@include file="header.jsp"%>
         <!-- /.container -->  
@@ -64,32 +64,103 @@
         	<%@include file="navigation.jsp"%>
         </section><!-- /#navigation-main -->
 
-		<!-- Include the content pages -->
-		<section class="container">
-			
-			<p id="result" class="succes"><s:property value="s.nom"/></p>
-			<p id="result" class="succes"><s:property value="s.prenom"/></p>
-			<p id="result" class="succes"><s:property value="s.mail"/></p> 
-			<p id="result" class="succes"><s:property value="s.mdp"/></p>
-			
-			<p id="result" class="succes">Merci de votre inscription.</p>
-			<br>
-			<p id="result" class="succes">Votre demande est en cours de validation.</p>
-			<p id="result" class="succes">Un mail vous sera envoyé lorsque ce sera fait.</p>
-			<br>
-			<p id="result" class="succes">Cordialement</p>
-			<br>
-			<p id="result" class="succes">L'équipe de CoproManager</p>
-			
-		</section>
-			
-		<%@include file="footer.jsp"%> 
+        <!-- Include the content pages -->
+        <section class="container">
+        
+	        <div class="row-fluid">
+	           <div class="span6">
+	           		<h3 class="header">Comptes
+	                    <span class="header-line"></span> 
+	                </h3>
+	           		<%-- liste des utilisateurs --%> 
+	           		
+	           		<table class="table table-striped table-bordered table-hover">
+						<thead>
+	                        <tr>
+	                          <th class="sujet">Mail</th>
+	                          <th class="date">Type</th>
+	                          <th class="action">Action</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                    	<c:forEach var="utilisateur" items="${tabU}">
+	    	                	<tr>
+	                          		<td class="mail">
+	                          			<c:out value="${utilisateur.getMail()}"></c:out>
+		                          	</td>
+		                          	<td class="type">
+			                          	<c:out value="${utilisateur.getType()}"></c:out>
+		                          	</td>
+		                          	<td class="action">
+		                          		<a href="<c:url value='supprU'><c:param name="aUM" value="${utilisateur.getMail()}" /></c:url>" >
+		                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+		                          		</a>
+		                          	</td>
+		                        </tr>
+	                        </c:forEach>
+	                    </tbody>
+					</table>
+	           </div>
+	           
+	           <div class="span6">
+	           		<h3 class="header">Comptes en attentes
+	                    <span class="header-line"></span> 
+	                </h3>
+	           		<%-- liste des utilisateurs --%> 
+	           		
+	           		<table class="table table-striped table-bordered table-hover">
+						<thead>
+	                        <tr>
+	                          <th class="sujet">Mail</th>
+	                          <th class="date">Type</th>
+	                          <th class="action">Action</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+    	                	<c:forEach var="attUtilisateur" items="${attU}">
+	    	                	<tr>
+	                          		<td class="mail">
+	                          			<c:out value="${attUtilisateur.getMail()}"></c:out>
+		                          	</td>
+		                          	<td class="type">
+			                          	<c:out value="${attUtilisateur.getType()}"></c:out>
+		                          	</td>
+		                          	<td class="action">
+		                          		<a href="<c:url value='ajouterAttU'><c:param name="aUM" value="${attUtilisateur.getMail()}" /><c:param name="aUT" value="${attUtilisateur.getType()}" /></c:url>" >
+		                          			<button type="button" class="btn btn-mini btn-primary">Ajouter</button>
+		                          		</a>
+		                          	</td>
+		                        </tr>
+	                        </c:forEach>
+	                    </tbody>
+					</table>
+	           </div>    
+	        </div>
+	        
+	        <div class="row-fluid">
+	           <div class="span6">
+	           		<h3 class="header">1/2 column
+	                    <span class="header-line"></span> 
+	                </h3>
+	           		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada aliquam vulputate. Cras pulvinar erat ac velit eleifend porttitor at eu diam. Praesent elit mi, mattis vitae accumsan bibendum, porttitor non neque. 
+	           </div>
+	           <div class="span6">
+	           		<h3 class="header">1/2 column
+	                    <span class="header-line"></span> 
+	                </h3>
+	           		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada aliquam vulputate. Cras pulvinar erat ac velit eleifend porttitor at eu diam. Praesent elit mi, mattis vitae accumsan bibendum, porttitor non neque. 
+	           </div>    
+	        </div>
+	        
+        </section>
+        	
+        <%@include file="footer.jsp"%>	
 
-		<!-- Le javascript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		  
-	  	<script src="<c:url value="/resources/js/bootstrap-transition.js" />"></script>
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        
+        <script src="<c:url value="/resources/js/bootstrap-transition.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-alert.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-modal.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-dropdown.js" />"></script>
@@ -102,6 +173,5 @@
         <script src="<c:url value="/resources/js/bootstrap-carousel.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-typeahead.js" />"></script>   
         <script type="text/javascript" src="<c:url value="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" />"></script>
-         
-	</body>
+    </body>
 </html>

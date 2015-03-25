@@ -13,6 +13,16 @@ public class Coproprietaire {
     
     public Coproprietaire(){
     }
+    
+    public Coproprietaire(String t, String n, String p, String ma, String md){
+        type = t;
+        nom = n;
+        prenom = p;
+        mail = ma;
+        mdp = md;
+        mdpc = md;
+        condition = true;
+    }
 
     public String getType() {
         return type;

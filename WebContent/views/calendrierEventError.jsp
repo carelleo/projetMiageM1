@@ -67,19 +67,10 @@
 		<!-- Include the content pages -->
 		<section class="container">
 			
-			<p id="result" class="succes"><s:property value="s.nom"/></p>
-			<p id="result" class="succes"><s:property value="s.prenom"/></p>
-			<p id="result" class="succes"><s:property value="s.mail"/></p> 
-			<p id="result" class="succes"><s:property value="s.mdp"/></p>
-			
-			<p id="result" class="succes">Merci de votre inscription.</p>
-			<br>
-			<p id="result" class="succes">Votre demande est en cours de validation.</p>
-			<p id="result" class="succes">Un mail vous sera envoyé lorsque ce sera fait.</p>
-			<br>
-			<p id="result" class="succes">Cordialement</p>
-			<br>
-			<p id="result" class="succes">L'équipe de CoproManager</p>
+			<p id="result" class="succes"><s:property value="event.titre"/></p>
+			<p id="result" class="succes"><s:property value="event.dateD"/></p>
+			<p id="result" class="succes"><s:property value="event.dateF"/></p> 
+			<p id="result" class="succes">Welcome on CoproManager ! You have created an event error.</p>
 			
 		</section>
 			

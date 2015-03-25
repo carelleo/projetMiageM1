@@ -9,16 +9,23 @@
 	<package name="default" extends="struts-default">
 		<!-- index -->
 		<action name="index" class="action.IndexA">
-			<result name="success">views/index.jsp</result>
+			<result name="success">/views/index.jsp</result>
+		</action>
+		
+		<!-- connexion/deconnexion -->
+    	<action name="connexion" class="action.ConnexionA">
+			<result name="success">/views/index.jsp</result>
+			<result name="input">/views/index.jsp</result> 
+			<result name="error">/views/connexionEr.jsp</result> 
+		</action>
+		<action name="deconnexion" class="action.DeconnexionA">
+			<result name="success">/views/index.jsp</result> 
 		</action>
 		
 		<!-- inscription -->
 		<action name="inscription" class="action.IndexA"> 
       		<result name="success">/views/inscription.jsp</result> 
     	</action> 
-    	<!-- <action name="Effacer" class="action.Effacer"> 
-      		<result name="success">/vues/inscription.jsp</result> 
-    	</action>-->
     	<action name="inscriptionFormP" class="action.InscriptionPA"> 
       		<result name="success">/views/inscriptionPartSuccess.jsp</result> 
       		<result name="input">/views/inscription.jsp</result> 
@@ -29,9 +36,39 @@
     	</action>
     	
     	<!-- calendrier -->
-    	<action name="calendrier" class="action.CalendrierA">
-			<result name="success">views/calendrier.jsp</result>
+    	<action name="calendrier" class="action.calendrier.CalendrierA">
+			<result name="success">/views/calendrier.jsp</result>
 		</action>
+		<action name="calendrierFormAj" class="action.calendrier.CalendrierAj">
+			<result name="success">/views/calendrier.jsp</result>
+			<result name="input">/views/calendrierEventError.jsp</result>
+		</action>
+		<action name="calendrierFormSup" class="action.calendrier.CalendrierSup">
+			<result name="success">/views/calendrier.jsp</result>
+			<result name="input">/views/calendrierEventError.jsp</result>
+		</action>
+		
+		<!-- Admin page -->
+		<action name="administration" class="action.AdminA">
+			<result name="success">/views/admin.jsp</result>
+			<result name="error">/views/adminEr.jsp</result>
+		</action>
+		<action name="ajouterAttU" class="action.AdminA" method="ajouterAttU">
+			<result name="success">/views/admin.jsp</result>
+		</action>
+		<action name="supprU" class="action.AdminA" method="supprU">
+			<result name="success">/views/admin.jsp</result>
+		</action>
+		
+		<!-- Demandes Travaux -->
+		<!--<action name="demandeTravaux" class="action.DTravauxA">
+			<result name="success">/views/demandeTravaux.jsp</result>
+		</action>-->
+		
+		<!-- Demandes Reclamations -->
+		<!--<action name="demandeReclamation" class="action.DReclamationAdminA">
+			<result name="success">/views/demandeReclamation.jsp</result>
+		</action>-->
     	
 	</package>
 </struts>

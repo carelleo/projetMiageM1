@@ -13,7 +13,7 @@ public class Evenement {
 	public Evenement() {
     }
  
-    public Evenement(String dateD, String dateF, String titre) {
+    public Evenement(String titre, String dateD, String dateF) {
         this.dateD = dateD;
         this.dateF = dateF;
         this.titre = titre;

@@ -9,7 +9,7 @@ public interface InterfaceDemandeTravaux {
 	/**
 	 * @return
 	 */
-	public Demandetravaux CreerDemandeTravaux(String de);
+	public DemandeTravaux CreerDemandeTravaux(String de);
 
 	/**
 	 * @return

@@ -7,6 +7,8 @@ import org.apache.struts2.interceptor.SessionAware;
 import beans.Syndic;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import dao.UtilisateurDao;
  
 public class InscriptionSA extends ActionSupport implements SessionAware{
      
@@ -16,16 +18,22 @@ public class InscriptionSA extends ActionSupport implements SessionAware{
     //la session
     private Map<String, Object> session;
     
+    //dao
+    private UtilisateurDao uDao = new UtilisateurDao();
+    
     private Syndic s;
      
  
     @Override
     public String execute() throws Exception {
         session.put("s",s);
+        
+        uDao.addAttSyndic(s);
+        
         return SUCCESS;  
     }
     
-public void validate(){
+    public void validate(){
         
         if ( s.getNom().length()==0 || s.getNom().trim().equals( "" )){ 
             addFieldError( "s.nom", "Family name is required." );     

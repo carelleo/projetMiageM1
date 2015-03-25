@@ -1,6 +1,5 @@
 package beans;
 
-import java.util.*;
 
 /**
  * 
@@ -9,22 +8,15 @@ public class Utilisateur {
 
 	private String mail;
 	private String motDePasse;
-	private String nom;
-	private String prenom;
-	private int NumeroTel;
-	private Boolean actif;
+	private String type;
 
 	/**
 	 * 
 	 */
-	public  Utilisateur( String mail, String motDePasse, String nom, String prenom, int NumeroTel, Boolean actif) {
-		// TODO implement here
-		this.setMotDePasse(motDePasse);
-		this.setMail(mail);
-		this.setNom(nom);
-		this.setPrenom(prenom);
-		this.setNumeroTel(NumeroTel);
-		this.actif = false;
+	public  Utilisateur( String m, String md, String t) {
+		mail=m;
+		motDePasse=md;
+		type=t;
 	}
 
 	/**
@@ -71,28 +63,12 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 
-	public String getNom() {
-		return nom;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public int getNumeroTel() {
-		return NumeroTel;
-	}
-
-	public void setNumeroTel(int numeroTel) {
-		NumeroTel = numeroTel;
-	}
+    public void setType( String type ) {
+        this.type = type;
+    }
 
 }

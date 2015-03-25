@@ -963,3 +963,34 @@ form #conditionLabel{
 #travaux td, #travaux th{
 	width: 157px;
 }
+
+#formMenu{
+	margin-bottom: 0px;
+	  height: 26px;
+}
+
+#formMenu:hover{
+	background-color: #efefef;
+}
+
+#subMenu{
+	margin-top: 0px;
+  	margin-right: 0px;
+	background:none!important;
+    border:none; 
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
+    
+    color: #777!important;
+  text-decoration: none!important;
+  background-image: none;
+  background-repeat: no-repeat!important;
+  filter: none;
+  display: block!important;
+  padding: 3px 20px!important;
+  clear: both!important;
+  font-weight: normal!important;
+  line-height: 20px!important;
+  white-space: nowrap!important;
+}

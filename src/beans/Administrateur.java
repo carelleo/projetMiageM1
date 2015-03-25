@@ -5,18 +5,16 @@ import java.util.*;
 /**
  * 
  */
-public class Administrateur extends Utilisateur implements InterfaceIntervention, InterfaceSuiteDemandePetitTravaux, InterfaceSuiteReclamation, InterfaceAvisPassage,InterfaceSuiteDemandeGrosTravaux, InterfaceFacture, InterfaceReclamation, InterfaceResolution, InterfaceDemandeTravaux {
+public class Administrateur implements InterfaceIntervention, InterfaceSuiteDemandePetitTravaux, InterfaceSuiteReclamation, InterfaceAvisPassage,InterfaceSuiteDemandeGrosTravaux, InterfaceFacture, InterfaceReclamation, InterfaceResolution, InterfaceDemandeTravaux {
 
 
-	private ArrayList<Utilisateur> ListeUtilisateur;
-
-	public Administrateur(String mail, String motDePasse, String nom,
-			String prenom, int NumeroTel, Boolean actif,ArrayList<Utilisateur> ListeUtilisateur ) {
-		super(mail, motDePasse, nom, prenom, NumeroTel, actif);
-		// TODO Auto-generated constructor stub
-		this.ListeUtilisateur = ListeUtilisateur;
-		
-	}
+	private String type = "admin";
+    private String nom;
+    private String prenom;
+    private String mail;
+    private String mdp;
+    private String mdpc;
+    private boolean condition;
 
 	/**
 	 * @param u 
@@ -37,18 +35,8 @@ public class Administrateur extends Utilisateur implements InterfaceIntervention
 	}
 
 
-	public ArrayList<Utilisateur> getListeUtilisateur() {
-		return ListeUtilisateur;
-	}
-
-
-	public void setListeUtilisateur(ArrayList<Utilisateur> listeUtilisateur) {
-		ListeUtilisateur = listeUtilisateur;
-	}
-
-
 	@Override
-	public Demandetravaux CreerDemandeTravaux(String de) {
+	public DemandeTravaux CreerDemandeTravaux(String de) {
 		return null;
 		// TODO Auto-generated method stub
 		
@@ -172,7 +160,63 @@ public class Administrateur extends Utilisateur implements InterfaceIntervention
 
 	@Override
 	public String toString() {
-		return "Administrateur [ListeUtilisateur=" + ListeUtilisateur + "]";
+		return "Administrateur";
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+	public String getMdpc() {
+		return mdpc;
+	}
+
+	public void setMdpc(String mdpc) {
+		this.mdpc = mdpc;
+	}
+
+	public boolean isCondition() {
+		return condition;
+	}
+
+	public void setCondition(boolean condition) {
+		this.condition = condition;
 	}
 
 	

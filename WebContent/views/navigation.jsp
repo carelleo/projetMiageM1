@@ -174,6 +174,9 @@
                         <c:when test="${page=='membre-conseil'}">
                            class="active dropdown"
                         </c:when>
+                        <c:when test="${page=='administration'}">
+                           class="active dropdown"
+                        </c:when>
                         <c:otherwise>
                            class="dropdown"
                         </c:otherwise>   
@@ -205,6 +208,13 @@
                            <c:param name="page" value="membre-conseil" />
                         </c:url>"
                         >Membres du conseil</a></li>
+                     <c:if test="${sessionScope.mail != null}">
+                     	<li><a href=
+	                        "<c:url value='administration'>
+	                           <c:param name="page" value="administration" />
+	                        </c:url>"
+                        	>Administration</a></li>
+                     </c:if>   
                   </ul>
                </li>
 
