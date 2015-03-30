@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import beans.DemandeTravaux;
+import beans.Reclamation;
 
 public class DemandeDao {
     
@@ -72,10 +73,77 @@ public class DemandeDao {
     }
     
     //getReclamation()
+    public ArrayList <Reclamation> getReclamation(){
+    	
+    	 ArrayList <Reclamation> listr = new ArrayList <Reclamation> ();
+         
+         try{
+             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM reclamation ORDER BY date DESC");
+             
+             ResultSet r = p.executeQuery();
+             
+             while(r.next())
+                 listr.add( new DemandeTravaux(r.getString( "sujet" ), r.getString( "contenu" )) );
+             
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+         
+         return listr;
+   	
+    }
     //getOneReclamation()
+    
+    public Reclamation getOneReclamation(){
+    	
+    	 Reclamation v = new Reclamation (null);
+         
+         try{
+             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM reclamation WHERE id=?");
+             p.setInt(1, id);
+             
+             ResultSet r = p.executeQuery();
+             
+             while(r.next())
+                 v = new Reclamation (r.getString( "sujet" ), r.getString( "contenu" ));
+             
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+         
+         return v;
+    	
+    	
+    }
     //addReclamation()
+    public void addreclamation(Reclamation re){
+    	
+    	try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO reclamation (sujet, contenu, etat, date) VALUES (?, ?, ?, now())");
+            p.setString(1, re.getSujet());
+            p.setString(2, re.getContenu());
+           
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    	
+    }
+    
+    
+    
     //removeReclamation()
-    
-    
-    
+    public void removeReclamation(){
+    try{
+        PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM reclamation WHERE id=?");
+        p.setInt(1, id);
+        
+        p.executeUpdate();
+        
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+   } 
 }
