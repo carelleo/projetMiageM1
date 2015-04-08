@@ -36,7 +36,8 @@ public class ConnexionA extends ActionSupport implements SessionAware{
             if(u.getMail().equals( mail ) && u.getMotDePasse().equals( mdp )){
                 s = SUCCESS;
                 session.put("mail",u.getMail());
-                session.put("type",u.getType());               
+                session.put("type",u.getType());   
+                session.put("idU",u.getId());
             }
         }
         

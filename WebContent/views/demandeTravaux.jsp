@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -72,54 +73,62 @@
 			            <span class="header-line"></span> 
 			        </h3>
 			    </div>
-		       	<div class="span8" id="travaux">
+		       	<div class="span12" id="travaux">
 	           		<table class="table table-striped table-bordered table-hover">
 						<thead>
 	                        <tr>
-	                          <th class="sujet">Sujet</th>
-	                          <th class="date">Date</th>
-	                          <th class="etat">Etat</th>
-	                          <th class="avis">Avis</th>
+	                          	<th class="sujet">Sujet</th>
+	                          	<th class="date">Date</th>
+	                          	<th class="etat">Etat</th>
+	                          	<th class="prop">De</th>
+	                          	<th class="avis">Avis</th>
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                    	<c:forEach var="t" items="${tabT}">
+	                    	<c:forEach var="t" items="${listT}">
 	                    		<c:choose>
 	                    			<c:when test="${t == null}"></c:when>
 	                    			<c:otherwise>
 	                    				<tr>
 				                          	<td class="sujet">
-				                          		<a href="#">
-				                          			<c:out value="${t.getSujet()}"/>
-				                          		</a>
+				                          		<c:out value="${t.getSujet()}"/>
 				                          	</td>
 				                          	<td class="date">
-					                          	<a href="#">
-					                          		<c:out value="${t.getDate().toString('dd/MM/yyyy')}"/>
-					                          	</a>
+				                          		<c:out value="${t.getDate()}"/>
 				                          	</td>
 				                          	<td class="etat">
-					                          	<a href="#">
-					                          		<c:out value="${t.getEtat()}"/>
-					                          	</a>
+				                          		<c:out value="${t.getEtat()}"/>
+				                          	</td>
+				                          	<td class="prop">
+				                          		<c:out value="${t.getIdU()}"/>
 				                          	</td>
 				                          	<td class="avis">
 					                          	<div class="pos">
-						                          	<form  method="post" action="travaux?page=travaux">
-					                          			<input type="submit" name="${t.getSujet()}Pos" class="badge badge-success" value="${t.getPositif()}"/>
-					                          		</form>
+						                          	<a href="<c:url value='plusTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
+					                          			<span class="badge badge-success">
+					                          				<c:out value="${t.getPositif()}"/>
+					                          			</span>
+					                          		</a>
 					                          	</div>
 					                          	
 					                          	<div class="neg">
-					                          		<form  method="post" action="travaux?page=travaux">
-					                          			<input type="submit" name="${t.getSujet()}Neg" class="badge badge-important" value="${t.getNegatif()}"/>
-					                          		</form>
+					                          		<a href="<c:url value='moinsTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
+					                          			<span class="badge badge-important">
+					                          				<c:out value="${t.getNegatif()}"/>
+					                          			</span>
+					                          		</a>
 					                          	</div>
 					                          	
 					                          	<div class="suppr">
-						                          	<form  method="post" action="travaux?page=travaux">
-						                          		<input type="submit" name="${t.getSujet()}Sup" value="" class="icon-trash"/>
-						                          	</form>
+						                          	<a href="<c:url value='supprTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+					                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+					                          		</a>
+					                          	</div>
+					                          	
+					                          	<div class="modif">
+						                          	<a href="<c:url value='modifTrav'><c:param name="dt" value="${t}" /></c:url>" >
+					                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
+					                          		</a>
 					                          	</div>
 				                          	</td>
 				                        </tr>
@@ -140,6 +149,7 @@
 			
 		<%@include file="footer.jsp"%>
 		
+		
 		<!-- Modal Aj-->
 		<div class="modal hide fade" id="modalAjoutTrav">
 		
@@ -148,24 +158,17 @@
 		    	<h3>Ajouter une demande de Travaux</h3>
 		  	</div>
 		
-		  	<form method="post" action="travaux?page=travaux">
+		  	<s:form action="travauxFormAj">
 		
 			  	<div class="modal-body">
-			    	<label for="sujetAj">Sujet</label>
-					<input type="text" name="sujetAj" value="<c:out value="${param.sujetAj}"/>" size="20" maxlength="255" /> 
-						<span class="erreur">${erreursMod['sujetAj']}</span>
-					<br />
+			    	<s:textfield label="Sujet" name="dt.sujet" required="required"/>
 					
-					<label for="contenuAj">Contenu</label>
-					<textarea rows="5" name="contenuAj" maxlength="15000"></textarea>
-						<span class="erreur">${erreursMod['contenuAj']}</span>
-					<br />
+					<s:textarea label="contenu" name="dt.contenu" required="required" cols="20" rows="10"/>
 					
-					<a href="#" class="btn" data-dismiss="modal">Annuler</a>
-					<input type="submit" name="subAj" value="Ajouter" class="btn btn-primary" />
+					<s:submit value="Valider" name="submit" class="btn btn-large btn-primary"/>
 			  	</div>
 		
-			</form> 		
+			</s:form> 		
 		</div>
 
         <!-- Le javascript

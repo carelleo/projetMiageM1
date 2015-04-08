@@ -942,7 +942,7 @@ form #conditionLabel{
 
 
 
-#travaux .pos, #travaux .neg, #travaux .suppr, #travaux .pos input, #travaux .neg input{
+#travaux .pos, #travaux .neg, #travaux .pos input, #travaux .neg input{
 	width: 25px;
 	float: left;
 	margin-left: 5px;
@@ -950,14 +950,15 @@ form #conditionLabel{
 	border: none;
 } 
 
-#travaux .suppr input{
-	width: 25px;
+#travaux .suppr, #travaux .modif{
 	float: left;
 	margin-left: 5px;
 	margin-right: 5px;
-	margin-top: 4px;
 	border: none;
-	background-color: white;
+}
+
+#travaux .avis{
+	width: 200px;
 }
 
 #travaux td, #travaux th{

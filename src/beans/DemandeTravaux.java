@@ -11,56 +11,33 @@ public class DemandeTravaux implements Serializable{
 
     private String sujet;
     private String contenu;
-    private String date;
-    private String etat;
-    private int positif;
-    private int negatif;
+    private String date = new DateTime().toString("yyyy-MM-dd");
+    private String etat = "NON_LU";
+    private int positif = 0;
+    private int negatif = 0;
+    private int idU = 0;
 
-    //private int cptDemandeTravaux;
-    
     public DemandeTravaux(){
     }
     
-    public DemandeTravaux(String s, String c){
+    public DemandeTravaux(String s, String c, String d, int p, int n, String e, int i){
         sujet = s;
         contenu = c;
-        date = new DateTime().toString("yyyy-MM-dd");
-        etat = "NON_LU";
-        positif = 0;
-        negatif = 0;
+        date = d;
+        etat = e;
+        positif = p;
+        negatif = n;
+        idU = i;
     }
-
-    /**
-     * @param s
-     */
-    public void DemandeTravaux(String s) {
-        // TODO implement here
+    
+    public void plus() {
+        positif++;
     }
-
-    /**
-     * @return
-     */
-    public String getDemande() {
-        // TODO implement here
-        return "";
+    
+    public void moins() {
+        negatif++;
     }
-
-    /**
-     * @param s 
-     * @return
-     */
-    public void setDemande(String s) {
-        // TODO implement here
-        
-    }
-
-    /**
-     * 
-     */
-    public void addCompteurTravaux() {
-        // TODO implement here
-    }
-
+    
     public String getSujet() {
         return sujet;
     }
@@ -107,6 +84,14 @@ public class DemandeTravaux implements Serializable{
 
     public void setNegatif( int negatif ) {
         this.negatif = negatif;
+    }
+
+    public int getIdU() {
+        return idU;
+    }
+
+    public void setIdU( int idU ) {
+        this.idU = idU;
     }
 
 }

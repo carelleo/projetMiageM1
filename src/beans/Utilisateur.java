@@ -5,7 +5,8 @@ package beans;
  * 
  */
 public class Utilisateur {
-
+    
+    private int id;
 	private String mail;
 	private String motDePasse;
 	private String type;
@@ -13,8 +14,9 @@ public class Utilisateur {
 	/**
 	 * 
 	 */
-	public  Utilisateur( String m, String md, String t) {
-		mail=m;
+	public  Utilisateur( int i, String m, String md, String t) {
+		id=i;
+	    mail=m;
 		motDePasse=md;
 		type=t;
 	}
@@ -69,6 +71,14 @@ public class Utilisateur {
 
     public void setType( String type ) {
         this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId( int id ) {
+        this.id = id;
     }
 
 }

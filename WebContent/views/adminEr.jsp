@@ -6,7 +6,7 @@
 <html>
 	 <head>
         <meta charset="utf-8"/>
-        <title>CoproManager - Inscription Réussi</title>
+        <title>CoproManager - Administration Erreur</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Christopher Boudier">
@@ -65,10 +65,18 @@
         </section><!-- /#navigation-main -->
 
 		<!-- Include the content pages -->
-		<section class="container">
-			
-			<p id="result" class="succes">ERROR ! You can't connect to this page.</p>
-			
+		<section class="main-body">
+			<div class="container">
+				<div class="row-fluid">
+	         		<div class="span12">
+		            	<blockquote>
+		            	
+		            		<p id="result" class="succes">ERROR ! You can't connect to this page.</p>
+		            		
+						</blockquote>
+	         		</div>
+		      	</div>
+	      	</div>
 		</section>
 			
 		<%@include file="footer.jsp"%> 

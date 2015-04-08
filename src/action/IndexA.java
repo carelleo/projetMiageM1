@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.UtilisateurDao;
 
 public class IndexA extends ActionSupport implements SessionAware{
-  //param page
+    //param page
     private String page;
     
     //la session

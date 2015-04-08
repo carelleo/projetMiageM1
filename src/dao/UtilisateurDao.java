@@ -15,7 +15,7 @@ public class UtilisateurDao {
     
     public Utilisateur getOneUtilisateur(String mail){
         
-        Utilisateur u = new Utilisateur(null,null,null);
+        Utilisateur u = new Utilisateur(0,null,null,null);
         
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE mail=?");
@@ -24,7 +24,7 @@ public class UtilisateurDao {
             ResultSet r = p.executeQuery();
             
             while(r.next())
-                u = new Utilisateur(r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
+                u = new Utilisateur(r.getInt( "id" ), r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class UtilisateurDao {
 			ResultSet r = p.executeQuery();
 			
 			while(r.next()){
-			    Utilisateur u = new Utilisateur(r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
+			    Utilisateur u = new Utilisateur(r.getInt( "id" ), r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
 				liste.add(u);
 			}
 			
@@ -121,7 +121,7 @@ public class UtilisateurDao {
 	
 	public Utilisateur getOneAttUtilisateur(String mail){
         
-        Utilisateur u = new Utilisateur(null,null,null);
+        Utilisateur u = new Utilisateur(0,null,null,null);
         
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM attutilisateurs WHERE mail=?");
@@ -130,7 +130,7 @@ public class UtilisateurDao {
             ResultSet r = p.executeQuery();
             
             while(r.next())
-                u = new Utilisateur(r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
+                u = new Utilisateur(r.getInt( "id" ), r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -148,7 +148,7 @@ public class UtilisateurDao {
             ResultSet r = p.executeQuery();
             
             while(r.next()){
-                Utilisateur u = new Utilisateur(r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
+                Utilisateur u = new Utilisateur(r.getInt( "id" ), r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
                 liste.add(u);
             }
             

@@ -13,13 +13,14 @@ public class DemandeDao {
         ArrayList<DemandeTravaux> listU = new ArrayList<DemandeTravaux>();
         
         try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux ORDER BY date DESC");
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE type=?");
+            p.setString(1, "travaux");
             
             ResultSet r = p.executeQuery();
             
             while(r.next())
-                listU.add( new DemandeTravaux(r.getString( "sujet" ), r.getString( "contenu" )) );
-            
+                listU.add( new DemandeTravaux(r.getString( "sujet" ), r.getString( "contenu" ), r.getString( "date" ), r.getInt( "positif" ), r.getInt( "negatif" ), r.getString( "etat" ), r.getInt( "idCoproprietaire" )) );
+                
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -27,17 +28,17 @@ public class DemandeDao {
         return listU;
     }
     
-    public DemandeTravaux getOneTravaux(int id){
-        DemandeTravaux u = new DemandeTravaux(null,null);
+    public DemandeTravaux getOneTravaux(String sjt){
+        DemandeTravaux u = new DemandeTravaux(null,null,null,0,0,null,0);
         
         try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE id=?");
-            p.setInt(1, id);
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=?");
+            p.setString(1, sjt);
             
             ResultSet r = p.executeQuery();
             
             while(r.next())
-                u = new DemandeTravaux(r.getString( "sujet" ), r.getString( "contenu" ));
+                u = new DemandeTravaux(r.getString( "sujet" ), r.getString( "contenu" ), r.getString( "date" ), r.getInt( "positif" ), r.getInt( "negatif" ), r.getString( "etat" ), r.getInt( "idCoproprietaire" ));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -46,12 +47,16 @@ public class DemandeDao {
         return u;
     }
     
-    public void addTravaux(DemandeTravaux t){
+    public void addTravaux(DemandeTravaux t, int id){
         try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, etat, date) VALUES (?, ?, ?, now())");
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO demandes(sujet, contenu, etat, date, type, positif, negatif, idCoproprietaire) VALUES (?, ?, ?, now(), ?, ?, ?,?)");
             p.setString(1, t.getSujet());
             p.setString(2, t.getContenu());
             p.setString(3, t.getEtat());
+            p.setString(4, "travaux");
+            p.setInt(5, t.getPositif());
+            p.setInt(6, t.getNegatif());
+            p.setInt(7, id);
             
             p.executeUpdate();
             
@@ -60,10 +65,48 @@ public class DemandeDao {
         }
     }
     
-    public void removeTravaux(int id){
+    public void removeTravaux(String sjt){
         try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM travaux WHERE id=?");
-            p.setInt(1, id);
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM demandes WHERE sujet=?");
+            p.setString(1, sjt);
+            System.out.println("dao");
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public boolean containTSujet(String sjt){
+		
+		boolean b = false;
+		
+		try{
+			PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=? and type='travaux'");
+			p.setString(1, sjt);
+			
+			ResultSet r = p.executeQuery();
+			
+			if(r.next())
+				b = true;
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return b;
+	}
+    
+    public void modifT(DemandeTravaux t, String sjt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE demandes SET sujet=?, contenu=?, etat=?, positif=?, negatif=?  WHERE sujet=?");
+            p.setString(1, t.getSujet());
+            p.setString(2, t.getContenu());
+            p.setString(3, t.getEtat());
+            p.setInt(4, t.getPositif());
+            p.setInt(5, t.getNegatif());
+            p.setString(6, sjt);
             
             p.executeUpdate();
             
@@ -74,76 +117,92 @@ public class DemandeDao {
     
     //getReclamation()
     public ArrayList <Reclamation> getReclamation(){
-    	
-    	 ArrayList <Reclamation> listr = new ArrayList <Reclamation> ();
+        
+         ArrayList <Reclamation> listr = new ArrayList <Reclamation>();
          
          try{
-             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM reclamation ORDER BY date DESC");
+             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE type=?");
+             p.setString(1, "reclamation");
              
              ResultSet r = p.executeQuery();
              
              while(r.next())
-                 listr.add( new DemandeTravaux(r.getString( "sujet" ), r.getString( "contenu" )) );
+                 listr.add( new Reclamation(r.getString( "sujet" ), r.getString( "contenu" ), r.getString( "date" ), r.getInt( "positif" ), r.getInt( "negatif" ), r.getString( "etat" ), r.getInt( "idCoproprietaire" )) );
              
          }catch(Exception e){
              e.printStackTrace();
          }
          
          return listr;
-   	
-    }
-    //getOneReclamation()
     
-    public Reclamation getOneReclamation(){
-    	
-    	 Reclamation v = new Reclamation (null);
-         
-         try{
-             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM reclamation WHERE id=?");
-             p.setInt(1, id);
-             
-             ResultSet r = p.executeQuery();
-             
-             while(r.next())
-                 v = new Reclamation (r.getString( "sujet" ), r.getString( "contenu" ));
-             
-         }catch(Exception e){
-             e.printStackTrace();
-         }
-         
-         return v;
-    	
-    	
     }
+    
+    //getOneReclamation()
+    public Reclamation getOneReclamation(String sjt){
+        Reclamation u = new Reclamation(null,null,null,0,0,null,0);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=?");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new Reclamation(r.getString( "sujet" ), r.getString( "contenu" ), r.getString( "date" ), r.getInt( "positif" ), r.getInt( "negatif" ), r.getString( "etat" ), r.getInt( "idCoproprietaire" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return u;
+    }
+    
     //addReclamation()
-    public void addreclamation(Reclamation re){
-    	
-    	try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO reclamation (sujet, contenu, etat, date) VALUES (?, ?, ?, now())");
-            p.setString(1, re.getSujet());
-            p.setString(2, re.getContenu());
-           
+    public void addReclamation(Reclamation t, int id){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO demandes(sujet, contenu, etat, date, type, positif, negatif, idCoproprietaire) VALUES (?, ?, ?, now(), ?, ?, ?,?)");
+            p.setString(1, t.getSujet());
+            p.setString(2, t.getContenu());
+            p.setString(3, t.getEtat());
+            p.setString(4, "reclamation");
+            p.setInt(5, t.getPositif());
+            p.setInt(6, t.getNegatif());
+            p.setInt(7, id);
             
             p.executeUpdate();
             
         }catch(Exception e){
             e.printStackTrace();
         }
-    	
     }
-    
-    
     
     //removeReclamation()
-    public void removeReclamation(){
-    try{
-        PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM reclamation WHERE id=?");
-        p.setInt(1, id);
-        
-        p.executeUpdate();
-        
-    }catch(Exception e){
-        e.printStackTrace();
+    public void removeReclamation(String sjt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM demandes WHERE sujet=?");
+            p.setString(1, sjt);
+
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
-   } 
+    
+    public void modifR(Reclamation t, String sjt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE demandes SET sujet=?, contenu=?, etat=?, positif=?, negatif=?  WHERE sujet=?");
+            p.setString(1, t.getSujet());
+            p.setString(2, t.getContenu());
+            p.setString(3, t.getEtat());
+            p.setInt(4, t.getPositif());
+            p.setInt(5, t.getNegatif());
+            p.setString(6, sjt);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

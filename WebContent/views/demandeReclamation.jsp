@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -68,51 +69,107 @@
 			
 			<div class="row-fluid">
 	           	<div class="span12">
-			   		<h3 class="header">Demandes de Réclamations
+			   		<h3 class="header">Demandes de réclamations
 			            <span class="header-line"></span> 
 			        </h3>
+			    </div>
+		       	<div class="span12" id="travaux">
 	           		<table class="table table-striped table-bordered table-hover">
 						<thead>
 	                        <tr>
-	                          <th>Sujet</th>
-	                          <th>Date</th>
-	                          <th>Etat</th>
-	                          <th>Actions</th>
+	                          	<th class="sujet">Sujet</th>
+	                          	<th class="date">Date</th>
+	                          	<th class="etat">Etat</th>
+	                          	<th class="prop">De</th>
+	                          	<th class="avis">Avis</th>
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                        <tr>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                        </tr>
-	                        <tr>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                        </tr>
-	                        <tr>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                        </tr>
-	                        <tr>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                          <td></td>
-	                        </tr>
+	                    	<c:forEach var="t" items="${listR}">
+	                    		<c:choose>
+	                    			<c:when test="${t == null}"></c:when>
+	                    			<c:otherwise>
+	                    				<tr>
+				                          	<td class="sujet">
+				                          		<c:out value="${t.getSujet()}"/>
+				                          	</td>
+				                          	<td class="date">
+				                          		<c:out value="${t.getDate()}"/>
+				                          	</td>
+				                          	<td class="etat">
+				                          		<c:out value="${t.getEtat()}"/>
+				                          	</td>
+				                          	<td class="prop">
+				                          		<c:out value="${t.getIdU()}"/>
+				                          	</td>
+				                          	<td class="avis">
+					                          	<div class="pos">
+						                          	<a href="<c:url value='plusRec'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
+					                          			<span class="badge badge-success">
+					                          				<c:out value="${t.getPositif()}"/>
+					                          			</span>
+					                          		</a>
+					                          	</div>
+					                          	
+					                          	<div class="neg">
+					                          		<a href="<c:url value='moinsRec'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
+					                          			<span class="badge badge-important">
+					                          				<c:out value="${t.getNegatif()}"/>
+					                          			</span>
+					                          		</a>
+					                          	</div>
+					                          	
+					                          	<div class="suppr">
+						                          	<a href="<c:url value='supprRec'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+					                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+					                          		</a>
+					                          	</div>
+					                          	
+					                          	<div class="modif">
+						                          	<a href="<c:url value='modifRec'><c:param name="dt" value="${t}" /></c:url>" >
+					                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
+					                          		</a>
+					                          	</div>
+				                          	</td>
+				                        </tr>
+	                    			</c:otherwise>
+	                    		</c:choose>
+	                    	</c:forEach>
 	                    </tbody>
 					</table>
 	           	</div>
+	           	
+	           	<div class="span3">
+	          		<a href="#modalAjoutTrav" role="button" class="btn btn-primary" data-toggle="modal">Ajouter une demande</a>
+	          	</div>
+	           	
           	</div>
 			
 		</section>
 			
 		<%@include file="footer.jsp"%>
+		
+		
+		<!-- Modal Aj-->
+		<div class="modal hide fade" id="modalAjoutTrav">
+		
+		  	<div class="modal-header">
+		    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    	<h3>Ajouter une demande de réclamations</h3>
+		  	</div>
+		
+		  	<s:form action="reclamationFormAj">
+		
+			  	<div class="modal-body">
+			    	<s:textfield label="Sujet" name="dt.sujet" required="required"/>
+					
+					<s:textarea label="contenu" name="dt.contenu" required="required" cols="20" rows="10"/>
+					
+					<s:submit value="Valider" name="submit" class="btn btn-large btn-primary"/>
+			  	</div>
+		
+			</s:form> 		
+		</div>
 
         <!-- Le javascript
         ================================================== -->

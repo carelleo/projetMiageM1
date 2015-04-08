@@ -48,7 +48,9 @@ public class AdminA extends ActionSupport implements SessionAware{
     }
     
     public String ajouterAttU() throws Exception {
-
+    	
+    	page = "administration";
+    	
         attU = uDao.getAttUtilisateur();
         tabU = uDao.getUtilisateur();
         
@@ -79,6 +81,8 @@ public class AdminA extends ActionSupport implements SessionAware{
     
     public String supprU() throws Exception {
 
+    	page = "administration";
+    	
         uDao.supprUtilisateur( aUM );
         
         attU = uDao.getAttUtilisateur();

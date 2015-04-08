@@ -12,7 +12,7 @@ public class Gestionnaire extends Utilisateur implements InterfaceIntervention, 
 	
 	public Gestionnaire(String mail, String motDePasse, String nom,
 			String prenom, int NumeroTel, Boolean actif, ArrayList <Intervention> planningintervention) {
-		super(mail, motDePasse, nom, prenom, NumeroTel, actif);
+		super(NumeroTel, mail, motDePasse, nom);
 		// TODO Auto-generated constructor stub
 	
 		this.setPlanningintervention(planningintervention);

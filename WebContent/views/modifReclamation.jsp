@@ -6,7 +6,7 @@
 <html>
 	 <head>
         <meta charset="utf-8"/>
-        <title>CoproManager - Inscription Erreur</title>
+        <title>CoproManager - Modification de demande</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Christopher Boudier">
@@ -65,18 +65,25 @@
         </section><!-- /#navigation-main -->
 
 		<!-- Include the content pages -->
-		<section class="main-body">
-			<div class="container">
-				<div class="row-fluid">
-	         		<div class="span12">
-		            	<blockquote>
-		            	
-		            		<p>Le compte <s:text name="%{#session.mail2}" /> n'existe pas.</p>
-		            		
-						</blockquote>
-	         		</div>
-		      	</div>
-			</div>
+		<section class="container">
+			
+			<div class="row-fluid">
+         		<div class="span12">
+	            	<blockquote>
+	               		
+						<p>pour le moment rien</p>
+						<br>
+						
+						<c:out value="${dt.getSujet()}"></c:out>
+						<br>
+						
+						<c:out value="${dt.getContenu()}"></c:out>
+						<br>
+
+            		</blockquote>
+         		</div>
+	      	</div>
+			
 		</section>
 			
 		<%@include file="footer.jsp"%> 

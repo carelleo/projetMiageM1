@@ -3,45 +3,95 @@ package beans;
 import java.io.Serializable;
 import java.util.*;
 
+import org.joda.time.DateTime;
+
 /**
  * 
  */
-@SuppressWarnings("serial")
 public class Reclamation implements Serializable {
- 
-	private String objet;
-	private String reclamation;
+    
+    private String sujet;
+    private String contenu;
+    private String date = new DateTime().toString("yyyy-MM-dd");
+    private String etat = "NON_LU";
+    private int positif = 0;
+    private int negatif = 0;
+    private int idU = 0;
+    
+    public Reclamation(){
+    }
+    
+    public Reclamation(String s, String c, String d, int p, int n, String e, int i){
+        sujet = s;
+        contenu = c;
+        date = d;
+        etat = e;
+        positif = p;
+        negatif = n;
+        idU = i;
+    }
+    
+    public void plus() {
+        positif++;
+    }
+    
+    public void moins() {
+        negatif++;
+    }
 
-	/**
-	 * 
-	 */
-	public Reclamation( String réclamation){
-		this.reclamation = reclamation;
-	}
+    public String getSujet() {
+        return sujet;
+    }
 
-	public String getRéclamation() {
-		return reclamation;
-	}
+    public void setSujet( String sujet ) {
+        this.sujet = sujet;
+    }
 
+    public String getContenu() {
+        return contenu;
+    }
 
-	public void setRéclamation(String reclamation) {
-		this.reclamation = reclamation;
-	}
+    public void setContenu( String contenu ) {
+        this.contenu = contenu;
+    }
 
+    public String getDate() {
+        return date;
+    }
 
+    public void setDate( String date ) {
+        this.date = date;
+    }
 
-	 public String toString(){
-		   	
-		   	return toString()+"\n"+reclamation;
-		   		
-	}
+    public String getEtat() {
+        return etat;
+    }
 
-	public String getObjet() {
-		return objet;
-	}
+    public void setEtat( String etat ) {
+        this.etat = etat;
+    }
 
-	public void setObjet(String objet) {
-		this.objet = objet;
-	}
+    public int getPositif() {
+        return positif;
+    }
 
+    public void setPositif( int positif ) {
+        this.positif = positif;
+    }
+
+    public int getNegatif() {
+        return negatif;
+    }
+
+    public void setNegatif( int negatif ) {
+        this.negatif = negatif;
+    }
+
+    public int getIdU() {
+        return idU;
+    }
+
+    public void setIdU( int idU ) {
+        this.idU = idU;
+    }
 }

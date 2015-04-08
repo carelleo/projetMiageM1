@@ -1,18 +1,21 @@
-package action;
+package action.demande;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
+
 import org.apache.struts2.interceptor.SessionAware;
 
+import beans.DemandeTravaux;
 import beans.Reclamation;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.DemandeDao;
 
-public class ReclamationA extends ActionSupport implements SessionAware {
-
-	//param page
+public class ReclamationModif extends ActionSupport implements SessionAware{
+    //param page
     private String page;
+    private Reclamation dt;
     
     //la session
     private Map<String, Object> session;
@@ -22,10 +25,9 @@ public class ReclamationA extends ActionSupport implements SessionAware {
     
     ArrayList<Reclamation> listR;
     
+    
     @Override
     public String execute() throws Exception {
-        
-        listR = tDao.getReclamation();
         
         return SUCCESS;
     }
@@ -46,25 +48,27 @@ public class ReclamationA extends ActionSupport implements SessionAware {
         this.session = session;
     }
 
-    public DemandeDao getDao() {
+    public DemandeDao gettDao() {
         return tDao;
     }
 
-    public void setDao( DemandeDao tDao ) {
+    public void settDao( DemandeDao tDao ) {
         this.tDao = tDao;
+    }
+
+    public Reclamation getDt() {
+        return dt;
+    }
+
+    public void setDt( Reclamation dt ) {
+        this.dt = dt;
     }
 
     public ArrayList<Reclamation> getListR() {
         return listR;
     }
 
-    public void setListR( ArrayList<reclamation> listR ) {
+    public void setListR( ArrayList<Reclamation> listR ) {
         this.listR = listR;
     }
-
-    
-	
-	
-	
-	
 }

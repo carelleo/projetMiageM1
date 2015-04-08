@@ -1,4 +1,4 @@
-package action;
+package action.demande;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -12,8 +12,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.DemandeDao;
 
 public class DTravauxA extends ActionSupport implements SessionAware{
-  //param page
+	//param page
     private String page;
+    private String sjt;
     
     //la session
     private Map<String, Object> session;
@@ -23,9 +24,45 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     
     ArrayList<DemandeTravaux> listT;
     
+    
     @Override
     public String execute() throws Exception {
+        listT = tDao.getTravaux();
         
+        return SUCCESS;
+    }
+    
+    public String supprT() throws Exception {
+    	
+    	page = "travaux";
+    	
+    	tDao.removeTravaux(sjt);
+        listT = tDao.getTravaux();
+        
+        return SUCCESS;
+    }
+    
+    public String plusT() throws Exception {
+    	
+    	page = "travaux";
+    	
+    	DemandeTravaux demT = tDao.getOneTravaux(sjt);
+    	demT.plus();
+    	tDao.modifT(demT, sjt);
+    	
+        listT = tDao.getTravaux();
+        
+        return SUCCESS;
+    }
+    
+    public String moinsT() throws Exception {
+    	
+    	page = "travaux";
+    	
+    	DemandeTravaux demT = tDao.getOneTravaux(sjt);
+    	demT.moins();
+    	tDao.modifT(demT, sjt);
+    	
         listT = tDao.getTravaux();
         
         return SUCCESS;
@@ -62,5 +99,13 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     public void setListT( ArrayList<DemandeTravaux> listT ) {
         this.listT = listT;
     }
+
+	public String getSjt() {
+		return sjt;
+	}
+
+	public void setSjt(String sjt) {
+		this.sjt = sjt;
+	}
 
 }

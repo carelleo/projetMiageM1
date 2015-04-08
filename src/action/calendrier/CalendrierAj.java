@@ -34,6 +34,8 @@ public class CalendrierAj extends ActionSupport implements SessionAware{
     	eDao.addEvenement(event);
     	tabE = eDao.getEvenement();
     	
+    	page = "calendrier";
+    	
         return SUCCESS;
     }
     

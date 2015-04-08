@@ -6,7 +6,7 @@
 <html>
 	 <head>
         <meta charset="utf-8"/>
-        <title>CoproManager - Inscription Erreur</title>
+        <title>CoproManager - Demande de reclamation Erreur</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Christopher Boudier">
@@ -71,7 +71,7 @@
 	         		<div class="span12">
 		            	<blockquote>
 		            	
-		            		<p>Le compte <s:text name="%{#session.mail2}" /> n'existe pas.</p>
+		            		<p>La demande n'as pas put etre formuler</p>
 		            		
 						</blockquote>
 	         		</div>

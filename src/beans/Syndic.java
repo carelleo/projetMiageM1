@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 
  */
-public class Syndic implements InterfaceReclamation, InterfaceResolution, InterfaceDemandeTravaux, Serializable{
+public class Syndic {
 	
 	private String type = "syndic";
     private String nom;
@@ -28,56 +28,6 @@ public class Syndic implements InterfaceReclamation, InterfaceResolution, Interf
         condition=true;
     }
     
-	/**
-	 * @param RQ 
-	 * @return
-	 */
-	public void RépondreQuestion(String RQ) {
-		// TODO implement here
-		
-	}
-
-	@Override
-	public DemandeTravaux CreerDemandeTravaux( String de) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void DetruireDemandeTravaux() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Resolution CreerResolution(String r) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void DetruireResolution() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Reclamation CreerReclamation(String r) {
-		
-		return new Reclamation(r);
-		
-	}
-
-	@Override
-	public void DetruireReclamation() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * 
-	 * */
 	public boolean equals(Object o){
 
 	      return (o instanceof Syndic ) /*&& (((Syndic)o).numeroLogement == numeroLogement) && (((Syndic)o).getNumeroTel() == getNumeroTel())*/ && 
