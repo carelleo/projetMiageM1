@@ -8,8 +8,10 @@ import java.util.*;
  */
 @SuppressWarnings("serial")
 public class Resolution implements Serializable{
-
+	
+	private int id;
 	private String resolution;
+	private int idCoproprietaire;
 
 
 	/**
@@ -29,6 +31,23 @@ public class Resolution implements Serializable{
 		this.resolution = resolution;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getIdCoproprietaire() {
+		return idCoproprietaire;
+	}
+
+
+	public void setIdCoproprietaire(int idCoproprietaire) {
+		this.idCoproprietaire = idCoproprietaire;
+	}
 
 	
 	
