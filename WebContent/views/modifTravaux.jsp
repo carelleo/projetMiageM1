@@ -79,9 +79,15 @@
 							<s:form action="travauxFormModif">
 		
 							  	<div class="modal-body">
-							    	<s:textfield label="Sujet" name="dt.sujet" value="%{#attr['dt.getSujet()']}" required="required"/>
+							  		<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == dt.getIdU()}">
+							    		<s:textfield label="Sujet" name="dt.sujet" value="%{#attr['dt.getSujet()']}" required="required"/>
 									
-									<s:textarea label="contenu" name="dt.contenu" value="%{#attr['dt.getContenu()']}" required="required" cols="20" rows="10"/>
+										<s:textarea label="Contenu" name="dt.contenu" value="%{#attr['dt.getContenu()']}" required="required" cols="20" rows="10"/>
+									</c:if>
+									
+									<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+										<s:select label="Etat" name="dt.etat" size="1" list="#{'NON LU':'NON LU', 'ACCEPTER':'ACCEPTER', 'REFUSER':'REFUSER'}" multiple="false" required="required"/>
+									</c:if>
 									
 									<s:submit value="Valider" name="submit" class="btn btn-large btn-primary"/>
 							  	</div>

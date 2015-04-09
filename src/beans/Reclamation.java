@@ -13,7 +13,7 @@ public class Reclamation implements Serializable {
     private String sujet;
     private String contenu;
     private String date = new DateTime().toString("yyyy-MM-dd");
-    private String etat = "NON_LU";
+    private String etat = "NON LU";
     private int positif = 0;
     private int negatif = 0;
     private int idU = 0;
