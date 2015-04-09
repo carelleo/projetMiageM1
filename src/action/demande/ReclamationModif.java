@@ -28,8 +28,36 @@ public class ReclamationModif extends ActionSupport implements SessionAware{
     
     @Override
     public String execute() throws Exception {
+        page = "reclamation";
+        
+        tDao.modifR( dt, (String)session.get( "dtSjt") );
+        listR = tDao.getReclamation();
+        
+        session.remove( "dtSjt" );
         
         return SUCCESS;
+    }
+    
+    public void validate(){
+        
+        if ( dt.getSujet().length()==0 || dt.getSujet().trim().equals( "" )){ 
+            addFieldError( "dt.sujet", "Subject is required." );     
+        }
+        else if(dt.getSujet().length()<3 || dt.getSujet().length()>30){
+            addFieldError( "dt.sujet", "Subject must have between 3 and 30 characters." );
+        }
+        else if(!dt.getSujet().equals( session.get( "dtSjt" ) )){
+            if(tDao.containTSujet(dt.getSujet())){
+                addFieldError( "dt.sujet", "Subject already exist." );
+            }
+        }
+        
+        if ( dt.getContenu().length()==0 || dt.getContenu().trim().equals( "" )){ 
+            addFieldError( "dt.contenu", "Contenu is required." );     
+        }
+        else if(dt.getContenu().length()<5){
+            addFieldError( "dt.contenu", "Contenu must have more than 5 characters." );
+        }
     }
 
     public String getPage() {

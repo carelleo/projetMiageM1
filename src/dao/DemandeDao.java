@@ -33,7 +33,7 @@ public class DemandeDao {
         DemandeTravaux u = new DemandeTravaux(null,null,null,0,0,null,0);
         
         try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=?");
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=? AND type='travaux'");
             p.setString(1, sjt);
             
             ResultSet r = p.executeQuery();
@@ -44,7 +44,7 @@ public class DemandeDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-        
+        System.out.println(u.getSujet());
         return u;
     }
     
@@ -83,7 +83,7 @@ public class DemandeDao {
 		boolean b = false;
 		
 		try{
-			PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=? and type='travaux'");
+			PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=?");
 			p.setString(1, sjt);
 			
 			ResultSet r = p.executeQuery();
@@ -274,27 +274,6 @@ public class DemandeDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-    
-    public boolean containResolutionSujet(String sjt){
-        
-        boolean b = false;
-        
-        try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=? AND type='resolution'");
-            p.setString(1, sjt);
-            
-            ResultSet r = p.executeQuery();
-            
-            if(r.next())
-                b = true;
-            
-            
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
-        return b;
     }
     
     public void modifResolution(Resolution t, String sjt){

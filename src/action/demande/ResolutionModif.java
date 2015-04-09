@@ -15,7 +15,7 @@ import dao.DemandeDao;
 public class ResolutionModif extends ActionSupport implements SessionAware{
     //param page
     private String page;
-    private Resolution dr;
+    private Resolution dt;
     
     //la session
     private Map<String, Object> session;
@@ -28,8 +28,36 @@ public class ResolutionModif extends ActionSupport implements SessionAware{
     
     @Override
     public String execute() throws Exception {
+        page = "resolution";
+        
+        tDao.modifResolution( dt, (String)session.get( "dtSjt") );
+        listResolution = tDao.getResolution();
+        
+        session.remove( "dtSjt" );
         
         return SUCCESS;
+    }
+    
+    public void validate(){
+        
+        if ( dt.getSujet().length()==0 || dt.getSujet().trim().equals( "" )){ 
+            addFieldError( "dt.sujet", "Subject is required." );     
+        }
+        else if(dt.getSujet().length()<3 || dt.getSujet().length()>30){
+            addFieldError( "dt.sujet", "Subject must have between 3 and 30 characters." );
+        }
+        else if(!dt.getSujet().equals( session.get( "dtSjt" ) )){
+            if(tDao.containTSujet(dt.getSujet())){
+                addFieldError( "dt.sujet", "Subject already exist." );
+            }
+        }
+        
+        if ( dt.getContenu().length()==0 || dt.getContenu().trim().equals( "" )){ 
+            addFieldError( "dt.contenu", "Contenu is required." );     
+        }
+        else if(dt.getContenu().length()<5){
+            addFieldError( "dt.contenu", "Contenu must have more than 5 characters." );
+        }
     }
 
     public String getPage() {
@@ -56,12 +84,12 @@ public class ResolutionModif extends ActionSupport implements SessionAware{
         this.tDao = tDao;
     }
 
-    public Resolution getDr() {
-        return dr;
+    public Resolution getDt() {
+        return dt;
     }
 
-    public void setDr( Resolution dr ) {
-        this.dr = dr;
+    public void setDt( Resolution dt ) {
+        this.dt = dt;
     }
 
     public ArrayList<Resolution> getListResolution() {

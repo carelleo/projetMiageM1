@@ -216,7 +216,7 @@
                            <c:param name="page" value="membre-conseil" />
                         </c:url>"
                         >Membres du conseil</a></li>
-                     <c:if test="${sessionScope.mail != null}">
+                     <c:if test="${sessionScope.type == 'admin'}">
                      	<li><a href=
 	                        "<c:url value='administration'>
 	                           <c:param name="page" value="administration" />

@@ -15,15 +15,16 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 	//param page
     private String page;
     private String sjt;
+    private String dtSjt;
     
     //la session
     private Map<String, Object> session;
     
     //dao
-    DemandeDao tDao = new DemandeDao();
+    private DemandeDao tDao = new DemandeDao();
     
-    ArrayList<DemandeTravaux> listT;
-    
+    private ArrayList<DemandeTravaux> listT;
+    private DemandeTravaux dt;
     
     @Override
     public String execute() throws Exception {
@@ -67,6 +68,14 @@ public class DTravauxA extends ActionSupport implements SessionAware{
         
         return SUCCESS;
     }
+    
+    public String modifT() throws Exception {
+        dt = tDao.getOneTravaux( dtSjt );
+        
+        session.put( "dtSjt", dtSjt );
+        
+        return SUCCESS;
+    }
 
     public String getPage() {
         return page;
@@ -107,5 +116,21 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 	public void setSjt(String sjt) {
 		this.sjt = sjt;
 	}
+
+    public String getDtSjt() {
+        return dtSjt;
+    }
+
+    public void setDtSjt( String dtSjt ) {
+        this.dtSjt = dtSjt;
+    }
+
+    public DemandeTravaux getDt() {
+        return dt;
+    }
+
+    public void setDt( DemandeTravaux dt ) {
+        this.dt = dt;
+    }
 
 }

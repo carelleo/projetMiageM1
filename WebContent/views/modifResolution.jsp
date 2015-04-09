@@ -65,25 +65,32 @@
         </section><!-- /#navigation-main -->
 
 		<!-- Include the content pages -->
-		<section class="container">
-			
-			<div class="row-fluid">
-         		<div class="span12">
-	            	<blockquote>
+		<section class="main-body">
+			<div class="container">
+				<div class="row-fluid">
+	         		<div class="span12">
 	               		
-						<p>pour le moment rien</p>
-						<br>
+							<div class="span12">
+						   		<h3 class="header">Demandes de Résolution
+						            <span class="header-line"></span> 
+						        </h3>
+						    </div>
 						
-						<c:out value="${dr.getSujet()}"></c:out>
-						<br>
+							<s:form action="resolutionFormModif">
+		
+							  	<div class="modal-body">
+							    	<s:textfield label="Sujet" name="dt.sujet" value="%{#attr['dt.getSujet()']}" required="required"/>
+									
+									<s:textarea label="contenu" name="dt.contenu" value="%{#attr['dt.getContenu()']}" required="required" cols="20" rows="10"/>
+									
+									<s:submit value="Valider" name="submit" class="btn btn-large btn-primary"/>
+							  	</div>
 						
-						<c:out value="${dr.getContenu()}"></c:out>
-						<br>
+							</s:form> 
 
-            		</blockquote>
-         		</div>
-	      	</div>
-			
+	         		</div>
+		      	</div>
+			</div>
 		</section>
 			
 		<%@include file="footer.jsp"%> 

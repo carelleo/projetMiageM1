@@ -16,6 +16,7 @@ public class ReclamationA extends ActionSupport implements SessionAware {
 	//param page
     private String page;
     private String sjt;
+    private String dtSjt;
     
     //la session
     private Map<String, Object> session;
@@ -24,6 +25,7 @@ public class ReclamationA extends ActionSupport implements SessionAware {
     DemandeDao tDao = new DemandeDao();
     
     ArrayList<Reclamation> listR;
+    private Reclamation dt;
     
     @Override
     public String execute() throws Exception {
@@ -65,6 +67,14 @@ public class ReclamationA extends ActionSupport implements SessionAware {
         tDao.modifR(demR, sjt);
         
         listR = tDao.getReclamation();
+        
+        return SUCCESS;
+    }
+    
+    public String modifR() throws Exception {
+        dt = tDao.getOneReclamation( dtSjt );
+        
+        session.put( "dtSjt", dtSjt );
         
         return SUCCESS;
     }
@@ -115,5 +125,21 @@ public class ReclamationA extends ActionSupport implements SessionAware {
 
     public void setSjt( String sjt ) {
         this.sjt = sjt;
+    }
+
+    public String getDtSjt() {
+        return dtSjt;
+    }
+
+    public void setDtSjt( String dtSjt ) {
+        this.dtSjt = dtSjt;
+    }
+
+    public Reclamation getDt() {
+        return dt;
+    }
+
+    public void setDt( Reclamation dt ) {
+        this.dt = dt;
     }
 }

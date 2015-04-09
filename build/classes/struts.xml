@@ -77,9 +77,13 @@
 		<action name="moinsTrav" class="action.demande.DTravauxA" method="moinsT">
 			<result name="success">/views/demandeTravaux.jsp</result>
 		</action>
-		<action name="modifTrav" class="action.demande.DTravauxModif">
+		<action name="modifTrav" class="action.demande.DTravauxA" method="modifT">
 			<result name="success">/views/modifTravaux.jsp</result>
 			<result name="input">/views/modifTravaux.jsp</result>
+		</action>
+		<action name="travauxFormModif" class="action.demande.DTravauxModif">
+			<result name="success">/views/demandeTravaux.jsp</result>
+			<result name="input">/views/demandeTravauxEr.jsp</result>
 		</action>
 		
 		
@@ -100,9 +104,13 @@
 		<action name="moinsRec" class="action.demande.ReclamationA" method="moinsR">
 			<result name="success">/views/demandeReclamation.jsp</result>
 		</action>
-		<action name="modifRec" class="action.demande.ReclamationModif">
+		<action name="modifRec" class="action.demande.ReclamationA" method="modifR">
 			<result name="success">/views/modifReclamation.jsp</result>
 			<result name="input">/views/modifReclamation.jsp</result>
+		</action>
+		<action name="reclamationFormModif" class="action.demande.ReclamationModif">
+			<result name="success">/views/demandeReclamation.jsp</result>
+			<result name="input">/views/demandeReclamationEr.jsp</result>
 		</action>
 		
 		<!-- resolution -->
@@ -122,9 +130,13 @@
 		<action name="moinsRes" class="action.demande.ResolutionA" method="moinsR">
 			<result name="success">/views/resolution.jsp</result>
 		</action>
-		<action name="modifRes" class="action.demande.ResolutionModif">
+		<action name="modifRes" class="action.demande.ResolutionA" method="modifR">
 			<result name="success">/views/modifResolution.jsp</result>
 			<result name="input">/views/modifResolution.jsp</result>
+		</action>
+		<action name="resolutionFormModif" class="action.demande.ResolutionModif">
+			<result name="success">/views/resolution.jsp</result>
+			<result name="input">/views/resolutionEr.jsp</result>
 		</action>
     	
 	</package>

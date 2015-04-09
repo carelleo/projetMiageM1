@@ -14,6 +14,7 @@ import dao.DemandeDao;
 public class DTravauxModif extends ActionSupport implements SessionAware{
 	//param page
     private String page;
+    
     private DemandeTravaux dt;
     
     //la session
@@ -27,8 +28,36 @@ public class DTravauxModif extends ActionSupport implements SessionAware{
     
     @Override
     public String execute() throws Exception {
+        page = "travaux";
+        
+        tDao.modifT( dt, (String)session.get( "dtSjt") );
+        listT = tDao.getTravaux();
+        
+        session.remove( "dtSjt" );
         
         return SUCCESS;
+    }
+    
+    public void validate(){
+        
+        if ( dt.getSujet().length()==0 || dt.getSujet().trim().equals( "" )){ 
+            addFieldError( "dt.sujet", "Subject is required." );     
+        }
+        else if(dt.getSujet().length()<3 || dt.getSujet().length()>30){
+            addFieldError( "dt.sujet", "Subject must have between 3 and 30 characters." );
+        }
+        else if(!dt.getSujet().equals( session.get( "dtSjt" ) )){
+            if(tDao.containTSujet(dt.getSujet())){
+                addFieldError( "dt.sujet", "Subject already exist." );
+            }
+        }
+        
+        if ( dt.getContenu().length()==0 || dt.getContenu().trim().equals( "" )){ 
+            addFieldError( "dt.contenu", "Contenu is required." );     
+        }
+        else if(dt.getContenu().length()<5){
+            addFieldError( "dt.contenu", "Contenu must have more than 5 characters." );
+        }
     }
 
     public String getPage() {
@@ -70,5 +99,4 @@ public class DTravauxModif extends ActionSupport implements SessionAware{
 	public void setDt(DemandeTravaux dt) {
 		this.dt = dt;
 	}
-
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import beans.DemandeTravaux;
 import beans.Resolution;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -16,6 +17,7 @@ public class ResolutionA extends ActionSupport implements SessionAware {
 	//param page
     private String page;
     private String sjt;
+    private String dtSjt;
     
     //la session
     private Map<String, Object> session;
@@ -24,6 +26,7 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     DemandeDao tDao = new DemandeDao();
     
     ArrayList<Resolution> listResolution;
+    private Resolution dt;
     
     @Override
     public String execute() throws Exception {
@@ -65,6 +68,14 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         tDao.modifResolution(res, sjt);
         
         listResolution = tDao.getResolution();
+        
+        return SUCCESS;
+    }
+    
+    public String modifR() throws Exception {
+        dt = tDao.getOneResolution( dtSjt );
+        
+        session.put( "dtSjt", dtSjt );
         
         return SUCCESS;
     }
@@ -115,6 +126,22 @@ public class ResolutionA extends ActionSupport implements SessionAware {
 
     public void setSjt( String sjt ) {
         this.sjt = sjt;
+    }
+
+    public String getDtSjt() {
+        return dtSjt;
+    }
+
+    public void setDtSjt( String dtSjt ) {
+        this.dtSjt = dtSjt;
+    }
+
+    public Resolution getDt() {
+        return dt;
+    }
+
+    public void setDt( Resolution dt ) {
+        this.dt = dt;
     }
 
     
