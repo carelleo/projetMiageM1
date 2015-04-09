@@ -48,25 +48,35 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     	page = "travaux";
     	
     	DemandeTravaux demT = tDao.getOneTravaux(sjt);
-    	demT.plus();
-    	tDao.modifT(demT, sjt);
     	
-        listT = tDao.getTravaux();
-        
-        return SUCCESS;
+    	if(!tDao.AlreadyCompteur( sjt, (int)session.get( "idU" ))){
+    	    demT.plus();
+    	    tDao.modifT(demT, sjt);
+    	    tDao.addCompteur( sjt, (int)session.get( "idU" ), "plus" );
+    	    
+    	    listT = tDao.getTravaux();
+    	    
+    	    return SUCCESS;
+    	}
+    	else
+    	    return ERROR;
     }
     
     public String moinsT() throws Exception {
     	
-    	page = "travaux";
-    	
-    	DemandeTravaux demT = tDao.getOneTravaux(sjt);
-    	demT.moins();
-    	tDao.modifT(demT, sjt);
-    	
-        listT = tDao.getTravaux();
+        DemandeTravaux demT = tDao.getOneTravaux(sjt);
         
-        return SUCCESS;
+        if(!tDao.AlreadyCompteur( sjt, (int)session.get( "idU" ))){
+            demT.moins();
+            tDao.modifT(demT, sjt);
+            tDao.addCompteur( sjt, (int)session.get( "idU" ), "plus" );
+            
+            listT = tDao.getTravaux();
+            
+            return SUCCESS;
+        }
+        else
+            return ERROR;
     }
     
     public String modifT() throws Exception {

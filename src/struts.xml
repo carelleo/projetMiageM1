@@ -73,9 +73,11 @@
 		</action>
 		<action name="plusTrav" class="action.demande.DTravauxA" method="plusT">
 			<result name="success">/views/demandeTravaux.jsp</result>
+			<result name="error">/views/demandeTravauxEr.jsp</result>
 		</action>
 		<action name="moinsTrav" class="action.demande.DTravauxA" method="moinsT">
 			<result name="success">/views/demandeTravaux.jsp</result>
+			<result name="error">/views/demandeTravauxEr.jsp</result>
 		</action>
 		<action name="modifTrav" class="action.demande.DTravauxA" method="modifT">
 			<result name="success">/views/modifTravaux.jsp</result>
@@ -100,9 +102,11 @@
 		</action>
 		<action name="plusRec" class="action.demande.ReclamationA" method="plusR">
 			<result name="success">/views/demandeReclamation.jsp</result>
+			<result name="error">/views/demandeReclamationEr.jsp</result>
 		</action>
 		<action name="moinsRec" class="action.demande.ReclamationA" method="moinsR">
 			<result name="success">/views/demandeReclamation.jsp</result>
+			<result name="error">/views/demandeReclamationEr.jsp</result>
 		</action>
 		<action name="modifRec" class="action.demande.ReclamationA" method="modifR">
 			<result name="success">/views/modifReclamation.jsp</result>
@@ -126,9 +130,11 @@
 		</action>
 		<action name="plusRes" class="action.demande.ResolutionA" method="plusR">
 			<result name="success">/views/resolution.jsp</result>
+			<result name="error">/views/resolutionEr.jsp</result>
 		</action>
 		<action name="moinsRes" class="action.demande.ResolutionA" method="moinsR">
 			<result name="success">/views/resolution.jsp</result>
+			<result name="error">/views/resolutionEr.jsp</result>
 		</action>
 		<action name="modifRes" class="action.demande.ResolutionA" method="modifR">
 			<result name="success">/views/modifResolution.jsp</result>

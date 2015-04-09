@@ -292,4 +292,70 @@ public class DemandeDao {
             e.printStackTrace();
         }
     }
+    
+    public boolean AlreadyCompteur(String sjt,int idU){
+        int idD = 0;
+        String a = null;
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=?");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                idD = r.getInt( "id" );
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM compteur WHERE idUtilisateur=? AND idDemande=?");
+            p.setInt(1, idU);
+            p.setInt(2, idD);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                a = r.getString( "action" );
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        if(a!=null)
+            return true;//deja fait
+        else
+            return false;//pas encore fait
+    }
+    
+    public void addCompteur(String sjt, int idU, String a){
+        int idD = 0;
+        System.out.println("add");
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM demandes WHERE sujet=?");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                idD = r.getInt( "id" );
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO compteur(idUtilisateur, idDemande, action) VALUES (?, ?, ?)");
+            p.setInt(1, idU);
+            p.setInt(2, idD);
+            p.setString(3, a);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

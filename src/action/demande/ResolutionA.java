@@ -51,12 +51,18 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         page = "resolution";
         
         Resolution res = tDao.getOneResolution(sjt);
-        res.plus();
-        tDao.modifResolution(res, sjt);
         
-        listResolution = tDao.getResolution();
-        
-        return SUCCESS;
+        if(!tDao.AlreadyCompteur( sjt, (int)session.get( "idU" ))){
+            res.plus();
+            tDao.modifResolution(res, sjt);
+            tDao.addCompteur( sjt, (int)session.get( "idU" ), "plus" );
+            
+            listResolution = tDao.getResolution();
+            
+            return SUCCESS;
+        }
+        else
+            return ERROR;
     }
     
     public String moinsR() throws Exception {
@@ -64,12 +70,18 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         page = "resolution";
         
         Resolution res = tDao.getOneResolution(sjt);
-        res.moins();
-        tDao.modifResolution(res, sjt);
         
-        listResolution = tDao.getResolution();
-        
-        return SUCCESS;
+        if(!tDao.AlreadyCompteur( sjt, (int)session.get( "idU" ))){
+            res.moins();
+            tDao.modifResolution(res, sjt);
+            tDao.addCompteur( sjt, (int)session.get( "idU" ), "plus" );
+            
+            listResolution = tDao.getResolution();
+            
+            return SUCCESS;
+        }
+        else
+            return ERROR;
     }
     
     public String modifR() throws Exception {

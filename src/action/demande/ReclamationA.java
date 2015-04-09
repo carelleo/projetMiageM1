@@ -50,12 +50,18 @@ public class ReclamationA extends ActionSupport implements SessionAware {
         page = "reclamation";
         
         Reclamation demR = tDao.getOneReclamation(sjt);
-        demR.plus();
-        tDao.modifR(demR, sjt);
         
-        listR = tDao.getReclamation();
-        
-        return SUCCESS;
+        if(!tDao.AlreadyCompteur( sjt, (int)session.get( "idU" ))){
+            demR.plus();
+            tDao.modifR(demR, sjt);
+            tDao.addCompteur( sjt, (int)session.get( "idU" ), "plus" );
+            
+            listR = tDao.getReclamation();
+            
+            return SUCCESS;
+        }
+        else
+            return ERROR;
     }
     
     public String moinsR() throws Exception {
@@ -63,12 +69,18 @@ public class ReclamationA extends ActionSupport implements SessionAware {
         page = "reclamation";
         
         Reclamation demR = tDao.getOneReclamation(sjt);
-        demR.moins();
-        tDao.modifR(demR, sjt);
         
-        listR = tDao.getReclamation();
-        
-        return SUCCESS;
+        if(!tDao.AlreadyCompteur( sjt, (int)session.get( "idU" ))){
+            demR.moins();
+            tDao.modifR(demR, sjt);
+            tDao.addCompteur( sjt, (int)session.get( "idU" ), "plus" );
+            
+            listR = tDao.getReclamation();
+            
+            return SUCCESS;
+        }
+        else
+            return ERROR;
     }
     
     public String modifR() throws Exception {
