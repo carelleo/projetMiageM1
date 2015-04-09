@@ -102,6 +102,9 @@
                         <c:when test="${page=='reclamation'}">
                            class="active dropdown"
                         </c:when>
+                        <c:when test="${page=='resolution'}">
+                           class="active dropdown"
+                        </c:when>
                         <c:otherwise>
                            class="dropdown"
                         </c:otherwise>   
@@ -123,6 +126,11 @@
                               <c:param name="page" value="reclamation" />
                            </c:url>"
                      >Réclamations</a></li>
+                     <li><a href=
+                        "<c:url value='resolution'>
+                           <c:param name="page" value="resolution" />
+                        </c:url>"
+                     >Résolutions</a></li>
                   </ul>
                </li>
                 

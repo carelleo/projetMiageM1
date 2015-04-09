@@ -109,6 +109,23 @@
 		<action name="resolution" class="action.demande.ResolutionA"> 
       		<result name="success">/views/resolution.jsp</result> 
     	</action>
+    	<action name="resolutionFormAj" class="action.demande.ResolutionAj">
+			<result name="success">/views/resolution.jsp</result>
+			<result name="input">/views/resolutionEr.jsp</result>
+		</action>
+		<action name="supprRes" class="action.demande.ResolutionA" method="supprR">
+			<result name="success">/views/resolution.jsp</result>
+		</action>
+		<action name="plusRes" class="action.demande.ResolutionA" method="plusR">
+			<result name="success">/views/resolution.jsp</result>
+		</action>
+		<action name="moinsRes" class="action.demande.ResolutionA" method="moinsR">
+			<result name="success">/views/resolution.jsp</result>
+		</action>
+		<action name="modifRes" class="action.demande.ResolutionModif">
+			<result name="success">/views/modifResolution.jsp</result>
+			<result name="input">/views/modifResolution.jsp</result>
+		</action>
     	
 	</package>
 </struts>

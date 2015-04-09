@@ -1,25 +1,27 @@
 package action.demande;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import org.apache.struts2.interceptor.SessionAware;
+
+import beans.Resolution;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.ResolutionDao;
-
-import java.util.*;
-
-import beans.Resolution;
+import dao.DemandeDao;
 
 public class ResolutionA extends ActionSupport implements SessionAware {
 	
 	//param page
     private String page;
+    private String sjt;
     
     //la session
     private Map<String, Object> session;
     
     //dao
-    ResolutionDao tDao = new ResolutionDao();
+    DemandeDao tDao = new DemandeDao();
     
     ArrayList<Resolution> listResolution;
     
@@ -27,6 +29,42 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     public String execute() throws Exception {
         
     	listResolution = tDao.getResolution();
+        
+        return SUCCESS;
+    }
+    
+    public String supprR() throws Exception {
+        
+        page = "resolution";
+        
+        tDao.removeResolution(sjt);
+        listResolution = tDao.getResolution();
+        
+        return SUCCESS;
+    }
+    
+    public String plusR() throws Exception {
+        
+        page = "resolution";
+        
+        Resolution res = tDao.getOneResolution(sjt);
+        res.plus();
+        tDao.modifResolution(res, sjt);
+        
+        listResolution = tDao.getResolution();
+        
+        return SUCCESS;
+    }
+    
+    public String moinsR() throws Exception {
+        
+        page = "resolution";
+        
+        Resolution res = tDao.getOneResolution(sjt);
+        res.moins();
+        tDao.modifResolution(res, sjt);
+        
+        listResolution = tDao.getResolution();
         
         return SUCCESS;
     }
@@ -47,20 +85,36 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         this.session = session;
     }
 
-    public ResolutionDao getDao() {
-        return tDao;
-    }
-
-    public void setDao( ResolutionDao tDao ) {
-        this.tDao = tDao;
-    }
-
     public ArrayList<Resolution> getListR() {
         return listResolution;
     }
 
     public void setListR( ArrayList<Resolution> listResolution ) {
         this.listResolution = listResolution;
+    }
+
+    public DemandeDao gettDao() {
+        return tDao;
+    }
+
+    public void settDao( DemandeDao tDao ) {
+        this.tDao = tDao;
+    }
+
+    public ArrayList<Resolution> getListResolution() {
+        return listResolution;
+    }
+
+    public void setListResolution( ArrayList<Resolution> listResolution ) {
+        this.listResolution = listResolution;
+    }
+
+    public String getSjt() {
+        return sjt;
+    }
+
+    public void setSjt( String sjt ) {
+        this.sjt = sjt;
     }
 
     
