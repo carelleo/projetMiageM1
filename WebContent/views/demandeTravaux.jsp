@@ -65,7 +65,26 @@
         </section><!-- /#navigation-main -->
 
 		<!-- Include the content pages -->
-		<section class="container">			
+		<section class="container">	
+				
+			<div class="tabbable tabs-left">
+			  	<ul class="nav nav-tabs">
+			    	<li class="active"><a href="#demande" data-toggle="tab">Demandes</a></li>
+			    	<li><a href="#reponse" data-toggle="tab">Réponses</a></li>
+			  	</ul>
+			  	
+			  	<%-- A refaire --%>
+			  	<div class="tab-content">
+			    	<div class="tab-pane active" id="demande">
+			      		<p>I'm in Section 1.</p>
+			    	</div>
+			    	<div class="tab-pane" id="reponse">
+			      		<p>Howdy, I'm in Section 2.</p>
+			    	</div>
+			  	</div>
+			  	
+			</div>
+			
 			
 			<div class="row-fluid">
 	           	<div class="span12">
@@ -118,7 +137,11 @@
 					                          			</span>
 					                          		</a>
 					                          	</div>
-					                          	
+					                          	<div class="modif">
+						                          	<a href="<c:url value='consulterTrav'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
+					                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
+					                          		</a>
+					                          	</div>
 					                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
 						                          	<div class="suppr">
 							                          	<a href="<c:url value='supprTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >

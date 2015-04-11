@@ -10,18 +10,21 @@ import beans.DemandeTravaux;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.DemandeDao;
+import dao.UtilisateurDao;
 
 public class DTravauxA extends ActionSupport implements SessionAware{
 	//param page
     private String page;
     private String sjt;
     private String dtSjt;
+    private String prop;
     
     //la session
     private Map<String, Object> session;
     
     //dao
     private DemandeDao tDao = new DemandeDao();
+    private UtilisateurDao uDao = new UtilisateurDao();
     
     private ArrayList<DemandeTravaux> listT;
     private DemandeTravaux dt;
@@ -86,6 +89,14 @@ public class DTravauxA extends ActionSupport implements SessionAware{
         
         return SUCCESS;
     }
+    
+    public String consulterT() throws Exception{
+    	dt = tDao.getOneTravaux( dtSjt );
+    	prop = uDao.getOneUtilisateur(dt.getIdU()).getMail();
+    	
+        session.put( "dt", dt );
+    	return SUCCESS;
+    }
 
     public String getPage() {
         return page;
@@ -142,5 +153,21 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     public void setDt( DemandeTravaux dt ) {
         this.dt = dt;
     }
+
+	public UtilisateurDao getuDao() {
+		return uDao;
+	}
+
+	public void setuDao(UtilisateurDao uDao) {
+		this.uDao = uDao;
+	}
+
+	public String getProp() {
+		return prop;
+	}
+
+	public void setProp(String prop) {
+		this.prop = prop;
+	}
 
 }

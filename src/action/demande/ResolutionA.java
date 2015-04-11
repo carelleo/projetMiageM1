@@ -11,6 +11,7 @@ import beans.Resolution;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.DemandeDao;
+import dao.UtilisateurDao;
 
 public class ResolutionA extends ActionSupport implements SessionAware {
 	
@@ -18,12 +19,14 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     private String page;
     private String sjt;
     private String dtSjt;
+    private String prop;
     
     //la session
     private Map<String, Object> session;
     
     //dao
-    DemandeDao tDao = new DemandeDao();
+    private DemandeDao tDao = new DemandeDao();
+    private UtilisateurDao uDao = new UtilisateurDao();
     
     ArrayList<Resolution> listResolution;
     private Resolution dt;
@@ -92,6 +95,14 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
+    public String consulterR() throws Exception{
+    	dt = tDao.getOneResolution( dtSjt );
+    	prop = uDao.getOneUtilisateur(dt.getIdU()).getMail();
+    	
+        session.put( "dt", dt );
+    	return SUCCESS;
+    }
+    
     public String getPage() {
         return page;
     }
@@ -155,6 +166,14 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     public void setDt( Resolution dt ) {
         this.dt = dt;
     }
+
+	public String getProp() {
+		return prop;
+	}
+
+	public void setProp(String prop) {
+		this.prop = prop;
+	}
 
     
 	

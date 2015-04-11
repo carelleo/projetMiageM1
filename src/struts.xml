@@ -87,6 +87,9 @@
 			<result name="success">/views/demandeTravaux.jsp</result>
 			<result name="input">/views/demandeTravauxEr.jsp</result>
 		</action>
+		<action name="consulterTrav" class="action.demande.DTravauxA" method="consulterT">
+			<result name="success">/views/consultTrav.jsp</result>
+		</action>
 		
 		
 		<!-- Demandes Reclamations -->
@@ -116,6 +119,9 @@
 			<result name="success">/views/demandeReclamation.jsp</result>
 			<result name="input">/views/demandeReclamationEr.jsp</result>
 		</action>
+		<action name="consulterRec" class="action.demande.ReclamationA" method="consulterR">
+			<result name="success">/views/consultRec.jsp</result>
+		</action>
 		
 		<!-- resolution -->
 		<action name="resolution" class="action.demande.ResolutionA"> 
@@ -143,6 +149,9 @@
 		<action name="resolutionFormModif" class="action.demande.ResolutionModif">
 			<result name="success">/views/resolution.jsp</result>
 			<result name="input">/views/resolutionEr.jsp</result>
+		</action>
+		<action name="consulterRes" class="action.demande.ResolutionA" method="consulterR">
+			<result name="success">/views/consultRec.jsp</result>
 		</action>
     	
 	</package>

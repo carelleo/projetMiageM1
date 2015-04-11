@@ -10,6 +10,7 @@ import beans.Reclamation;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.DemandeDao;
+import dao.UtilisateurDao;
 
 public class ReclamationA extends ActionSupport implements SessionAware {
 
@@ -17,12 +18,14 @@ public class ReclamationA extends ActionSupport implements SessionAware {
     private String page;
     private String sjt;
     private String dtSjt;
+    private String prop;
     
     //la session
     private Map<String, Object> session;
     
     //dao
-    DemandeDao tDao = new DemandeDao();
+    private DemandeDao tDao = new DemandeDao();
+    private UtilisateurDao uDao = new UtilisateurDao();
     
     ArrayList<Reclamation> listR;
     private Reclamation dt;
@@ -90,6 +93,14 @@ public class ReclamationA extends ActionSupport implements SessionAware {
         
         return SUCCESS;
     }
+    
+    public String consulterR() throws Exception{
+    	dt = tDao.getOneReclamation( dtSjt );
+    	prop = uDao.getOneUtilisateur(dt.getIdU()).getMail();
+    	
+        session.put( "dt", dt );
+    	return SUCCESS;
+    }
 
     public String getPage() {
         return page;
@@ -154,4 +165,20 @@ public class ReclamationA extends ActionSupport implements SessionAware {
     public void setDt( Reclamation dt ) {
         this.dt = dt;
     }
+
+	public UtilisateurDao getuDao() {
+		return uDao;
+	}
+
+	public void setuDao(UtilisateurDao uDao) {
+		this.uDao = uDao;
+	}
+
+	public String getProp() {
+		return prop;
+	}
+
+	public void setProp(String prop) {
+		this.prop = prop;
+	}
 }

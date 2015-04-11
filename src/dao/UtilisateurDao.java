@@ -33,6 +33,26 @@ public class UtilisateurDao {
         return u;
     }
     
+    public Utilisateur getOneUtilisateur(int id){
+        
+        Utilisateur u = new Utilisateur(0,null,null,null);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
+            p.setInt(1, id);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new Utilisateur(r.getInt( "id" ), r.getString( "mail" ), r.getString( "mdp" ),r.getString( "type" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return u;
+    }
+    
 	public ArrayList<Utilisateur> getUtilisateur(){
 		
 		ArrayList<Utilisateur> liste = new ArrayList<Utilisateur>();

@@ -118,6 +118,11 @@
 					                          			</span>
 					                          		</a>
 					                          	</div>
+					                          	<div class="modif">
+						                          	<a href="<c:url value='consulterRes'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
+					                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
+					                          		</a>
+					                          	</div>
 					                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
 						                          	<div class="suppr">
 							                          	<a href="<c:url value='supprRes'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
