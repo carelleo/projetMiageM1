@@ -124,16 +124,18 @@
 					                          		</a>
 					                          	</div>
 					                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
-						                          	<div class="suppr">
-							                          	<a href="<c:url value='supprRec'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
-						                          		</a>
-						                          	</div>
-						                          	
-						                          	<div class="modif">
-							                          	<a href="<c:url value='modifRec'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
-						                          		</a>
+					                          		<div class="span12">
+							                          	<div class="suppr">
+								                          	<a href="<c:url value='supprRec'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+							                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+							                          		</a>
+							                          	</div>
+							                          	
+							                          	<div class="modif">
+								                          	<a href="<c:url value='modifRec'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
+							                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
+							                          		</a>
+							                          	</div>
 						                          	</div>
 					                          	</c:if>
 				                          	</td>

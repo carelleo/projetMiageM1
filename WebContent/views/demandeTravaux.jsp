@@ -66,110 +66,117 @@
 
 		<!-- Include the content pages -->
 		<section class="container">	
-				
-			<div class="tabbable tabs-left">
-			  	<ul class="nav nav-tabs">
-			    	<li class="active"><a href="#demande" data-toggle="tab">Demandes</a></li>
-			    	<li><a href="#reponse" data-toggle="tab">Réponses</a></li>
-			  	</ul>
-			  	
-			  	<%-- A refaire --%>
-			  	<div class="tab-content">
-			    	<div class="tab-pane active" id="demande">
-			      		<p>I'm in Section 1.</p>
-			    	</div>
-			    	<div class="tab-pane" id="reponse">
-			      		<p>Howdy, I'm in Section 2.</p>
-			    	</div>
-			  	</div>
-			  	
-			</div>
-			
-			
-			<div class="row-fluid">
-	           	<div class="span12">
-			   		<h3 class="header">Demandes de Travaux
-			            <span class="header-line"></span> 
-			        </h3>
-			    </div>
-		       	<div class="span12" id="travaux">
-	           		<table class="table table-striped table-bordered table-hover">
-						<thead>
-	                        <tr>
-	                          	<th class="sujet">Sujet</th>
-	                          	<th class="date">Date</th>
-	                          	<th class="etat">Etat</th>
-	                          	<th class="prop">De</th>
-	                          	<th class="avis">Avis</th>
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                    	<c:forEach var="t" items="${listT}">
-	                    		<c:choose>
-	                    			<c:when test="${t == null}"></c:when>
-	                    			<c:otherwise>
-	                    				<tr>
-				                          	<td class="sujet">
-				                          		<c:out value="${t.getSujet()}"/>
-				                          	</td>
-				                          	<td class="date">
-				                          		<c:out value="${t.getDate()}"/>
-				                          	</td>
-				                          	<td class="etat">
-				                          		<c:out value="${t.getEtat()}"/>
-				                          	</td>
-				                          	<td class="prop">
-				                          		<c:out value="${t.getIdU()}"/>
-				                          	</td>
-				                          	<td class="avis">
-					                          	<div class="pos">
-						                          	<a href="<c:url value='plusTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
-					                          			<span class="badge badge-success">
-					                          				<c:out value="${t.getPositif()}"/>
-					                          			</span>
-					                          		</a>
-					                          	</div>
-					                          	
-					                          	<div class="neg">
-					                          		<a href="<c:url value='moinsTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
-					                          			<span class="badge badge-important">
-					                          				<c:out value="${t.getNegatif()}"/>
-					                          			</span>
-					                          		</a>
-					                          	</div>
-					                          	<div class="modif">
-						                          	<a href="<c:url value='consulterTrav'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
-					                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
-					                          		</a>
-					                          	</div>
-					                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
-						                          	<div class="suppr">
-							                          	<a href="<c:url value='supprTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
-						                          		</a>
-						                          	</div>
-						                          	
-						                          	<div class="modif">
-							                          	<a href="<c:url value='modifTrav'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
-						                          		</a>
-						                          	</div>
-					                        	</c:if>
-				                          	</td>
-				                        </tr>
-	                    			</c:otherwise>
-	                    		</c:choose>
-	                    	</c:forEach>
-	                    </tbody>
-					</table>
-	           	</div>
-	           	
-	           	<div class="span3">
-	          		<a href="#modalAjoutTrav" role="button" class="btn btn-primary" data-toggle="modal">Ajouter une demande</a>
-	          	</div>
-	           	
-          	</div>
-			
+		
+			<ul class="nav nav-tabs">
+    			<li class="active"><a href="#demande" data-toggle="tab">Demandes</a></li>
+    			<li><a href="#reponse" data-toggle="tab">Réponses</a></li>
+  			</ul>
+  			
+  			<div class="tab-content">
+    			<div class="tab-pane active" id="demande">
+    				<div class="row-fluid">
+			           	<div class="span12">
+					   		<h3 class="header">Demandes de Travaux
+					            <span class="header-line"></span> 
+					        </h3>
+					    </div>
+				       	<div class="span11" id="travaux">
+			           		<table class="table table-striped table-bordered table-hover">
+								<thead>
+			                        <tr>
+			                          	<th class="sujet">Sujet</th>
+			                          	<th class="date">Date</th>
+			                          	<th class="etat">Etat</th>
+			                          	<th class="prop">De</th>
+			                          	<th class="avis">Avis</th>
+			                        </tr>
+			                    </thead>
+			                    <tbody>
+			                    	<c:forEach var="t" items="${listT}">
+			                    		<c:choose>
+			                    			<c:when test="${t == null}"></c:when>
+			                    			<c:otherwise>
+			                    				<tr>
+						                          	<td class="sujet">
+						                          		<c:out value="${t.getSujet()}"/>
+						                          	</td>
+						                          	<td class="date">
+						                          		<c:out value="${t.getDate()}"/>
+						                          	</td>
+						                          	<td class="etat">
+						                          		<c:out value="${t.getEtat()}"/>
+						                          	</td>
+						                          	<td class="prop">
+						                          		<c:out value="${t.getIdU()}"/>
+						                          	</td>
+						                          	<td class="avis">
+							                          	<div class="pos">
+								                          	<a href="<c:url value='plusTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
+							                          			<span class="badge badge-success">
+							                          				<c:out value="${t.getPositif()}"/>
+							                          			</span>
+							                          		</a>
+							                          	</div>
+							                          	
+							                          	<div class="neg">
+							                          		<a href="<c:url value='moinsTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>">
+							                          			<span class="badge badge-important">
+							                          				<c:out value="${t.getNegatif()}"/>
+							                          			</span>
+							                          		</a>
+							                          	</div>
+							                          	<div class="modif">
+								                          	<a href="<c:url value='consulterTrav'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
+							                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
+							                          		</a>
+							                          	</div>
+							                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
+								                          	<div class="suppr">
+									                          	<a href="<c:url value='supprTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+								                          		</a>
+								                          	</div>
+								                          	
+								                          	<div class="modif">
+									                          	<a href="<c:url value='modifTrav'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
+								                          		</a>
+								                          	</div>
+							                        	</c:if>
+						                          	</td>
+						                        </tr>
+			                    			</c:otherwise>
+			                    		</c:choose>
+			                    	</c:forEach>
+			                    </tbody>
+							</table>
+			           	</div>
+			           	
+			           	<div class="span3">
+			          		<a href="#modalAjoutTrav" role="button" class="btn btn-primary" data-toggle="modal">Ajouter une demande</a>
+			          	</div>
+			           	
+		          	</div>
+    			</div>
+    			
+    			<div class="tab-pane" id="reponse">
+     		 		<div class="row-fluid">
+			           	<div class="span12">
+					   		<h3 class="header">Petits Travaux
+					            <span class="header-line"></span> 
+					        </h3>
+					    </div>
+					</div>
+					
+					<div class="row-fluid">
+			           	<div class="span12">
+					   		<h3 class="header">Gros Travaux
+					            <span class="header-line"></span> 
+					        </h3>
+					    </div>
+					</div>
+    			</div>
+  			</div>
 		</section>
 			
 		<%@include file="footer.jsp"%>

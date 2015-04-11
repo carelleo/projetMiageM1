@@ -93,7 +93,18 @@
 				  		
 				  		<h4>Par</h4>
 				  		<p><c:out value="${prop}"/></p>
+				  		<br>
 	         		</div>
+	         		
+	         		<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+		         		<a href="#">
+		         			<button class="btn btn-primary" type="button">Accepter</button>
+		         		</a>
+		         		<a href="#">
+		         			<button class="btn" type="button">Refuser</button>
+		         		</a>
+		         		<hr>
+	         		</c:if>
 		      	</div>
 			</div>
 		</section>
