@@ -103,6 +103,15 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     	return SUCCESS;
     }
     
+    public String refuserR() throws Exception{
+    	dt = tDao.getOneResolution( sjt );
+    	tDao.modifT("REFUSER", sjt);
+    	
+    	listResolution = tDao.getResolution();
+    	
+    	return SUCCESS;
+    }
+    
     public String getPage() {
         return page;
     }

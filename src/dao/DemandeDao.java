@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import beans.DemandeTravaux;
+import beans.GrosTravaux;
+import beans.PetitTravaux;
 import beans.Reclamation;
 import beans.Resolution;
 
@@ -108,6 +110,19 @@ public class DemandeDao {
             p.setInt(4, t.getPositif());
             p.setInt(5, t.getNegatif());
             p.setString(6, sjt);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void modifT(String t, String sjt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE demandes SET etat=?  WHERE sujet=?");
+            p.setString(1, t);
+            p.setString(2, sjt);
             
             p.executeUpdate();
             
@@ -351,6 +366,75 @@ public class DemandeDao {
             p.setInt(1, idU);
             p.setInt(2, idD);
             p.setString(3, a);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    //Petit et Gros travaux
+    
+    public void addPTrav(PetitTravaux pt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type) VALUES (?, ?, ?)");
+            p.setString(1, pt.getSujet());
+            p.setString(2, pt.getContenu());
+            p.setString(3, "petits travaux");
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void removePTrav(String sjt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM travaux WHERE sujet=? AND type='petits travaux'");
+            p.setString(1, sjt);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void addGTrav(GrosTravaux gt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type) VALUES (?, ?, ?)");
+            p.setString(1, gt.getSujet());
+            p.setString(2, gt.getContenu());
+            p.setString(3, "gros travaux");
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void removeGTrav(String sjt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM travaux WHERE sujet=? AND type='gros travaux'");
+            p.setString(1, sjt);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void modifGPTrav(String sjt, String dd, String df, String a){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE travaux SET dateD=?, dateF=?, artisan=? WHERE sujet=?");
+            p.setString(1, dd);
+            p.setString(2, df);
+            p.setString(3, a);
+            p.setString(4, sjt);
             
             p.executeUpdate();
             

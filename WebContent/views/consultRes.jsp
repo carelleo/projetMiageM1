@@ -97,10 +97,10 @@
 	         		</div>
 	         		
 	         		<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
-		         		<a href="#">
+		         		<a href="<c:url value='accepterRes'><c:param name="sjt" value="${sessionScope.dt.getSujet()}" /></c:url>" >
 		         			<button class="btn btn-primary" type="button">Accepter</button>
 		         		</a>
-		         		<a href="#">
+		         		<a href="<c:url value='refuserRes'><c:param name="sjt" value="${sessionScope.dt.getSujet()}" /></c:url>" >
 		         			<button class="btn" type="button">Refuser</button>
 		         		</a>
 		         		<hr>

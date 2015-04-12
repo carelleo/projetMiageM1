@@ -60,7 +60,9 @@
 			<result name="success">/views/admin.jsp</result>
 		</action>
 		
+		
 		<!-- Demandes Travaux -->
+		
 		<action name="demandeTravaux" class="action.demande.DTravauxA">
 			<result name="success">/views/demandeTravaux.jsp</result>
 		</action>
@@ -90,9 +92,18 @@
 		<action name="consulterTrav" class="action.demande.DTravauxA" method="consulterT">
 			<result name="success">/views/consultTrav.jsp</result>
 		</action>
+		<!-- 
+		<action name="accepterTrav" class="action.demande.DTravauxA" method="accepterT">
+			<result name="success">/views/demandeTravaux.jsp</result>
+		</action>
+		-->
+		<action name="refuserTrav" class="action.demande.DTravauxA" method="refuserT">
+			<result name="success">/views/demandeTravaux.jsp</result>
+		</action>
 		
 		
 		<!-- Demandes Reclamations -->
+		
 		<action name="demandeReclamation" class="action.demande.ReclamationA">
 			<result name="success">/views/demandeReclamation.jsp</result>
 		</action>
@@ -122,8 +133,18 @@
 		<action name="consulterRec" class="action.demande.ReclamationA" method="consulterR">
 			<result name="success">/views/consultRec.jsp</result>
 		</action>
+		<!-- 
+		<action name="accepterRec" class="action.demande.ReclamationA" method="accepterR">
+			<result name="success">/views/demandeReclamation.jsp</result>
+		</action>
+		-->
+		<action name="refuserRec" class="action.demande.ReclamationA" method="refuserR">
+			<result name="success">/views/demandeReclamation.jsp</result>
+		</action>
+		
 		
 		<!-- resolution -->
+		
 		<action name="resolution" class="action.demande.ResolutionA"> 
       		<result name="success">/views/resolution.jsp</result> 
     	</action>
@@ -152,6 +173,14 @@
 		</action>
 		<action name="consulterRes" class="action.demande.ResolutionA" method="consulterR">
 			<result name="success">/views/consultRec.jsp</result>
+		</action>
+		<!-- 
+		<action name="accepterRes" class="action.demande.ResolutionA" method="accepterR">
+			<result name="success">/views/resolution.jsp</result>
+		</action>
+		-->
+		<action name="refuserRes" class="action.demande.ResolutionA" method="refuserR">
+			<result name="success">/views/resolution.jsp</result>
 		</action>
     	
 	</package>

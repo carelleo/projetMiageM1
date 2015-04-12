@@ -6,6 +6,8 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import beans.DemandeTravaux;
+import beans.GrosTravaux;
+import beans.PetitTravaux;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -28,6 +30,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     
     private ArrayList<DemandeTravaux> listT;
     private DemandeTravaux dt;
+    private GrosTravaux gt;
+    private PetitTravaux pt;
     
     @Override
     public String execute() throws Exception {
@@ -95,6 +99,21 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     	prop = uDao.getOneUtilisateur(dt.getIdU()).getMail();
     	
         session.put( "dt", dt );
+    	return SUCCESS;
+    }
+    
+    /*public String accepterGT() throws Exception{
+    	dt = tDao.getOneTravaux( sjt );
+    	
+    	return SUCCESS;
+    }*/
+    
+    public String refuserT() throws Exception{
+    	dt = tDao.getOneTravaux( sjt );
+    	tDao.modifT("REFUSER", sjt);
+    	
+    	listT = tDao.getTravaux();
+    	
     	return SUCCESS;
     }
 
@@ -168,6 +187,22 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 
 	public void setProp(String prop) {
 		this.prop = prop;
+	}
+
+	public GrosTravaux getGt() {
+		return gt;
+	}
+
+	public void setGt(GrosTravaux gt) {
+		this.gt = gt;
+	}
+
+	public PetitTravaux getPt() {
+		return pt;
+	}
+
+	public void setPt(PetitTravaux pt) {
+		this.pt = pt;
 	}
 
 }

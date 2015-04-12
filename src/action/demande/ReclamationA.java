@@ -101,6 +101,15 @@ public class ReclamationA extends ActionSupport implements SessionAware {
         session.put( "dt", dt );
     	return SUCCESS;
     }
+    
+    public String refuserR() throws Exception{
+    	dt = tDao.getOneReclamation( sjt );
+    	tDao.modifT("REFUSER", sjt);
+    	
+    	listR = tDao.getReclamation();
+    	
+    	return SUCCESS;
+    }
 
     public String getPage() {
         return page;
