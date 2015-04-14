@@ -166,6 +166,56 @@
 					            <span class="header-line"></span> 
 					        </h3>
 					    </div>
+					    <div class="span11" id="travaux">
+			           		<table class="table table-striped table-bordered table-hover">
+								<thead>
+			                        <tr>
+			                          	<th class="sujet">Sujet</th>
+			                          	<th class="prop">De</th>
+			                          	<th class="avis">Action</th>
+			                        </tr>
+			                    </thead>
+			                    <tbody>
+			                    	<c:forEach var="t" items="${listPT}">
+			                    		<c:choose>
+			                    			<c:when test="${t == null}"></c:when>
+			                    			<c:otherwise>
+			                    				<tr>
+						                          	<td class="sujet">
+						                          		<c:out value="${t.getSujet()}"/>
+						                          	</td>
+						                          	<td class="prop">
+						                          		<c:out value="${t.getIdU()}"/>
+						                          	</td>
+						                          	<td class="avis">
+							                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+								                          	<div class="suppr">
+									                          	<a href="<c:url value='supprPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+								                          		</a>
+								                          	</div>
+								                          	
+								                          	<div class="devis">
+									                          	<a href="<c:url value='devisPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Devis</button>
+								                          		</a>
+								                          	</div>
+							                        	</c:if>
+							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
+								                          	<div class="suppr">
+									                          	<a href="<c:url value='consulterPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
+								                          		</a>
+								                          	</div>
+							                        	</c:if>
+						                          	</td>
+						                        </tr>
+			                    			</c:otherwise>
+			                    		</c:choose>
+			                    	</c:forEach>
+			                    </tbody>
+							</table>
+			           	</div>
 					</div>
 					
 					<div class="row-fluid">
@@ -174,6 +224,56 @@
 					            <span class="header-line"></span> 
 					        </h3>
 					    </div>
+					    <div class="span11" id="travaux">
+			           		<table class="table table-striped table-bordered table-hover">
+								<thead>
+			                        <tr>
+			                          	<th class="sujet">Sujet</th>
+			                          	<th class="prop">De</th>
+			                          	<th class="avis">Action</th>
+			                        </tr>
+			                    </thead>
+			                    <tbody>
+			                    	<c:forEach var="t" items="${listGT}">
+			                    		<c:choose>
+			                    			<c:when test="${t == null}"></c:when>
+			                    			<c:otherwise>
+			                    				<tr>
+						                          	<td class="sujet">
+						                          		<c:out value="${t.getSujet()}"/>
+						                          	</td>
+						                          	<td class="prop">
+						                          		<c:out value="${t.getIdU()}"/>
+						                          	</td>
+						                          	<td class="avis">
+							                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+								                          	<div class="suppr">
+									                          	<a href="<c:url value='supprGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+								                          		</a>
+								                          	</div>
+								                          	
+								                          	<div class="devis">
+									                          	<a href="<c:url value='devisGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Devis</button>
+								                          		</a>
+								                          	</div>
+							                        	</c:if>
+							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
+								                          	<div class="suppr">
+									                          	<a href="<c:url value='consulterGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
+								                          		</a>
+								                          	</div>
+							                        	</c:if>
+						                          	</td>
+						                        </tr>
+			                    			</c:otherwise>
+			                    		</c:choose>
+			                    	</c:forEach>
+			                    </tbody>
+							</table>
+			           	</div>
 					</div>
     			</div>
   			</div>

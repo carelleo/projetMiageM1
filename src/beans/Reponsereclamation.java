@@ -20,7 +20,7 @@ public class Reponsereclamation implements Serializable{
 	}
 
 
-	public String getSuiteRéclamation() {
+	public String getSuiteReclamation() {
 		return suiteReclamation;
 	}
 

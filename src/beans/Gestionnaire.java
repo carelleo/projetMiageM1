@@ -22,7 +22,7 @@ public class Gestionnaire extends Utilisateur implements InterfaceIntervention, 
 	/**
 	 * @param suiteR
 	 */
-	public void SaisirSuiteRéclamation(String suiteR) {
+	public void SaisirSuiteReclamation(String suiteR) {
 		// TODO implement here
 	}
 

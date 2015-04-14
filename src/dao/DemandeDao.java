@@ -376,12 +376,13 @@ public class DemandeDao {
     
     //Petit et Gros travaux
     
-    public void addPTrav(PetitTravaux pt){
+    public void addPTrav(DemandeTravaux pt){
         try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type) VALUES (?, ?, ?)");
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type, idU) VALUES (?, ?, ?,?)");
             p.setString(1, pt.getSujet());
             p.setString(2, pt.getContenu());
             p.setString(3, "petits travaux");
+            p.setInt(4, pt.getIdU());
             
             p.executeUpdate();
             
@@ -402,12 +403,32 @@ public class DemandeDao {
         }
     }
     
-    public void addGTrav(GrosTravaux gt){
+    public ArrayList<PetitTravaux> getPTrav(){
+        ArrayList<PetitTravaux> listU = new ArrayList<PetitTravaux>();
+        
         try{
-            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type) VALUES (?, ?, ?)");
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE type=?");
+            p.setString(1, "petits travaux");
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                listU.add( new PetitTravaux(r.getString( "sujet" ), r.getString( "contenu" ), r.getInt( "idU" )) );
+                
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return listU;
+    }
+    
+    public void addGTrav(DemandeTravaux gt){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type, idU) VALUES (?, ?, ?, ?)");
             p.setString(1, gt.getSujet());
             p.setString(2, gt.getContenu());
             p.setString(3, "gros travaux");
+            p.setInt(4, gt.getIdU());
             
             p.executeUpdate();
             
@@ -426,6 +447,25 @@ public class DemandeDao {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    public ArrayList<GrosTravaux> getGTrav(){
+        ArrayList<GrosTravaux> listU = new ArrayList<GrosTravaux>();
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE type=?");
+            p.setString(1, "gros travaux");
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                listU.add( new GrosTravaux(r.getString( "sujet" ), r.getString( "contenu" ), r.getInt( "idU" )) );
+                
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return listU;
     }
     
     public void modifGPTrav(String sjt, String dd, String df, String a){

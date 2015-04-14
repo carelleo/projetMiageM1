@@ -30,12 +30,15 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     
     private ArrayList<DemandeTravaux> listT;
     private DemandeTravaux dt;
-    private GrosTravaux gt;
-    private PetitTravaux pt;
+    
+    private ArrayList<GrosTravaux> listGT;
+    private ArrayList<PetitTravaux> listPT;
     
     @Override
     public String execute() throws Exception {
         listT = tDao.getTravaux();
+        listGT = tDao.getGTrav();
+        listPT = tDao.getPTrav();
         
         return SUCCESS;
     }
@@ -102,12 +105,6 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     	return SUCCESS;
     }
     
-    /*public String accepterGT() throws Exception{
-    	dt = tDao.getOneTravaux( sjt );
-    	
-    	return SUCCESS;
-    }*/
-    
     public String refuserT() throws Exception{
     	dt = tDao.getOneTravaux( sjt );
     	tDao.modifT("REFUSER", sjt);
@@ -115,6 +112,32 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     	listT = tDao.getTravaux();
     	
     	return SUCCESS;
+    }
+    
+    public String accepterGT() throws Exception{
+        dt = tDao.getOneTravaux( sjt );
+        tDao.addGTrav( dt );
+        
+        tDao.removeTravaux( dt.getSujet() );
+        
+        listT = tDao.getTravaux();
+        listGT = tDao.getGTrav();
+        listPT = tDao.getPTrav();
+        
+        return SUCCESS;
+    }
+    
+    public String accepterPT() throws Exception{
+        dt = tDao.getOneTravaux( sjt );
+        tDao.addPTrav( dt );
+    
+        tDao.removeTravaux( dt.getSujet() );
+        
+        listT = tDao.getTravaux();
+        listGT = tDao.getGTrav();
+        listPT = tDao.getPTrav();
+        
+        return SUCCESS;
     }
 
     public String getPage() {
@@ -189,20 +212,19 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 		this.prop = prop;
 	}
 
-	public GrosTravaux getGt() {
-		return gt;
-	}
+    public ArrayList<GrosTravaux> getListGT() {
+        return listGT;
+    }
 
-	public void setGt(GrosTravaux gt) {
-		this.gt = gt;
-	}
+    public void setListGT( ArrayList<GrosTravaux> listGT ) {
+        this.listGT = listGT;
+    }
 
-	public PetitTravaux getPt() {
-		return pt;
-	}
+    public ArrayList<PetitTravaux> getListPT() {
+        return listPT;
+    }
 
-	public void setPt(PetitTravaux pt) {
-		this.pt = pt;
-	}
-
+    public void setListPT( ArrayList<PetitTravaux> listPT ) {
+        this.listPT = listPT;
+    }
 }

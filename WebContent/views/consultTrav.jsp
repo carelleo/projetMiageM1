@@ -97,8 +97,11 @@
 	         		</div>
 	         		
 	         		<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
-		         		<a href="<c:url value='accepterTrav'><c:param name="sjt" value="${sessionScope.dt.getSujet()}" /></c:url>" >
-		         			<button class="btn btn-primary" type="button">Accepter</button>
+		         		<a href="<c:url value='accepterPTrav'><c:param name="sjt" value="${sessionScope.dt.getSujet()}" /></c:url>" >
+		         			<button class="btn btn-primary" type="button">Petits travaux</button>
+		         		</a>
+		         		<a href="<c:url value='accepterGTrav'><c:param name="sjt" value="${sessionScope.dt.getSujet()}" /></c:url>" >
+		         			<button class="btn btn-primary" type="button">Gros Travaux</button>
 		         		</a>
 		         		<a href="<c:url value='refuserTrav'><c:param name="sjt" value="${sessionScope.dt.getSujet()}" /></c:url>" >
 		         			<button class="btn" type="button">Refuser</button>

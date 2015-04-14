@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormatSymbols;
 import java.util.*;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.joda.time.DateTime;

@@ -6,13 +6,15 @@ public class PetitTravaux {
 	private String sujet;
 	private String artisan = null;
 	private String contenu;
+	private int idU;
 	
 	public PetitTravaux(){
 	}
 	
-	public PetitTravaux(String s, String c){
+	public PetitTravaux(String s, String c, int i){
 		sujet = s;
 		contenu = c;
+		idU = i;
 	}
 	
 	public PetitTravaux(String dd, String df, String s, String a, String c){
@@ -62,6 +64,14 @@ public class PetitTravaux {
 	public void setContenu(String contenu) {
 		this.contenu = contenu;
 	}
+
+    public int getIdU() {
+        return idU;
+    }
+
+    public void setIdU( int idU ) {
+        this.idU = idU;
+    }
 	
 	
 }
