@@ -3,12 +3,23 @@ package beans;
 import java.util.*;
 
 public class Devis {
+    private int id = 0;
     private String entreprise;
     private int montant;
     private String dateD;
     private String dateF;
+    private int idT;
     
 	public Devis() {
+	}
+	
+	public Devis(int i, String e, int m, String dd, String df, int it){
+	    id = i;
+	    entreprise = e;
+	    montant = m;
+	    dateD = dd;
+	    dateF = df;
+	    idT = it;
 	}
 
     public String getEntreprise() {
@@ -41,6 +52,22 @@ public class Devis {
 
     public void setDateF( String dateF ) {
         this.dateF = dateF;
+    }
+
+    public int getIdT() {
+        return idT;
+    }
+
+    public void setIdT( int idT ) {
+        this.idT = idT;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId( int id ) {
+        this.id = id;
     }
 
 

@@ -103,7 +103,16 @@
 		<action name="refuserTrav" class="action.demande.DTravauxA" method="refuserT">
 			<result name="success">/views/demandeTravaux.jsp</result>
 		</action>
-		
+		<action name="consulterPTrav" class="action.demande.DTravauxA" method="consulterPT">
+			<result name="success">/views/consultPTrav.jsp</result>
+		</action>
+		<action name="consulterGTrav" class="action.demande.DTravauxA" method="consulterGT">
+			<result name="success">/views/consultGTrav.jsp</result>
+		</action>
+		<action name="devisFormAj" class="action.demande.DevisAj">
+			<result name="success">/views/demandeTravaux.jsp</result>
+			<result name="input">/views/demandeTravauxEr.jsp</result>
+		</action>
 		
 		<!-- Demandes Reclamations -->
 		

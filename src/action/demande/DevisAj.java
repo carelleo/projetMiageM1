@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import beans.DemandeTravaux;
+import beans.Devis;
 import beans.GrosTravaux;
 import beans.PetitTravaux;
 
@@ -13,27 +14,30 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import dao.DemandeDao;
 
-public class DTravauxAj extends ActionSupport implements SessionAware{
-	//param page
+public class DevisAj extends ActionSupport implements SessionAware{
+    //param page
     private String page;
+    private String sjt;
     
     //la session
     private Map<String, Object> session;
     
     //dao
-    DemandeDao tDao = new DemandeDao();
+    private DemandeDao tDao = new DemandeDao();
     
-    DemandeTravaux dt;
-    ArrayList<DemandeTravaux> listT;
+    private Devis d;
+    
+    private ArrayList<DemandeTravaux> listT;
     private ArrayList<GrosTravaux> listGT;
     private ArrayList<PetitTravaux> listPT;
     
     @Override
     public String execute() throws Exception {
-    	
-    	page = "travaux";
-    	
-    	tDao.addTravaux(dt, (int)session.get( "idU" ));
+        
+        page = "travaux";
+        
+        tDao.addDevis(d);
+        
         listT = tDao.getTravaux();
         listGT = tDao.getGTrav();
         listPT = tDao.getPTrav();
@@ -42,22 +46,15 @@ public class DTravauxAj extends ActionSupport implements SessionAware{
     }
     
     public void validate(){
-		
-        if ( dt.getSujet().length()==0 || dt.getSujet().trim().equals( "" )){ 
-            addFieldError( "dt.sujet", "Subject is required." );     
-        }
-        else if(dt.getSujet().length()<3 || dt.getSujet().length()>30){
-            addFieldError( "dt.sujet", "Subject must have between 3 and 30 characters." );
-        }
-        else if(tDao.containTSujet(dt.getSujet())){
-            addFieldError( "dt.sujet", "Subject already exist." );
-        }
         
-        if ( dt.getContenu().length()==0 || dt.getContenu().trim().equals( "" )){ 
-            addFieldError( "dt.contenu", "Contenu is required." );     
+        if ( d.getEntreprise().length()==0 || d.getEntreprise().trim().equals( "" )){ 
+            addFieldError( "d.entreprise", "Entreprise is required." );     
         }
-        else if(dt.getContenu().length()<5){
-            addFieldError( "dt.contenu", "Contenu must have more than 5 characters." );
+        else if(d.getEntreprise().length()<3 || d.getEntreprise().length()>30){
+            addFieldError( "d.entreprise", "Subject must have between 3 and 30 characters." );
+        }
+        else if ( d.getMontant()<=0 || d.getEntreprise().trim().equals( "" )){ 
+            addFieldError( "d.entreprise", "Entreprise is required." );     
         }
     }
 
@@ -93,13 +90,21 @@ public class DTravauxAj extends ActionSupport implements SessionAware{
         this.listT = listT;
     }
 
-	public DemandeTravaux getDt() {
-		return dt;
-	}
+    public String getSjt() {
+        return sjt;
+    }
 
-	public void setDt(DemandeTravaux dt) {
-		this.dt = dt;
-	}
+    public void setSjt( String sjt ) {
+        this.sjt = sjt;
+    }
+
+    public Devis getD() {
+        return d;
+    }
+
+    public void setD( Devis d ) {
+        this.d = d;
+    }
 
     public ArrayList<GrosTravaux> getListGT() {
         return listGT;

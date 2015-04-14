@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import beans.DemandeTravaux;
+import beans.Devis;
 import beans.GrosTravaux;
 import beans.PetitTravaux;
 import beans.Reclamation;
@@ -422,6 +423,44 @@ public class DemandeDao {
         return listU;
     }
     
+    public int getIdPT(String sjt){
+        int u = 0;
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE sujet=? AND type='petits travaux'");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = r.getInt( "id" );
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return u;
+    }
+    
+    public PetitTravaux getOnePTravaux(String sjt){
+        PetitTravaux u = new PetitTravaux(null, null, null, null, null, 0);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE sujet=? AND type='petits travaux'");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new PetitTravaux(null, null, r.getString( "sujet" ), null, r.getString( "contenu" ), r.getInt( "idU" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return u;
+    }
+    
     public void addGTrav(DemandeTravaux gt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type, idU) VALUES (?, ?, ?, ?)");
@@ -468,6 +507,44 @@ public class DemandeDao {
         return listU;
     }
     
+    public GrosTravaux getOneGTravaux(String sjt){
+        GrosTravaux u = new GrosTravaux(null, null, null, null, null, 0);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE sujet=? AND type='gros travaux'");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new GrosTravaux(null, null, r.getString( "sujet" ), null, r.getString( "contenu" ), r.getInt( "idU" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        System.out.println(u.getSujet());
+        return u;
+    }
+    
+    public int getIdGT(String sjt){
+        int u = 0;
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE sujet=? AND type='gros travaux'");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = r.getInt( "id" );
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return u;
+    }
+    
     public void modifGPTrav(String sjt, String dd, String df, String a){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE travaux SET dateD=?, dateF=?, artisan=? WHERE sujet=?");
@@ -483,7 +560,7 @@ public class DemandeDao {
         }
     }
     
-public boolean containGPTSujet(String sjt){
+    public boolean containGPTSujet(String sjt){
         
         boolean b = false;
         
@@ -502,5 +579,54 @@ public boolean containGPTSujet(String sjt){
         }
         
         return b;
+    }
+    
+    //Devis
+    
+    public ArrayList<Devis> getDevis(int idT){
+        ArrayList<Devis> listU = new ArrayList<Devis>();
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM Devis WHERE idT=?");
+            p.setInt(1, idT);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                listU.add( new Devis(r.getInt( "id" ), r.getString( "entreprise" ), r.getInt( "montant" ), r.getString( "dateD" ), r.getString( "dateF" ), r.getInt( "idT" )) );
+                
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return listU;
+    }
+    
+    public void addDevis(Devis d){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO devis(entreprise, montant, dateD, dateF, idT) VALUES (?, ?, ?, ?, ?)");
+            p.setString(1, d.getEntreprise());
+            p.setInt(2, d.getMontant());
+            p.setString(3, d.getDateD());
+            p.setString(4, d.getDateF());
+            p.setInt(5, d.getIdT());
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void removeDevis(int id){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM devis WHERE id=?");
+            p.setInt(1, id);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

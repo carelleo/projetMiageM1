@@ -17,12 +17,13 @@ public class PetitTravaux {
 		idU = i;
 	}
 	
-	public PetitTravaux(String dd, String df, String s, String a, String c){
+	public PetitTravaux(String dd, String df, String s, String a, String c, int i){
 		dateD = dd;
 		dateF = df;
 		artisan = a;
 		sujet = s;
 		contenu = c;
+		idU = i;
 	}
 
 	public String getDateD() {

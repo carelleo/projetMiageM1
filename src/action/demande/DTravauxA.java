@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import beans.DemandeTravaux;
+import beans.Devis;
 import beans.GrosTravaux;
 import beans.PetitTravaux;
 
@@ -33,6 +34,11 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     
     private ArrayList<GrosTravaux> listGT;
     private ArrayList<PetitTravaux> listPT;
+    
+    private GrosTravaux gt;
+    private PetitTravaux pt;
+    
+    private ArrayList<Devis> listD;
     
     @Override
     public String execute() throws Exception {
@@ -149,6 +155,28 @@ public class DTravauxA extends ActionSupport implements SessionAware{
         else
             return ERROR;
     }
+    
+    public String consulterPT() throws Exception{
+        pt = tDao.getOnePTravaux( sjt );
+        prop = uDao.getOneUtilisateur(pt.getIdU()).getMail();
+        
+        session.put( "pt", pt );
+
+        listD = tDao.getDevis(tDao.getIdPT(sjt));
+        
+        return SUCCESS;
+    }
+    
+    public String consulterGT() throws Exception{
+        gt = tDao.getOneGTravaux( sjt );
+        prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
+        
+        session.put( "gt", gt );
+        
+        listD = tDao.getDevis(tDao.getIdGT(sjt));
+        
+        return SUCCESS;
+    }
 
     public String getPage() {
         return page;
@@ -236,5 +264,29 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 
     public void setListPT( ArrayList<PetitTravaux> listPT ) {
         this.listPT = listPT;
+    }
+
+    public GrosTravaux getGt() {
+        return gt;
+    }
+
+    public void setGt( GrosTravaux gt ) {
+        this.gt = gt;
+    }
+
+    public PetitTravaux getPt() {
+        return pt;
+    }
+
+    public void setPt( PetitTravaux pt ) {
+        this.pt = pt;
+    }
+
+    public ArrayList<Devis> getListD() {
+        return listD;
+    }
+
+    public void setListD( ArrayList<Devis> listD ) {
+        this.listD = listD;
     }
 }

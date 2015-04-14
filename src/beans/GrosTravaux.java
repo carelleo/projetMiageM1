@@ -17,12 +17,13 @@ public class GrosTravaux {
 		idU = i;
 	}
 	
-	public GrosTravaux(String dd, String df, String s, String a, String c){
+	public GrosTravaux(String dd, String df, String s, String a, String c, int i){
 		dateD = dd;
 		dateF = df;
 		artisan = a;
 		sujet = s;
 		contenu = c;
+		idU = i;
 	}
 
 	public String getDateD() {

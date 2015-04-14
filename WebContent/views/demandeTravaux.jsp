@@ -194,14 +194,8 @@
 								                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
 								                          		</a>
 								                          	</div>
-								                          	
-								                          	<div class="suppr">
-									                          	<a href="<c:url value='devisPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
-								                          			<button type="button" class="btn btn-mini btn-primary">Devis</button>
-								                          		</a>
-								                          	</div>
 							                        	</c:if>
-							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
+							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic' || sessionScope.idU == t.getIdU()}">
 								                          	<div class="suppr">
 									                          	<a href="<c:url value='consulterPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
 								                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
@@ -252,14 +246,8 @@
 								                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
 								                          		</a>
 								                          	</div>
-								                          	
-								                          	<div class="suppr">
-									                          	<a href="<c:url value='devisGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
-								                          			<button type="button" class="btn btn-mini btn-primary">Devis</button>
-								                          		</a>
-								                          	</div>
 							                        	</c:if>
-							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
+							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic' || sessionScope.idU == t.getIdU()}">
 								                          	<div class="suppr">
 									                          	<a href="<c:url value='consulterGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
 								                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
@@ -288,14 +276,14 @@
 		  	<div class="modal-header">
 		    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		    	<h3>Ajouter une demande de Travaux</h3>
-		  	</div>
+		  	</div> 		
 		
 		  	<s:form action="travauxFormAj">
 		
 			  	<div class="modal-body">
 			    	<s:textfield label="Sujet" name="dt.sujet" required="required"/>
 					
-					<s:textarea label="contenu" name="dt.contenu" required="required" cols="20" rows="10"/>
+					<s:textarea label="Contenu" name="dt.contenu" required="required" cols="20" rows="10"/>
 					
 					<s:submit value="Valider" name="submit" class="btn btn-large btn-primary"/>
 			  	</div>
