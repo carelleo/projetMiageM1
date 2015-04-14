@@ -195,7 +195,7 @@
 								                          		</a>
 								                          	</div>
 								                          	
-								                          	<div class="devis">
+								                          	<div class="suppr">
 									                          	<a href="<c:url value='devisPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
 								                          			<button type="button" class="btn btn-mini btn-primary">Devis</button>
 								                          		</a>
@@ -253,7 +253,7 @@
 								                          		</a>
 								                          	</div>
 								                          	
-								                          	<div class="devis">
+								                          	<div class="suppr">
 									                          	<a href="<c:url value='devisGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
 								                          			<button type="button" class="btn btn-mini btn-primary">Devis</button>
 								                          		</a>

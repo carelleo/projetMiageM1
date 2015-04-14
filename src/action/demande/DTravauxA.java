@@ -116,28 +116,38 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     
     public String accepterGT() throws Exception{
         dt = tDao.getOneTravaux( sjt );
-        tDao.addGTrav( dt );
         
-        tDao.removeTravaux( dt.getSujet() );
+        if(!tDao.containGPTSujet( sjt )){
+            tDao.addGTrav( dt );
         
-        listT = tDao.getTravaux();
-        listGT = tDao.getGTrav();
-        listPT = tDao.getPTrav();
-        
-        return SUCCESS;
+            tDao.removeTravaux( dt.getSujet() );
+            
+            listT = tDao.getTravaux();
+            listGT = tDao.getGTrav();
+            listPT = tDao.getPTrav();
+            
+            return SUCCESS;
+        }
+        else
+            return ERROR;
     }
     
     public String accepterPT() throws Exception{
         dt = tDao.getOneTravaux( sjt );
-        tDao.addPTrav( dt );
+        
+        if(!tDao.containGPTSujet( sjt )){
+            tDao.addPTrav( dt );
     
-        tDao.removeTravaux( dt.getSujet() );
+            tDao.removeTravaux( dt.getSujet() );
         
-        listT = tDao.getTravaux();
-        listGT = tDao.getGTrav();
-        listPT = tDao.getPTrav();
-        
-        return SUCCESS;
+            listT = tDao.getTravaux();
+            listGT = tDao.getGTrav();
+            listPT = tDao.getPTrav();
+            
+            return SUCCESS;
+        }
+        else
+            return ERROR;
     }
 
     public String getPage() {

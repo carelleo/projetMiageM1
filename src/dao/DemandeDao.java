@@ -482,4 +482,25 @@ public class DemandeDao {
             e.printStackTrace();
         }
     }
+    
+public boolean containGPTSujet(String sjt){
+        
+        boolean b = false;
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE sujet=?");
+            p.setString(1, sjt);
+            
+            ResultSet r = p.executeQuery();
+            
+            if(r.next())
+                b = true;
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return b;
+    }
 }

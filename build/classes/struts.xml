@@ -94,9 +94,11 @@
 		</action>
 		<action name="accepterPTrav" class="action.demande.DTravauxA" method="accepterPT">
 			<result name="success">/views/demandeTravaux.jsp</result>
+			<result name="error">/views/demandeTravauxEr.jsp</result>
 		</action>
 		<action name="accepterGTrav" class="action.demande.DTravauxA" method="accepterGT">
 			<result name="success">/views/demandeTravaux.jsp</result>
+			<result name="error">/views/demandeTravauxEr.jsp</result>
 		</action>
 		<action name="refuserTrav" class="action.demande.DTravauxA" method="refuserT">
 			<result name="success">/views/demandeTravaux.jsp</result>
