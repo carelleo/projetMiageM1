@@ -77,11 +77,11 @@
 					    </div>
 				  		
 				  		<h4>Sujet</h4>
-				  		<p><c:out value="${sessionScope.gt.getSujet()}"/></p>
+				  		<p><c:out value="${sessionScope.grt.getSujet()}"/></p>
 				  		<br>
 				  		
 				  		<h4>Contenu</h4>
-				  		<p><c:out value="${sessionScope.gt.getContenu()}"/></p>
+				  		<p><c:out value="${sessionScope.grt.getContenu()}"/></p>
 				  		<br>
 				  		
 				  		<h4>Créée par</h4>
@@ -109,7 +109,7 @@
 			                    <tbody>
 			                    	<c:forEach var="d" items="${listD}">
 			                    		<c:choose>
-			                    			<c:when test="${t == null}"></c:when>
+			                    			<c:when test="${d == null}"></c:when>
 			                    			<c:otherwise>
 			                    				<tr>
 						                          	<td class="entreprise">
@@ -149,9 +149,7 @@
 	         		</div>
 	         		
 	         		<c:if test="${sessionScope.type == 'admin' || sessionScope.mail == prop}">
-		         		<a href="<c:url value='ajouterDevis'><c:param name="sjt" value="${sessionScope.gt.getSujet()}" /></c:url>" >
-		         			<button class="btn btn-primary" type="button">Ajouter Devis</button>
-		         		</a>
+		         		<a href="#modalAjoutDevis" role="button" class="btn" data-toggle="modal">Ajouter Devis</a>
 		         		<hr>
 	         		</c:if>
 		      	</div>
@@ -159,7 +157,34 @@
 		</section>
 			
 		<%@include file="footer.jsp"%> 
-
+		
+		<!-- Modal Aj-->
+		<div class="modal hide fade" id="modalAjoutDevis">
+		
+		  	<div class="modal-header">
+		    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    	<h3>Ajouter un devis</h3>
+		  	</div>
+		
+		  	<s:form action="devisFormAj">
+		
+			  	<div class="modal-body">
+			    	<s:textfield label="Entreprise" name="d.entreprise" required="required"/>
+					
+					<s:textfield label="Montant" name="d.montant" required="required"/>
+					
+					<s:textfield label="Date de début" name="d.dateD" class="datepicker" disabled="isDisabled" required="required"/>
+					
+					<s:textfield label="Date de fin" name="d.dateF" class="datepicker" disabled="isDisabled" required="required"/>
+					
+					<s:textfield label="Id travaux" name="d.idT" value="%{#attr['idGT']}" readonly="true" required="required"/>
+					
+					<s:submit value="Valider" name="submitAj" class="btn btn-large btn-primary"/>
+			  	</div>
+		
+			</s:form> 		
+		</div>
+		
 		<!-- Le javascript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->

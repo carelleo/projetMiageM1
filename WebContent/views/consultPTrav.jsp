@@ -171,7 +171,7 @@
 					
 					<s:textfield label="Date de fin" name="d.dateF" class="datepicker" disabled="isDisabled" required="required"/>
 					
-					<s:textfield label="Id travaux" name="d.idT" value="%{tDao.getIdPT(sjt)}" disable="isDisabled" required="required"/>
+					<s:textfield label="Id travaux" name="d.idT" value="%{#attr['idPT']}" readonly="true" required="required"/>
 					
 					<s:submit value="Valider" name="submitAj" class="btn btn-large btn-primary"/>
 			  	</div>

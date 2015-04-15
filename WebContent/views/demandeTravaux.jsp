@@ -195,13 +195,11 @@
 								                          		</a>
 								                          	</div>
 							                        	</c:if>
-							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic' || sessionScope.idU == t.getIdU()}">
-								                          	<div class="suppr">
-									                          	<a href="<c:url value='consulterPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
-								                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
-								                          		</a>
-								                          	</div>
-							                        	</c:if>
+							                          	<div class="suppr">
+								                          	<a href="<c:url value='consulterPTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+							                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
+							                          		</a>
+							                          	</div>
 						                          	</td>
 						                        </tr>
 			                    			</c:otherwise>
@@ -247,13 +245,11 @@
 								                          		</a>
 								                          	</div>
 							                        	</c:if>
-							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic' || sessionScope.idU == t.getIdU()}">
-								                          	<div class="suppr">
-									                          	<a href="<c:url value='consulterGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
-								                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
-								                          		</a>
-								                          	</div>
-							                        	</c:if>
+							                          	<div class="suppr">
+								                          	<a href="<c:url value='consulterGTrav'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
+							                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
+							                          		</a>
+							                          	</div>
 						                          	</td>
 						                        </tr>
 			                    			</c:otherwise>

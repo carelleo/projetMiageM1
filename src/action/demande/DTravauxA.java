@@ -161,7 +161,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
         prop = uDao.getOneUtilisateur(pt.getIdU()).getMail();
         
         session.put( "pt", pt );
-
+        session.put( "idPT", tDao.getIdPT( sjt ) );
+        
         listD = tDao.getDevis(tDao.getIdPT(sjt));
         
         return SUCCESS;
@@ -171,7 +172,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
         gt = tDao.getOneGTravaux( sjt );
         prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
         
-        session.put( "gt", gt );
+        session.put( "grt", gt );
+        session.put( "idGT", tDao.getIdGT( sjt ) );
         
         listD = tDao.getDevis(tDao.getIdGT(sjt));
         
