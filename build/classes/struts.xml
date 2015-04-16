@@ -109,8 +109,12 @@
 		<action name="consulterGTrav" class="action.demande.DTravauxA" method="consulterGT">
 			<result name="success">/views/consultGTrav.jsp</result>
 		</action>
-		<action name="devisFormAj" class="action.demande.DevisAj">
-			<result name="success">/views/demandeTravaux.jsp</result>
+		<action name="devisFormAjG" class="action.demande.DevisAj">
+			<result name="success">/views/consultGTrav.jsp</result>
+			<result name="input">/views/demandeTravauxEr.jsp</result>
+		</action>
+		<action name="devisFormAjP" class="action.demande.DevisAj" method="ajoutPT">
+			<result name="success">/views/consultPTrav.jsp</result>
 			<result name="input">/views/demandeTravauxEr.jsp</result>
 		</action>
 		<action name="supprPD" class="action.demande.DTravauxA" method="supprPTD">

@@ -13,6 +13,7 @@ import beans.PetitTravaux;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.DemandeDao;
+import dao.EvenementDao;
 import dao.UtilisateurDao;
 
 public class DTravauxA extends ActionSupport implements SessionAware{
@@ -29,6 +30,7 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     //dao
     private DemandeDao tDao = new DemandeDao();
     private UtilisateurDao uDao = new UtilisateurDao();
+    private EvenementDao eDao = new EvenementDao();
     
     private ArrayList<DemandeTravaux> listT;
     private DemandeTravaux dt;
@@ -201,9 +203,11 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     public String supprPTD(){
         page = "travaux";
         
+        eDao.supprEvenement( tDao.getOnePTravaux( tDao.getOneDevis( idD ).getIdT() ).getSujet() );
         tDao.removeDevis( idD );
         
         session.put( "idPT", tDao.getIdPT( sjt ) );
+        
         listD = tDao.getDevis(tDao.getIdPT(sjt));
         
         return SUCCESS;
@@ -338,5 +342,13 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 
     public void setIdD( int idD ) {
         this.idD = idD;
+    }
+
+    public EvenementDao geteDao() {
+        return eDao;
+    }
+
+    public void seteDao( EvenementDao eDao ) {
+        this.eDao = eDao;
     }
 }

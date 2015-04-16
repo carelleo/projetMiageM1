@@ -160,7 +160,7 @@
 		    	<h3>Ajouter un devis</h3>
 		  	</div>
 		
-		  	<s:form action="devisFormAj">
+		  	<s:form action="devisFormAjP">
 		
 			  	<div class="modal-body">
 			    	<s:textfield label="Entreprise" name="d.entreprise" required="required"/>

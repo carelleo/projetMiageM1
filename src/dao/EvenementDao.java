@@ -50,7 +50,7 @@ public class EvenementDao {
 		try{
 			PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM evenements WHERE titre=?");
 			p.setString(1, titre);
-
+			System.out.println("suppr Ev: "+titre);
 			p.executeUpdate();
 			
 		}catch(Exception e){

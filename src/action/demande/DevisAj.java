@@ -7,29 +7,35 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import beans.DemandeTravaux;
 import beans.Devis;
+import beans.Evenement;
 import beans.GrosTravaux;
 import beans.PetitTravaux;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.DemandeDao;
+import dao.EvenementDao;
+import dao.UtilisateurDao;
 
 public class DevisAj extends ActionSupport implements SessionAware{
     //param page
     private String page;
     private String sjt;
+    private String prop;
     
     //la session
     private Map<String, Object> session;
     
     //dao
     private DemandeDao tDao = new DemandeDao();
+    private UtilisateurDao uDao = new UtilisateurDao();
+    private EvenementDao eDao = new EvenementDao();
     
     private Devis d;
+    private PetitTravaux pt;
+    private GrosTravaux gt;
     
-    private ArrayList<DemandeTravaux> listT;
-    private ArrayList<GrosTravaux> listGT;
-    private ArrayList<PetitTravaux> listPT;
+    private ArrayList<Devis> listD;
     
     @Override
     public String execute() throws Exception {
@@ -37,10 +43,38 @@ public class DevisAj extends ActionSupport implements SessionAware{
         page = "travaux";
         
         tDao.addDevis(d);
+        gt = tDao.getOneGTravaux( d.getIdT() );
         
-        listT = tDao.getTravaux();
-        listGT = tDao.getGTrav();
-        listPT = tDao.getPTrav();
+        sjt = gt.getSujet();
+        
+        prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
+        
+        session.put( "gt", gt );
+        session.put( "idGT", tDao.getIdGT( sjt ) );
+        
+        listD = tDao.getDevis(tDao.getIdGT(sjt));
+        
+        return SUCCESS;
+    }
+    
+    public String ajoutPT() throws Exception {
+        
+        page = "travaux";
+        
+        tDao.addDevis(d);
+        pt = tDao.getOnePTravaux( d.getIdT() );
+        
+        sjt = pt.getSujet();
+        
+        Evenement e = new Evenement(pt.getSujet(), d.getDateD(), d.getDateF());
+        eDao.addEvenement( e );
+        
+        prop = uDao.getOneUtilisateur(pt.getIdU()).getMail();
+        
+        session.put( "pt", pt );
+        session.put( "idPT", tDao.getIdPT( sjt ) );
+        
+        listD = tDao.getDevis(tDao.getIdPT(sjt));
         
         return SUCCESS;
     }
@@ -82,14 +116,6 @@ public class DevisAj extends ActionSupport implements SessionAware{
         this.tDao = tDao;
     }
 
-    public ArrayList<DemandeTravaux> getListT() {
-        return listT;
-    }
-
-    public void setListT( ArrayList<DemandeTravaux> listT ) {
-        this.listT = listT;
-    }
-
     public String getSjt() {
         return sjt;
     }
@@ -106,20 +132,52 @@ public class DevisAj extends ActionSupport implements SessionAware{
         this.d = d;
     }
 
-    public ArrayList<GrosTravaux> getListGT() {
-        return listGT;
+    public PetitTravaux getPt() {
+        return pt;
     }
 
-    public void setListGT( ArrayList<GrosTravaux> listGT ) {
-        this.listGT = listGT;
+    public void setPt( PetitTravaux pt ) {
+        this.pt = pt;
     }
 
-    public ArrayList<PetitTravaux> getListPT() {
-        return listPT;
+    public EvenementDao geteDao() {
+        return eDao;
     }
 
-    public void setListPT( ArrayList<PetitTravaux> listPT ) {
-        this.listPT = listPT;
+    public void seteDao( EvenementDao eDao ) {
+        this.eDao = eDao;
+    }
+
+    public String getProp() {
+        return prop;
+    }
+
+    public void setProp( String prop ) {
+        this.prop = prop;
+    }
+
+    public ArrayList<Devis> getListD() {
+        return listD;
+    }
+
+    public void setListD( ArrayList<Devis> listD ) {
+        this.listD = listD;
+    }
+
+    public UtilisateurDao getuDao() {
+        return uDao;
+    }
+
+    public void setuDao( UtilisateurDao uDao ) {
+        this.uDao = uDao;
+    }
+
+    public GrosTravaux getGt() {
+        return gt;
+    }
+
+    public void setGt( GrosTravaux gt ) {
+        this.gt = gt;
     }
 
 }

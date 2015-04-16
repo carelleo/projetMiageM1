@@ -461,6 +461,25 @@ public class DemandeDao {
         return u;
     }
     
+    public PetitTravaux getOnePTravaux(int id){
+        PetitTravaux u = new PetitTravaux(null, null, null, null, null, 0);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE id =? AND type='petits travaux'");
+            p.setInt(1, id);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new PetitTravaux(null, null, r.getString( "sujet" ), null, r.getString( "contenu" ), r.getInt( "idU" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return u;
+    }
+    
     public void addGTrav(DemandeTravaux gt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type, idU) VALUES (?, ?, ?, ?)");
@@ -523,6 +542,25 @@ public class DemandeDao {
             e.printStackTrace();
         }
         System.out.println(u.getSujet());
+        return u;
+    }
+    
+    public GrosTravaux getOneGTravaux(int id){
+        GrosTravaux u = new GrosTravaux(null, null, null, null, null, 0);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM travaux WHERE id=? AND type='gros travaux'");
+            p.setInt(1, id);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new GrosTravaux(null, null, r.getString( "sujet" ), null, r.getString( "contenu" ), r.getInt( "idU" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
         return u;
     }
     
