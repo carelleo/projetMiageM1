@@ -602,6 +602,24 @@ public class DemandeDao {
         return listU;
     }
     
+    public Devis getOneDevis(int id){
+        Devis d = new Devis();
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM Devis WHERE id=?");
+            p.setInt(1, id);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                d = new Devis(r.getInt( "id" ), r.getString( "entreprise" ), r.getInt( "montant" ), r.getString( "dateD" ), r.getString( "dateF" ), r.getInt( "idT" ));
+                
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return d;
+    }
+    
     public void addDevis(Devis d){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO devis(entreprise, montant, dateD, dateF, idT) VALUES (?, ?, ?, ?, ?)");

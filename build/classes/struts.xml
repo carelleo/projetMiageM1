@@ -113,6 +113,12 @@
 			<result name="success">/views/demandeTravaux.jsp</result>
 			<result name="input">/views/demandeTravauxEr.jsp</result>
 		</action>
+		<action name="supprPD" class="action.demande.DTravauxA" method="supprPTD">
+			<result name="success">/views/consultPTrav.jsp</result>
+		</action>
+		<action name="supprGD" class="action.demande.DTravauxA" method="supprGTD">
+			<result name="success">/views/consultGTrav.jsp</result>
+		</action>
 		
 		<!-- Demandes Reclamations -->
 		

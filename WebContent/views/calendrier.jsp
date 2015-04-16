@@ -23,7 +23,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/js/lightbox/css/lightbox.css" />" />
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/template.css" />" media="screen">   
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/style1.css" />" />
-        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/datepicker3.css" /> ">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dtpk.css" /> ">
         
         <link rel="alternate stylesheet" type="text/css" media="screen" title="style2" href="<c:url value="/resources/css/style2.css" />" />
         <link rel="alternate stylesheet" type="text/css" media="screen" title="style3" href="<c:url value="/resources/css/style3.css" />" />
@@ -234,7 +234,7 @@
         <!-- Placed at the end of the document so the pages load faster -->
         
         <script src="<c:url value="/resources/js/bootstrap-transition.js" />"></script>
-        <script src="<c:url value="/resources/js/bootstrap-datepicker3.js" />"></script>
+        <script src="<c:url value="/resources/js/bootstrap-dtpk.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-alert.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-modal.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-dropdown.js" />"></script>

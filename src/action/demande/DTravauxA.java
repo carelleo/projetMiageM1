@@ -21,6 +21,7 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     private String sjt;
     private String dtSjt;
     private String prop;
+    private int idD;
     
     //la session
     private Map<String, Object> session;
@@ -42,6 +43,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     
     @Override
     public String execute() throws Exception {
+        page ="travaux";
+        
         listT = tDao.getTravaux();
         listGT = tDao.getGTrav();
         listPT = tDao.getPTrav();
@@ -79,7 +82,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String moinsT() throws Exception {
-    	
+        page ="travaux";
+        
         DemandeTravaux demT = tDao.getOneTravaux(sjt);
         
         if(!tDao.AlreadyCompteur( sjt, (int)session.get( "idU" ))){
@@ -96,6 +100,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String modifT() throws Exception {
+        page ="travaux";
+        
         dt = tDao.getOneTravaux( dtSjt );
         
         session.put( "dtSjt", dtSjt );
@@ -104,6 +110,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String consulterT() throws Exception{
+        page ="travaux";
+        
     	dt = tDao.getOneTravaux( dtSjt );
     	prop = uDao.getOneUtilisateur(dt.getIdU()).getMail();
     	
@@ -112,6 +120,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String refuserT() throws Exception{
+        page ="travaux";
+        
     	dt = tDao.getOneTravaux( sjt );
     	tDao.modifT("REFUSER", sjt);
     	
@@ -121,6 +131,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String accepterGT() throws Exception{
+        page ="travaux";
+        
         dt = tDao.getOneTravaux( sjt );
         
         if(!tDao.containGPTSujet( sjt )){
@@ -139,6 +151,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String accepterPT() throws Exception{
+        page ="travaux";
+        
         dt = tDao.getOneTravaux( sjt );
         
         if(!tDao.containGPTSujet( sjt )){
@@ -157,6 +171,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String consulterPT() throws Exception{
+        page="travaux";
+        
         pt = tDao.getOnePTravaux( sjt );
         prop = uDao.getOneUtilisateur(pt.getIdU()).getMail();
         
@@ -169,12 +185,36 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     }
     
     public String consulterGT() throws Exception{
+        page="travaux";
+        
         gt = tDao.getOneGTravaux( sjt );
         prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
         
         session.put( "grt", gt );
         session.put( "idGT", tDao.getIdGT( sjt ) );
         
+        listD = tDao.getDevis(tDao.getIdGT(sjt));
+        
+        return SUCCESS;
+    }
+    
+    public String supprPTD(){
+        page = "travaux";
+        
+        tDao.removeDevis( idD );
+        
+        session.put( "idPT", tDao.getIdPT( sjt ) );
+        listD = tDao.getDevis(tDao.getIdPT(sjt));
+        
+        return SUCCESS;
+    }
+    
+    public String supprGTD(){
+        page = "travaux";
+        
+        tDao.removeDevis( idD );
+        
+        session.put( "idGT", tDao.getIdGT( sjt ) );
         listD = tDao.getDevis(tDao.getIdGT(sjt));
         
         return SUCCESS;
@@ -290,5 +330,13 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 
     public void setListD( ArrayList<Devis> listD ) {
         this.listD = listD;
+    }
+
+    public int getIdD() {
+        return idD;
+    }
+
+    public void setIdD( int idD ) {
+        this.idD = idD;
     }
 }

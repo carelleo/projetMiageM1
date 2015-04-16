@@ -23,7 +23,7 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/js/lightbox/css/lightbox.css" />" />
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/template.css" />" media="screen">   
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/style1.css" />" />
-        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/datepicker3.css" /> ">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dtpk.css" /> ">
         <link rel="alternate stylesheet" type="text/css" media="screen" title="style2" href="<c:url value="/resources/css/style2.css" />" />
         <link rel="alternate stylesheet" type="text/css" media="screen" title="style3" href="<c:url value="/resources/css/style3.css" />" />
         <link rel="alternate stylesheet" type="text/css" media="screen" title="style4" href="<c:url value="/resources/css/style4.css" />" />
@@ -131,10 +131,11 @@
 								                          			<button type="button" class="btn btn-mini btn-primary">accepter</button>
 								                          		</a>
 								                          	</div>
-								                          	
-								                          	<div class="modif">
-									                          	<a href="<c:url value='refuserD'><c:param name="idD" value="${d.getId()}" /></c:url>" >
-								                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
+							                        	</c:if>
+							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+								                          	<div class="suppr">
+									                          	<a href="<c:url value='supprGD'><c:param name="idD" value="${d.getId()}" /></c:url>" >
+								                          			<button type="button" class="btn btn-mini btn-primary">supprimer</button>
 								                          		</a>
 								                          	</div>
 							                        	</c:if>
@@ -201,7 +202,7 @@
         <script src="<c:url value="/resources/js/bootstrap-collapse.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-carousel.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-typeahead.js" />"></script> 
-        <script src="<c:url value="/resources/js/bootstrap-datepicker3.js" />"></script>  
+        <script src="<c:url value="/resources/js/bootstrap-dtpk.js" />"></script>  
         <script type="text/javascript" src="<c:url value="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" />"></script>
         <script type="text/javascript" src="<c:url value="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" />"></script>
 		
