@@ -125,7 +125,7 @@
 						                          		<c:out value="${d.getMontant()}"/>
 						                          	</td>
 						                          	<td class="avis">
-							                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+							                          	<c:if test="${(sessionScope.type == 'admin' || sessionScope.type == 'syndic') && event==false}">
 								                          	<div class="suppr">
 									                          	<a href="<c:url value='accepterD'><c:param name="idD" value="${d.getId()}" /></c:url>" >
 								                          			<button type="button" class="btn btn-mini btn-primary">accepter</button>
@@ -149,7 +149,7 @@
 			           	</div>
 	         		</div>
 	         		
-	         		<c:if test="${sessionScope.type == 'admin' || sessionScope.mail == prop}">
+	         		<c:if test="${(sessionScope.type == 'admin' || sessionScope.mail == prop) && event==false}">
 		         		<a href="#modalAjoutDevis" role="button" class="btn" data-toggle="modal">Ajouter Devis</a>
 		         		<hr>
 	         		</c:if>

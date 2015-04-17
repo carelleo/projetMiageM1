@@ -7,6 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import beans.DemandeTravaux;
 import beans.Devis;
+import beans.Evenement;
 import beans.GrosTravaux;
 import beans.PetitTravaux;
 
@@ -23,6 +24,7 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     private String dtSjt;
     private String prop;
     private int idD;
+    private boolean event;
     
     //la session
     private Map<String, Object> session;
@@ -192,6 +194,8 @@ public class DTravauxA extends ActionSupport implements SessionAware{
         gt = tDao.getOneGTravaux( sjt );
         prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
         
+        event = eDao.containEvenement( sjt );
+        
         session.put( "grt", gt );
         session.put( "idGT", tDao.getIdGT( sjt ) );
         
@@ -216,10 +220,85 @@ public class DTravauxA extends ActionSupport implements SessionAware{
     public String supprGTD(){
         page = "travaux";
         
+        Devis d = tDao.getOneDevis( idD );
+        gt = tDao.getOneGTravaux( d.getIdT() );
+        
+        prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
+        
+        sjt = gt.getSujet();
+        
         tDao.removeDevis( idD );
         
+        if(eDao.containEvenement( sjt ))
+            eDao.supprEvenement( sjt );
+        
+        event = false;
+        
+        session.put( "grt", gt );
+        session.put( "idGT", d.getIdT() );
+        
+        listD = tDao.getDevis(d.getIdT());
+        
+        return SUCCESS;
+    }
+    
+    public String accepterD(){
+        page = "travaux";
+        
+        Devis d = tDao.getOneDevis( idD );
+        gt = tDao.getOneGTravaux( d.getIdT() );
+        
+        sjt = gt.getSujet();
+        
+        Evenement e = new Evenement(gt.getSujet(), d.getDateD(), d.getDateF());
+        eDao.addEvenement( e );
+        
+        event = eDao.containEvenement( sjt );
+        
+        prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
+        
+        session.put( "grt", gt );
         session.put( "idGT", tDao.getIdGT( sjt ) );
+        
+        tDao.removeAllDevis(d.getIdT(), idD);
+        
         listD = tDao.getDevis(tDao.getIdGT(sjt));
+        
+        return SUCCESS;
+    }
+    
+    public String supprimerPT(){
+        page = "travaux";
+        
+        pt = tDao.getOnePTravaux( sjt );
+        
+        eDao.supprEvenement( sjt );
+        
+        tDao.removeAllDevis( tDao.getIdPT( sjt ) );
+        
+        tDao.removePTrav( sjt );
+        
+        listT = tDao.getTravaux();
+        listGT = tDao.getGTrav();
+        listPT = tDao.getPTrav();
+        
+        return SUCCESS;
+    }
+    
+    public String supprimerGT(){
+        page = "travaux";
+        
+        gt = tDao.getOneGTravaux( sjt );
+        
+        eDao.supprEvenement( sjt );
+        
+        tDao.removeAllDevis( tDao.getIdGT( sjt ) );
+        
+        tDao.removeGTrav( sjt );
+        
+        listT = tDao.getTravaux();
+        listGT = tDao.getGTrav();
+        listPT = tDao.getPTrav();
         
         return SUCCESS;
     }
@@ -350,5 +429,13 @@ public class DTravauxA extends ActionSupport implements SessionAware{
 
     public void seteDao( EvenementDao eDao ) {
         this.eDao = eDao;
+    }
+
+    public boolean isEvent() {
+        return event;
+    }
+
+    public void setEvent( boolean event ) {
+        this.event = event;
     }
 }

@@ -685,4 +685,32 @@ public class DemandeDao {
             e.printStackTrace();
         }
     }
+    
+    public void removeAllDevis(int idT, int id){
+        try{
+            System.out.println("idT "+idT);
+            System.out.println("id "+id);
+            
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM devis WHERE idT=? AND id!=?");
+            p.setInt(1, idT);
+            p.setInt(2, id);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void removeAllDevis(int idT){
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM devis WHERE idT=?");
+            p.setInt(1, idT);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

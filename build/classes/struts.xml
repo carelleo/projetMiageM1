@@ -123,6 +123,15 @@
 		<action name="supprGD" class="action.demande.DTravauxA" method="supprGTD">
 			<result name="success">/views/consultGTrav.jsp</result>
 		</action>
+		<action name="accepterD" class="action.demande.DTravauxA" method="accepterD">
+			<result name="success">/views/consultGTrav.jsp</result>
+		</action>
+		<action name="supprPTrav" class="action.demande.DTravauxA" method="supprimerPT">
+			<result name="success">/views/demandeTravaux.jsp</result>
+		</action>
+		<action name="supprGTrav" class="action.demande.DTravauxA" method="supprimerGT">
+			<result name="success">/views/demandeTravaux.jsp</result>
+		</action>
 		
 		<!-- Demandes Reclamations -->
 		

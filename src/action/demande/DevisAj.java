@@ -22,6 +22,7 @@ public class DevisAj extends ActionSupport implements SessionAware{
     private String page;
     private String sjt;
     private String prop;
+    private boolean event;
     
     //la session
     private Map<String, Object> session;
@@ -46,6 +47,8 @@ public class DevisAj extends ActionSupport implements SessionAware{
         gt = tDao.getOneGTravaux( d.getIdT() );
         
         sjt = gt.getSujet();
+        
+        event = false;
         
         prop = uDao.getOneUtilisateur(gt.getIdU()).getMail();
         
@@ -178,6 +181,14 @@ public class DevisAj extends ActionSupport implements SessionAware{
 
     public void setGt( GrosTravaux gt ) {
         this.gt = gt;
+    }
+
+    public boolean isEvent() {
+        return event;
+    }
+
+    public void setEvent( boolean event ) {
+        this.event = event;
     }
 
 }
