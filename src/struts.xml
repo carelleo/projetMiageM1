@@ -212,6 +212,10 @@
     	<action name="information" class="action.InformationA">
 			<result name="success">/views/information.jsp</result>
 		</action>
+		<action name="informationForm" class="action.InformationModif">
+			<result name="success">/views/information.jsp</result>
+			<!-- <result name="input">/views/demandeTravauxEr.jsp</result> -->
+		</action>
     	
 	</package>
 </struts>

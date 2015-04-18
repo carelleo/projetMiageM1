@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import beans.Administrateur;
+import beans.Adresse;
 import beans.Coproprietaire;
 import beans.Syndic;
 import beans.Utilisateur;
@@ -23,6 +24,10 @@ public class InformationA extends ActionSupport implements SessionAware{
     //dao
     private UtilisateurDao uDao = new UtilisateurDao();
     
+    Coproprietaire c;
+    Syndic s;
+    Administrateur a;
+    
     @Override
     public String execute() throws Exception {
         int id = (int)session.get("idU");
@@ -30,24 +35,24 @@ public class InformationA extends ActionSupport implements SessionAware{
         Utilisateur u = uDao.getOneUtilisateur( id );
         
         if(u.getType().equals( "proprietaire" ) || u.getType().equals( "locataire" )){
-            Coproprietaire  c = uDao.getOneCoproprietaire( id );
+            c = uDao.getOneCoproprietaire( id );
             
             session.put( "utilisateur", c );
         }
         else if(u.getType().equals( "syndic" )){
-            Syndic s = uDao.getOneSyndic( id );
+            s = uDao.getOneSyndic( id );
             
             session.put( "utilisateur", s );
         }
         else if(u.getType().equals( "admin" )){
-            Administrateur a = uDao.getOneAdmin( id );
+            a = uDao.getOneAdmin( id );
             
             session.put( "utilisateur", a );
         }
         
         return SUCCESS;
     }
-
+    
     public String getPage() {
         return page;
     }
@@ -70,5 +75,29 @@ public class InformationA extends ActionSupport implements SessionAware{
 
     public void setuDao( UtilisateurDao uDao ) {
         this.uDao = uDao;
+    }
+
+    public Coproprietaire getC() {
+        return c;
+    }
+
+    public void setC( Coproprietaire c ) {
+        this.c = c;
+    }
+
+    public Syndic getS() {
+        return s;
+    }
+
+    public void setS( Syndic s ) {
+        this.s = s;
+    }
+
+    public Administrateur getA() {
+        return a;
+    }
+
+    public void setA( Administrateur a ) {
+        this.a = a;
     }
 }

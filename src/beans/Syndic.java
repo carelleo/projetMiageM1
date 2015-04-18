@@ -14,9 +14,8 @@ public class Syndic {
     private String mdp;
     private String mdpc;
     private boolean condition;
-    private int teleF = 0;
-    private int teleP = 0;
-    private String adresse = null;
+    private String teleF;
+    private String teleP;
     
     public Syndic(){
     }
@@ -29,6 +28,20 @@ public class Syndic {
         mdp=md;
         mdpc=md;
         condition=true;
+        teleF=null;
+        teleP=null;
+    }
+    
+    public Syndic(String n,String p,String m,String md,String tf,String tp){
+        type = "syndic";
+        nom=n;
+        prenom=p;
+        mail=m;
+        mdp=md;
+        mdpc=md;
+        condition=true;
+        teleF=tf;
+        teleP=tp;
     }
     
 	public boolean equals(Object o){
@@ -99,27 +112,19 @@ public class Syndic {
 		this.type = type;
 	}
 
-    public int getTeleF() {
+    public String getTeleF() {
         return teleF;
     }
 
-    public void setTeleF( int teleF ) {
+    public void setTeleF( String teleF ) {
         this.teleF = teleF;
     }
 
-    public int getTeleP() {
+    public String getTeleP() {
         return teleP;
     }
 
-    public void setTeleP( int teleP ) {
+    public void setTeleP( String teleP ) {
         this.teleP = teleP;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse( String adresse ) {
-        this.adresse = adresse;
     }
 }

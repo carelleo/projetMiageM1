@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import beans.Administrateur;
 import beans.Coproprietaire;
+import beans.DemandeTravaux;
 import beans.Syndic;
 import beans.Utilisateur;
 
@@ -139,7 +140,7 @@ public class UtilisateurDao {
 	
 	public Coproprietaire getOneCoproprietaire(int id){
         
-        Coproprietaire u = new Coproprietaire(null,null,null,null,null);
+        Coproprietaire u = new Coproprietaire(null,null,null,null,null,null,null);
         
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
@@ -148,7 +149,7 @@ public class UtilisateurDao {
             ResultSet r = p.executeQuery();
             
             while(r.next())
-                u = new Coproprietaire(r.getString( "type" ), r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ));
+                u = new Coproprietaire(r.getString( "type" ), r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ), r.getString( "teleF" ), r.getString( "teleP" ));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -159,7 +160,7 @@ public class UtilisateurDao {
 	
 	public Syndic getOneSyndic(int id){
         
-	    Syndic u = new Syndic(null,null,null,null);
+	    Syndic u = new Syndic(null,null,null,null,null,null);
         
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
@@ -168,7 +169,7 @@ public class UtilisateurDao {
             ResultSet r = p.executeQuery();
             
             while(r.next())
-                u = new Syndic(r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ));
+                u = new Syndic(r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ), r.getString( "teleF" ), r.getString( "teleP" ));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -179,7 +180,7 @@ public class UtilisateurDao {
 	
 	public Administrateur getOneAdmin(int id){
         
-	    Administrateur u = new Administrateur(null,null,null,null);
+	    Administrateur u = new Administrateur(null,null,null,null,null,null);
         
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
@@ -188,13 +189,76 @@ public class UtilisateurDao {
             ResultSet r = p.executeQuery();
             
             while(r.next())
-                u = new Administrateur(r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ));
+                u = new Administrateur(r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ), r.getString( "teleF" ), r.getString( "teleP" ));
             
         }catch(Exception e){
             e.printStackTrace();
         }
         
         return u;
+    }
+	
+	public void modifU(Coproprietaire c, int id){
+	    System.out.println("modif "+id+" "+c.getTeleF());
+	    
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE utilisateurs SET nom=?, prenom=?, mail=?, type=?, mdp=?, teleF=?, teleP=?  WHERE id=?");
+            p.setString(1, c.getNom());
+            p.setString(2, c.getPrenom());
+            p.setString(3, c.getMail());
+            p.setString(4, c.getType());
+            p.setString(5, c.getMdp());
+            p.setString(6, c.getTeleF());
+            p.setString(7, c.getTeleP());
+            p.setInt(8, id);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+	
+	public void modifU(Syndic c, int id){
+        System.out.println("modif "+id+" "+c.getTeleF());
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE utilisateurs SET nom=?, prenom=?, mail=?, type=?, mdp=?, teleF=?, teleP=?  WHERE id=?");
+            p.setString(1, c.getNom());
+            p.setString(2, c.getPrenom());
+            p.setString(3, c.getMail());
+            p.setString(4, "syndic");
+            p.setString(5, c.getMdp());
+            p.setString(6, c.getTeleF());
+            p.setString(7, c.getTeleP());
+            p.setInt(8, id);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+	
+	public void modifU(Administrateur c, int id){
+        System.out.println("modif "+id+" "+c.getTeleF());
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE utilisateurs SET nom=?, prenom=?, mail=?, type=?, mdp=?, teleF=?, teleP=?  WHERE id=?");
+            p.setString(1, c.getNom());
+            p.setString(2, c.getPrenom());
+            p.setString(3, c.getMail());
+            p.setString(4, "admin");
+            p.setString(5, c.getMdp());
+            p.setString(6, c.getTeleF());
+            p.setString(7, c.getTeleP());
+            p.setInt(8, id);
+            
+            p.executeUpdate();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 	
 	/*BDD attutilisateurs*/

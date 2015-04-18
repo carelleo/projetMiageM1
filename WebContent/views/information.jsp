@@ -98,21 +98,93 @@
 				  		<h4>Numéro de téléphone portable</h4>
 				  		<p><c:out value="${sessionScope.utilisateur.getTeleP()}"/></p>
 				  		<br>
-				  		
-				  		<h4>Adresse</h4>
-				  		<p><c:out value="${sessionScope.utilisateur.getAdresse()}"/></p>
-				  		<br>
 	         		</div>
 	         		
-	         		<a href="<c:url value='modifInfo'><c:param name="idU" value="${sessionScope.idU}" /></c:url>" >
-	         			<button class="btn btn-primary" type="button">Modifier</button>
-	         		</a>
+	         		<a href="#modalModif" role="button" class="btn btn-success" data-toggle="modal">Modifier</a>
 	         		<hr>
 		      	</div>
 			</div>
 		</section>
 			
 		<%@include file="footer.jsp"%> 
+
+		<!-- Modal Modif-->
+		<div class="modal hide fade" id="modalModif">
+		
+		  	<div class="modal-header">
+		    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		    	<h3>Modifier ses informations</h3>
+		  	</div>
+		
+		  	<s:form action="informationForm">
+		
+			  	<div class="modal-body">
+					<c:choose>
+						<c:when test="${sessionScope.type == 'proprietaire' || sessionScope.type == 'locataire'}">
+						
+							<c:if test="${sessionScope.type == 'proprietaire'}">
+								<s:select label="Type" name="c.type" size="1" list="#{'proprietaire':'Proprietaire', 'locataire':'Locataire'}" multiple="false" required="required"/>
+							</c:if>
+							<c:if test="${sessionScope.type == 'locataire'}">
+								<s:select label="Type" name="c.type" size="1" list="#{'locataire':'Locataire', 'proprietaire':'Proprietaire'}" multiple="false" required="required"/>
+							</c:if>
+							
+							<s:textfield label="Nom" name="c.nom" value="%{#attr['c'].getNom()}" requiered="requiered"/>
+							
+							<s:textfield label="Prénom" name="c.prenom" value="%{#attr['c'].getPrenom()}" requiered="requiered"/>
+							
+							<s:textfield label="Mail" name="c.mail" value="%{#attr['c'].getMail()}" requiered="requiered"/>
+							
+							<s:textfield label="Mot de passe" name="c.mdp" value="%{#attr['c'].getMdp()}" requiered="requiered"/>
+							
+							<s:textfield label="Confirmation mdp" name="c.mdpc" value="%{#attr['c'].getMdpc()}" requiered="requiered"/>
+							
+							<s:textfield label="Téléphone fixe" name="c.teleF" value="%{#attr['c'].getTeleF()}" requiered="requiered"/>
+							
+							<s:textfield label="Téléphone portable" name="c.teleP" value="%{#attr['c'].getTeleP()}" requiered="requiered"/>
+							
+						</c:when>
+						
+						<c:when test="${sessionScope.type == 'syndic'}">
+							<s:textfield label="Nom" name="s.nom" value="%{#attr['s'].getNom()}" requiered="requiered"/>
+							
+							<s:textfield label="Prénom" name="s.prenom" value="%{#attr['s'].getPrenom()}" requiered="requiered"/>
+							
+							<s:textfield label="Mail" name="s.mail" value="%{#attr['s'].getMail()}" requiered="requiered"/>
+							
+							<s:textfield label="Mot de passe" name="s.mdp" value="%{#attr['s'].getMdp()}" requiered="requiered"/>
+							
+							<s:textfield label="Confirmation mdp" name="s.mdpc" value="%{#attr['s'].getMdpc()}" requiered="requiered"/>
+							
+							<s:textfield label="Téléphone fixe" name="s.teleF" value="%{#attr['s'].getTeleF()}" requiered="requiered"/>
+							
+							<s:textfield label="Téléphone portable" name="s.teleP" value="%{#attr['s'].getTeleP()}" requiered="requiered"/>
+							
+						</c:when>
+						
+						<c:otherwise>
+							<s:textfield label="Nom" name="a.nom" value="%{#attr['a'].getNom()}" requiered="requiered"/>
+							
+							<s:textfield label="Prénom" name="a.prenom" value="%{#attr['a'].getPrenom()}" requiered="requiered"/>
+							
+							<s:textfield label="Mail" name="a.mail" value="%{#attr['a'].getMail()}" requiered="requiered"/>
+							
+							<s:textfield label="Mot de passe" name="a.mdp" value="%{#attr['a'].getMdp()}" requiered="requiered"/>
+							
+							<s:textfield label="Confirmation mdp" name="a.mdpc" value="%{#attr['a'].getMdpc()}" requiered="requiered"/>
+							
+							<s:textfield label="Téléphone fixe" name="a.teleF" value="%{#attr['a'].getTeleF()}" requiered="requiered"/>
+							
+							<s:textfield label="Téléphone portable" name="a.teleP" value="%{#attr['a'].getTeleP()}" requiered="requiered"/>
+							
+						</c:otherwise>
+					</c:choose>
+					
+					<s:submit value="Valider" name="submitAj" class="btn btn-large btn-primary"/>
+			  	</div>
+		
+			</s:form> 		
+		</div>
 
 		<!-- Le javascript
 		================================================== -->

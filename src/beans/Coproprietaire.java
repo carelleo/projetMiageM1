@@ -10,9 +10,8 @@ public class Coproprietaire {
     private String mdp;
     private String mdpc;
     private boolean condition;
-    private int teleF = 0;
-    private int teleP = 0;
-    private String adresse = null;
+    private String teleF;
+    private String teleP;
     
     public Coproprietaire(){
     }
@@ -25,6 +24,20 @@ public class Coproprietaire {
         mdp = md;
         mdpc = md;
         condition = true;
+        teleF=null;
+        teleP=null;
+    }
+    
+    public Coproprietaire(String t, String n, String p, String ma, String md, String tf, String tp){
+        type = t;
+        nom = n;
+        prenom = p;
+        mail = ma;
+        mdp = md;
+        mdpc = md;
+        condition = true;
+        teleF=tf;
+        teleP=tp;
     }
 
     public String getType() {
@@ -83,27 +96,19 @@ public class Coproprietaire {
         this.mdpc = mdpc;
     }
 
-    public int getTeleF() {
+    public String getTeleF() {
         return teleF;
     }
 
-    public void setTeleF( int teleF ) {
+    public void setTeleF( String teleF ) {
         this.teleF = teleF;
     }
 
-    public int getTeleP() {
+    public String getTeleP() {
         return teleP;
     }
 
-    public void setTeleP( int teleP ) {
+    public void setTeleP( String teleP ) {
         this.teleP = teleP;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse( String adresse ) {
-        this.adresse = adresse;
     }
 }
