@@ -207,6 +207,12 @@
 			<result name="success">/views/resolution.jsp</result>
 		</action>
     	
+    	<!-- compte -->
+    	
+    	<action name="information" class="action.InformationA">
+			<result name="success">/views/information.jsp</result>
+		</action>
+    	
 	</package>
 </struts>
 

@@ -14,6 +14,9 @@ public class Syndic {
     private String mdp;
     private String mdpc;
     private boolean condition;
+    private int teleF = 0;
+    private int teleP = 0;
+    private String adresse = null;
     
     public Syndic(){
     }
@@ -95,4 +98,28 @@ public class Syndic {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+    public int getTeleF() {
+        return teleF;
+    }
+
+    public void setTeleF( int teleF ) {
+        this.teleF = teleF;
+    }
+
+    public int getTeleP() {
+        return teleP;
+    }
+
+    public void setTeleP( int teleP ) {
+        this.teleP = teleP;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse( String adresse ) {
+        this.adresse = adresse;
+    }
 }

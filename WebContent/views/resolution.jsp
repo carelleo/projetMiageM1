@@ -126,13 +126,13 @@
 					                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
 						                          	<div class="suppr">
 							                          	<a href="<c:url value='supprRes'><c:param name="sjt" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-primary">Supprimer</button>
+						                          			<button type="button" class="btn btn-mini">Supprimer</button>
 						                          		</a>
 						                          	</div>
 						                          	
 						                          	<div class="modif">
 							                          	<a href="<c:url value='modifRes'><c:param name="dtSjt" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-primary">Modifier</button>
+						                          			<button type="button" class="btn btn-mini btn-success">Modifier</button>
 						                          		</a>
 						                          	</div>
 					                          	</c:if>

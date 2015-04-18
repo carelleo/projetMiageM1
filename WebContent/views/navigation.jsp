@@ -202,7 +202,7 @@
                         </c:url>"
                         >Mon mail</a></li>
                      <li><a href=
-                        "<c:url value='index'>
+                        "<c:url value='information'>
                            <c:param name="page" value="information" />
                         </c:url>"
                         >Mes informations</a></li>

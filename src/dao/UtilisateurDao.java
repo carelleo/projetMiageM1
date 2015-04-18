@@ -137,6 +137,66 @@ public class UtilisateurDao {
 		}
 	}
 	
+	public Coproprietaire getOneCoproprietaire(int id){
+        
+        Coproprietaire u = new Coproprietaire(null,null,null,null,null);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
+            p.setInt(1, id);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new Coproprietaire(r.getString( "type" ), r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return u;
+    }
+	
+	public Syndic getOneSyndic(int id){
+        
+	    Syndic u = new Syndic(null,null,null,null);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
+            p.setInt(1, id);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new Syndic(r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return u;
+    }
+	
+	public Administrateur getOneAdmin(int id){
+        
+	    Administrateur u = new Administrateur(null,null,null,null);
+        
+        try{
+            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
+            p.setInt(1, id);
+            
+            ResultSet r = p.executeQuery();
+            
+            while(r.next())
+                u = new Administrateur(r.getString( "nom" ), r.getString( "prenom" ), r.getString( "mail" ), r.getString( "mdp" ));
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return u;
+    }
+	
 	/*BDD attutilisateurs*/
 	
 	public Utilisateur getOneAttUtilisateur(String mail){

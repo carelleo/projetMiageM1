@@ -15,7 +15,20 @@ public class Administrateur {
     private String mdp;
     private String mdpc;
     private boolean condition;
-
+    private int teleF = 0;
+    private int teleP = 0;
+    private String adresse = null;
+    
+    public Administrateur(){
+    }
+    
+    public Administrateur(String n, String p, String ma, String m){
+        nom = n;
+        prenom = p;
+        mail = ma;
+        mdp = m;
+    }
+    
 	@Override
 	public String toString() {
 		return "Administrateur";
@@ -76,6 +89,30 @@ public class Administrateur {
 	public void setCondition(boolean condition) {
 		this.condition = condition;
 	}
+
+    public int getTeleF() {
+        return teleF;
+    }
+
+    public void setTeleF( int teleF ) {
+        this.teleF = teleF;
+    }
+
+    public int getTeleP() {
+        return teleP;
+    }
+
+    public void setTeleP( int teleP ) {
+        this.teleP = teleP;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse( String adresse ) {
+        this.adresse = adresse;
+    }
 
 	
 }

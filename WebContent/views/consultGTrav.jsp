@@ -135,7 +135,7 @@
 							                        	<c:if test="${sessionScope.type == 'admin' || sessionScope.mail == prop}">
 								                          	<div class="suppr">
 									                          	<a href="<c:url value='supprGD'><c:param name="idD" value="${d.getId()}" /></c:url>" >
-								                          			<button type="button" class="btn btn-mini btn-primary">supprimer</button>
+								                          			<button type="button" class="btn btn-mini">supprimer</button>
 								                          		</a>
 								                          	</div>
 							                        	</c:if>
@@ -150,7 +150,7 @@
 	         		</div>
 	         		
 	         		<c:if test="${(sessionScope.type == 'admin' || sessionScope.mail == prop) && event==false}">
-		         		<a href="#modalAjoutDevis" role="button" class="btn" data-toggle="modal">Ajouter Devis</a>
+		         		<a href="#modalAjoutDevis" role="button" class="btn btn-primary" data-toggle="modal">Ajouter Devis</a>
 		         		<hr>
 	         		</c:if>
 		      	</div>

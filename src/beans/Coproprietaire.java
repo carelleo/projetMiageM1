@@ -10,6 +10,9 @@ public class Coproprietaire {
     private String mdp;
     private String mdpc;
     private boolean condition;
+    private int teleF = 0;
+    private int teleP = 0;
+    private String adresse = null;
     
     public Coproprietaire(){
     }
@@ -78,5 +81,29 @@ public class Coproprietaire {
 
     public void setMdpc( String mdpc ) {
         this.mdpc = mdpc;
+    }
+
+    public int getTeleF() {
+        return teleF;
+    }
+
+    public void setTeleF( int teleF ) {
+        this.teleF = teleF;
+    }
+
+    public int getTeleP() {
+        return teleP;
+    }
+
+    public void setTeleP( int teleP ) {
+        this.teleP = teleP;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse( String adresse ) {
+        this.adresse = adresse;
     }
 }
