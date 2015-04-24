@@ -217,6 +217,26 @@
 			<!-- <result name="input">/views/demandeTravauxEr.jsp</result> -->
 		</action>
     	
+    			<!-- facture -->
+		<action name="facture" class="action.FactureA"> 
+      		<result name="success">/views/factures.jsp</result> 
+    	</action>
+    	<action name="FactureFormAj" class="action.FactureAj">
+			<result name="success">/views/factures.jsp</result>
+			<result name="input">/views/factureEr.jsp</result>
+		</action>
+
+		<action name="supprFac" class="action.FactureA" method="supprF">
+			<result name="success">/views/factures.jsp</result>
+		</action>
+		
+		<action name="consulterFac" class="action.FactureA" method="consulterF">
+			<result name="success">/views/consultFac.jsp</result>
+		</action>
+		
+    	
+    	
+    	
 	</package>
 </struts>
 
