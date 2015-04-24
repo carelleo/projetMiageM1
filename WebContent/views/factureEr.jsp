@@ -4,10 +4,9 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
+	 <head>
         <meta charset="utf-8"/>
-       <meta charset="utf-8"/>
-        <title>CoproManager - Factures</title>
+        <title>CoproManager - Facture Erreur</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Christopher Boudier">
@@ -53,8 +52,7 @@
         <link rel="apple-touch-icon-precomposed" href="<c:url value="/resources/img/ico/apple-touch-icon-57-precomposed.png" />">
     </head>
 
-    <body>
-
+	 <body>
 		<section id="header">
         <!-- Include the header bar -->
             <%@include file="header.jsp"%>
@@ -65,105 +63,29 @@
         	<!-- Include the navigation bar -->
         	<%@include file="navigation.jsp"%>
         </section><!-- /#navigation-main -->
-		
-		
+
 		<!-- Include the content pages -->
-		<section class="container">			
-			
-			<div class="row-fluid">
-	           	<div class="span12">
-			   		<h3 class="header">Factures
-			            <span class="header-line"></span> 
-			        </h3>
-			    </div>
-		       	<div class="span12" id="factures">
-	           		<table class="table table-striped table-bordered table-hover">
-						<thead>
-	                        <tr>
-	                          	<th class="date">Sujet</th>
-	                          	<th class="montant">Montant</th>
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                    	<c:forEach var="t" items="${listF}">
-	                    		<c:choose>
-	                    			<c:when test="${t == null}"></c:when>
-	                    			<c:otherwise>
-	                    				<tr>
-	                			            <td class="sujet">
-				                          		<c:out value="${t.getSujet()}"/>
-				                          	</td>
-				                          	<td class="montant">
-				                          		<c:out value="${t.getMontantAPayer()}"/>
-				                          	</td>
-				                          	<td>
-				                          		
-						                          	<div class="modif">
-							                          	<a href="<c:url value='consulterFac'><c:param name="sujet" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
-						                          		</a>
-						                          	</div>
-						                       		<div class="suppr">
-							                          	<a href="<c:url value='supprFac'><c:param name="sujet" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini">Supprimer</button>
-						                          		</a>
-						                          	</div>						                          							              	
-												
-												
-												
-												
-					                        </td>			                          	
-				                        </tr>
-	                    			</c:otherwise>
-	                    		</c:choose>
-	                    	</c:forEach>
-	                    </tbody>
-					</table>
-	           	</div>
-	           	
-	           	<div class="span3">
-	          		<a href="#modalEnvoiFacture" role="button" class="btn btn-primary" data-toggle="modal">Envoyer une facture</a>
-	          	</div>
-	           	
-          	</div>
-			
+		<section class="main-body">
+			<div class="container">
+				<div class="row-fluid">
+	         		<div class="span12">
+		            	<blockquote>
+		            	
+		            		<p>La facture n'as pas put etre envoyer</p>
+		            		
+						</blockquote>
+	         		</div>
+		      	</div>
+			</div>
 		</section>
 			
+		<%@include file="footer.jsp"%> 
 
-		<%@include file="footer.jsp"%>
-		
-		<!-- Modal Aj-->
-		<div class="modal hide fade" id="modalEnvoiFacture">
-		
-		  	<div class="modal-header">
-		    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		    	<h3>Envoyer une facture</h3>
-		  	</div>
-		
-		  	<s:form action="FactureFormAj">
-		
-			  	<div class="modal-body">
-			    	<s:textfield label="Sujet" name="f.sujet" required="required"/>
-					
-					<s:textfield label="Montant" name="f.montantAPayer" required="required" cols="20" rows="10"/>
-					
-					<s:textarea label="Detail" name="f.detail" required="required" cols="20" rows="10"/>
-					
-					<s:textfield label="e-mail" name="f.mail" required="required" cols="20" rows="10"/>
-					
-					<s:submit value="Valider" name="submit" class="btn btn-large btn-primary"/>
-			  	</div>
-		
-			</s:form> 		
-		</div>
-		
-		
-		
-        <!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        
-        <script src="<c:url value="/resources/js/bootstrap-transition.js" />"></script>
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		  
+	  	<script src="<c:url value="/resources/js/bootstrap-transition.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-alert.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-modal.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-dropdown.js" />"></script>
@@ -176,5 +98,6 @@
         <script src="<c:url value="/resources/js/bootstrap-carousel.js" />"></script>
         <script src="<c:url value="/resources/js/bootstrap-typeahead.js" />"></script>   
         <script type="text/javascript" src="<c:url value="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" />"></script>
-    </body>
+         
+	</body>
 </html>

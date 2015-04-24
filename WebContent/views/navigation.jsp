@@ -76,13 +76,13 @@
                      </c:choose> 
                >
                   <a href=
-                     "<c:url value='index'>
+                     "<c:url value='facture'>
                         <c:param name="page" value="factures" />
                      </c:url>" 
                   data-description="gérer les finances" class="dropdown-toggle" data-toggle="dropdown" >Finances  <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                      <li><a href=
-                        "<c:url value='index'>
+                        "<c:url value='facture'>
                            <c:param name="page" value="factures" />
                         </c:url>"
                      >Factures</a></li>

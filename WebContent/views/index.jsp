@@ -71,9 +71,6 @@
                     <%@include file="about.jsp"%>
                 </c:when>
 
-                <c:when test="${page=='factures'}">
-                    <%@include file="factures.jsp"%>
-                </c:when>
 
                 <c:when test="${page=='budget'}">
                     <%@include file="budget.jsp"%>
