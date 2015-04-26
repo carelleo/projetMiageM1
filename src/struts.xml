@@ -234,8 +234,29 @@
 			<result name="success">/views/consultFac.jsp</result>
 		</action>
 		
-    	
-    	
+    	<!-- Budget --> 	
+ 		<action name="budget" class="action.BudgetA"> 
+      		<result name="success">/views/budget.jsp</result> 
+    	</action>
+    	<action name="BudgetFormAj" class="action.BudgetAj">
+			<result name="success">/views/budget.jsp</result>
+			<result name="input">/views/budgetEr.jsp</result>
+		</action>
+		<action name="supprB" class="action.BudgetA" method="supprB">
+			<result name="success">/views/budget.jsp</result>
+		</action>
+		<action name="modifB" class="action.BudgetA" method="modifB">
+			<result name="success">/views/modifBudget.jsp</result>
+			<result name="input">/views/modifBudget.jsp</result>
+		</action>
+		<action name="BudgetFormModif" class="action.BudgetModif">
+			<result name="success">/views/budget.jsp</result>
+			<result name="input">/views/budgetEr.jsp</result>
+		</action>
+		<action name="consulterB" class="action.BudgetA" method="consulterB">
+			<result name="success">/views/consultBud.jsp</result>
+		</action> 
+
     	
 	</package>
 </struts>
