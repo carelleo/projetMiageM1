@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import dao.UtilisateurDao;
  
+
 public class InscriptionSA extends ActionSupport implements SessionAware{
      
     //param page
@@ -24,7 +25,10 @@ public class InscriptionSA extends ActionSupport implements SessionAware{
     private Syndic s;
      
  
-    @Override
+
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     public String execute() throws Exception {
         session.put("s",s);
         
@@ -33,6 +37,9 @@ public class InscriptionSA extends ActionSupport implements SessionAware{
         return SUCCESS;  
     }
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#validate()
+     */
     public void validate(){
         
         if ( s.getNom().length()==0 || s.getNom().trim().equals( "" )){ 
@@ -69,29 +76,48 @@ public class InscriptionSA extends ActionSupport implements SessionAware{
             addFieldError( "s.condition", "Generals Conditions are not checked." );    
         } 
     }
-     
+    
+    
+    /**
+     * @return 
+     */
     public Syndic getS() {
         return s;  
     }
      
+    /**
+     * @param s
+     */
     public void setS(Syndic s) {
          
         this.s = s;
          
     }
 
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }

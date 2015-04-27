@@ -24,7 +24,10 @@ public class InscriptionPA extends ActionSupport implements SessionAware{
     private Coproprietaire cp;
      
  
-    @Override
+    
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     public String execute() throws Exception {
         session.put("cp",cp);
         
@@ -33,6 +36,9 @@ public class InscriptionPA extends ActionSupport implements SessionAware{
         return SUCCESS;  
     }
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#validate()
+     */
     public void validate(){
         
         if ( cp.getNom().length()==0 || cp.getNom().trim().equals( "" )){ 
@@ -70,28 +76,46 @@ public class InscriptionPA extends ActionSupport implements SessionAware{
         } 
     }
      
+    /**
+     * @return
+     */
     public Coproprietaire getCp() {
         return cp;  
     }
      
+    /**
+     * @param cp
+     */
     public void setCp(Coproprietaire cp) {
          
         this.cp = cp;
          
     }
 
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }

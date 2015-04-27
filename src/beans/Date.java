@@ -19,6 +19,9 @@ public class Date {
 	private DateTime[][][] cal;
 	private DateTime dException;
 	
+	/**
+	 * 
+	 */
 	public Date(){
 		DateTime ajd = new DateTime();
 		d = new DateTime(ajd.getYear(),ajd.getMonthOfYear(),ajd.getDayOfMonth(),00,00,00);
@@ -28,13 +31,19 @@ public class Date {
 		constructCalendrier(1);
 	}
 	
+	/**
+	 * @return
+	 */
 	public String[] getMois() {
 		
-		String[] mois = {"Jan","Fév","Mar","Avr","Mai","Jui","Jui","Aoû","Sep","Oct","Nov","Déc"};
+		String[] mois = {"Jan","Fev","Mar","Avr","Mai","Jui","Jui","Aout�","Sep","Oct","Nov","Dec"};
 		
 		return mois;
 	}
 	
+	/**
+	 * @return
+	 */
 	public String[] getJourSem() {
 		
 		String[] jour = {"","Lun","Mar","Mer","Jeu","Ven","Sam","Dim"};
@@ -42,26 +51,44 @@ public class Date {
 		return jour;
 	}
 	
+	/**
+	 * @return
+	 */
 	public DateTime getD1er() {
 		return d1er;
 	}
 
+	/**
+	 * @param d1er
+	 */
 	public void setD1er(DateTime d1er) {
 		this.d1er = d1er;
 	}
 	
+	/**
+	 * @return
+	 */
 	public DateTime getD() {
 		return d;
 	}
 	
+	/**
+	 * @return
+	 */
 	public DateTime[][][] getCalendrier() {
 		return cal;
 	}
 	
+	/**
+	 * @return
+	 */
 	public DateTime getDException() {
 		return dException;
 	}
 	
+	/**
+	 * @param n
+	 */
 	public void constructCalendrier(int n){
 		cal = new DateTime[n][12][31];
 		

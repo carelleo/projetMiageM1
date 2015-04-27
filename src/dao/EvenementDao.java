@@ -11,6 +11,9 @@ import beans.Evenement;
 
 public class EvenementDao {
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<Evenement> getEvenement(){
 		
 		ArrayList<Evenement> liste = new ArrayList<Evenement>();
@@ -30,6 +33,9 @@ public class EvenementDao {
 		return liste;
 	}
 	
+	/**
+	 * @param ev
+	 */
 	public void addEvenement(Evenement ev){
 		
 		try{
@@ -45,6 +51,9 @@ public class EvenementDao {
 		}
 	}
 	
+	/**
+	 * @param titre
+	 */
 	public void supprEvenement(String titre){
 		
 		try{
@@ -58,6 +67,10 @@ public class EvenementDao {
 		}
 	}
 	
+	/**
+	 * @param titre
+	 * @return
+	 */
 	public boolean containEvenement(String titre){
 		
 		boolean b = false;

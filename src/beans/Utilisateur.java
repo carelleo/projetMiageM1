@@ -4,6 +4,18 @@ package beans;
 /**
  * 
  */
+/**
+ * @author Jean Francois
+ *
+ */
+/**
+ * @author Jean Francois
+ *
+ */
+/**
+ * @author Jean Francois
+ *
+ */
 public class Utilisateur {
     
     private int id;
@@ -24,7 +36,6 @@ public class Utilisateur {
 	/**
 	 * @param mail 
 	 * @param motdepasse 
-	 * @return
 	 */
 	public void Connexion(String mail, String motdepasse) {
 		// TODO implement here
@@ -42,41 +53,65 @@ public class Utilisateur {
 
 	/**
 	 * @param b 
-	 * @return
 	 */
 	public void setActif(Boolean b) {
 		// TODO implement here
 		
 	}
-
+	
+	
+	/**
+	 * @return
+	 */
 	public String getMail() {
 		return mail;
 	}
 
+	/**
+	 * @param mail
+	 */
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getMotDePasse() {
 		return motDePasse;
 	}
 
+	/**
+	 * @param motDePasse
+	 */
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
 
+    /**
+     * @return
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * @param type
+     */
     public void setType( String type ) {
         this.type = type;
     }
 
+    /**
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param id
+     */
     public void setId( int id ) {
         this.id = id;
     }

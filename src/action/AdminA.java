@@ -29,6 +29,9 @@ public class AdminA extends ActionSupport implements SessionAware{
     private ArrayList<Utilisateur> attU;
     private ArrayList<Utilisateur> tabU;
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     @Override
     public String execute() throws Exception {
         
@@ -47,6 +50,10 @@ public class AdminA extends ActionSupport implements SessionAware{
         return s;  
     }
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String ajouterAttU() throws Exception {
     	
     	page = "administration";
@@ -79,6 +86,10 @@ public class AdminA extends ActionSupport implements SessionAware{
         return SUCCESS;  
     }
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String supprU() throws Exception {
 
     	page = "administration";
@@ -91,66 +102,114 @@ public class AdminA extends ActionSupport implements SessionAware{
         return SUCCESS;  
     }
 
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }
 
+    /**
+     * @return
+     */
     public UtilisateurDao getuDao() {
         return uDao;
     }
 
+    /**
+     * @param uDao
+     */
     public void setuDao( UtilisateurDao uDao ) {
         this.uDao = uDao;
     }
 
+    /**
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @param email
+     */
     public void setEmail( String email ) {
         this.email = email;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Utilisateur> getAttU() {
         return attU;
     }
 
+    /**
+     * @param attU
+     */
     public void setAttU( ArrayList<Utilisateur> attU ) {
         this.attU = attU;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Utilisateur> getTabU() {
         return tabU;
     }
 
+    /**
+     * @param tabU
+     */
     public void setTabU( ArrayList<Utilisateur> tabU ) {
         this.tabU = tabU;
     }
 
+    /**
+     * @return
+     */
     public String getAUT() {
         return aUT;
     }
 
+    /**
+     * @param aUT
+     */
     public void setAUT( String aUT ) {
         this.aUT = aUT;
     }
 
+    /**
+     * @return
+     */
     public String getAUM() {
         return aUM;
     }
 
+    /**
+     * @param aUM
+     */
     public void setAUM( String aUM ) {
         this.aUM = aUM;
     }

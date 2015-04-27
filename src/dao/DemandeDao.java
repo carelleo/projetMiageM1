@@ -13,6 +13,9 @@ import beans.Resolution;
 
 public class DemandeDao {
     
+    /**
+     * @return
+     */
     public ArrayList<DemandeTravaux> getTravaux(){
         ArrayList<DemandeTravaux> listU = new ArrayList<DemandeTravaux>();
         
@@ -32,6 +35,10 @@ public class DemandeDao {
         return listU;
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public DemandeTravaux getOneTravaux(String sjt){
         DemandeTravaux u = new DemandeTravaux(null,null,null,0,0,null,0);
         
@@ -51,6 +58,10 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param t
+     * @param id
+     */
     public void addTravaux(DemandeTravaux t, int id){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO demandes(sujet, contenu, etat, date, type, positif, negatif, idCoproprietaire) VALUES (?, ?, ?, now(), ?, ?, ?,?)");
@@ -69,6 +80,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param sjt
+     */
     public void removeTravaux(String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM demandes WHERE sujet=? AND type='travaux'");
@@ -81,6 +95,10 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public boolean containTSujet(String sjt){
 		
 		boolean b = false;
@@ -102,6 +120,10 @@ public class DemandeDao {
 		return b;
 	}
     
+    /**
+     * @param t
+     * @param sjt
+     */
     public void modifT(DemandeTravaux t, String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE demandes SET sujet=?, contenu=?, etat=?, positif=?, negatif=?  WHERE sujet=?");
@@ -119,6 +141,10 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param t
+     * @param sjt
+     */
     public void modifT(String t, String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE demandes SET etat=?  WHERE sujet=?");
@@ -133,6 +159,9 @@ public class DemandeDao {
     }
     
     //getReclamation()
+    /**
+     * @return
+     */
     public ArrayList <Reclamation> getReclamation(){
         
          ArrayList <Reclamation> listr = new ArrayList <Reclamation>();
@@ -155,6 +184,10 @@ public class DemandeDao {
     }
     
     //getOneReclamation()
+    /**
+     * @param sjt
+     * @return
+     */
     public Reclamation getOneReclamation(String sjt){
         Reclamation u = new Reclamation(null,null,null,0,0,null,0);
         
@@ -175,6 +208,10 @@ public class DemandeDao {
     }
     
     //addReclamation()
+    /**
+     * @param t
+     * @param id
+     */
     public void addReclamation(Reclamation t, int id){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO demandes(sujet, contenu, etat, date, type, positif, negatif, idCoproprietaire) VALUES (?, ?, ?, now(), ?, ?, ?,?)");
@@ -194,6 +231,9 @@ public class DemandeDao {
     }
     
     //removeReclamation()
+    /**
+     * @param sjt
+     */
     public void removeReclamation(String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM demandes WHERE sujet=? AND type='reclamation'");
@@ -206,6 +246,10 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param t
+     * @param sjt
+     */
     public void modifR(Reclamation t, String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE demandes SET sujet=?, contenu=?, etat=?, positif=?, negatif=?  WHERE sujet=?");
@@ -224,6 +268,9 @@ public class DemandeDao {
     }
     
     //resolutions
+    /**
+     * @return
+     */
     public ArrayList<Resolution> getResolution(){
         ArrayList<Resolution> listU = new ArrayList<Resolution>();
         
@@ -243,6 +290,10 @@ public class DemandeDao {
         return listU;
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public Resolution getOneResolution(String sjt){
         Resolution u = new Resolution(null,null,null,0,0,null,0);
         
@@ -262,6 +313,10 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param t
+     * @param id
+     */
     public void addResolution(Resolution t, int id){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO demandes(sujet, contenu, etat, date, type, positif, negatif, idCoproprietaire) VALUES (?, ?, ?, now(), ?, ?, ?,?)");
@@ -280,6 +335,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param sjt
+     */
     public void removeResolution(String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM demandes WHERE sujet=? AND type='resolution'");
@@ -292,6 +350,10 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param t
+     * @param sjt
+     */
     public void modifResolution(Resolution t, String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE demandes SET sujet=?, contenu=?, etat=?, positif=?, negatif=?  WHERE sujet=?");
@@ -309,6 +371,11 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param sjt
+     * @param idU
+     * @return
+     */
     public boolean AlreadyCompteur(String sjt,int idU){
         int idD = 0;
         String a = null;
@@ -346,6 +413,11 @@ public class DemandeDao {
             return false;//pas encore fait
     }
     
+    /**
+     * @param sjt
+     * @param idU
+     * @param a
+     */
     public void addCompteur(String sjt, int idU, String a){
         int idD = 0;
         System.out.println("add");
@@ -377,6 +449,9 @@ public class DemandeDao {
     
     //Petit et Gros travaux
     
+    /**
+     * @param pt
+     */
     public void addPTrav(DemandeTravaux pt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type, idU) VALUES (?, ?, ?,?)");
@@ -392,6 +467,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param sjt
+     */
     public void removePTrav(String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM travaux WHERE sujet=? AND type='petits travaux'");
@@ -404,6 +482,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @return
+     */
     public ArrayList<PetitTravaux> getPTrav(){
         ArrayList<PetitTravaux> listU = new ArrayList<PetitTravaux>();
         
@@ -423,6 +504,10 @@ public class DemandeDao {
         return listU;
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public int getIdPT(String sjt){
         int u = 0;
         
@@ -442,6 +527,10 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public PetitTravaux getOnePTravaux(String sjt){
         PetitTravaux u = new PetitTravaux(null, null, null, null, null, 0);
         
@@ -461,6 +550,10 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param id
+     * @return
+     */
     public PetitTravaux getOnePTravaux(int id){
         PetitTravaux u = new PetitTravaux(null, null, null, null, null, 0);
         
@@ -480,6 +573,9 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param gt
+     */
     public void addGTrav(DemandeTravaux gt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO travaux(sujet, contenu, type, idU) VALUES (?, ?, ?, ?)");
@@ -495,6 +591,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param sjt
+     */
     public void removeGTrav(String sjt){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM travaux WHERE sujet=? AND type='gros travaux'");
@@ -507,6 +606,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @return
+     */
     public ArrayList<GrosTravaux> getGTrav(){
         ArrayList<GrosTravaux> listU = new ArrayList<GrosTravaux>();
         
@@ -526,6 +628,10 @@ public class DemandeDao {
         return listU;
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public GrosTravaux getOneGTravaux(String sjt){
         GrosTravaux u = new GrosTravaux(null, null, null, null, null, 0);
         
@@ -545,6 +651,10 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param id
+     * @return
+     */
     public GrosTravaux getOneGTravaux(int id){
         GrosTravaux u = new GrosTravaux(null, null, null, null, null, 0);
         
@@ -564,6 +674,10 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public int getIdGT(String sjt){
         int u = 0;
         
@@ -583,6 +697,12 @@ public class DemandeDao {
         return u;
     }
     
+    /**
+     * @param sjt
+     * @param dd
+     * @param df
+     * @param a
+     */
     public void modifGPTrav(String sjt, String dd, String df, String a){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE travaux SET dateD=?, dateF=?, artisan=? WHERE sujet=?");
@@ -598,6 +718,10 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param sjt
+     * @return
+     */
     public boolean containGPTSujet(String sjt){
         
         boolean b = false;
@@ -621,6 +745,10 @@ public class DemandeDao {
     
     //Devis
     
+    /**
+     * @param idT
+     * @return
+     */
     public ArrayList<Devis> getDevis(int idT){
         ArrayList<Devis> listU = new ArrayList<Devis>();
         
@@ -640,6 +768,10 @@ public class DemandeDao {
         return listU;
     }
     
+    /**
+     * @param id
+     * @return
+     */
     public Devis getOneDevis(int id){
         Devis d = new Devis();
         try{
@@ -658,6 +790,9 @@ public class DemandeDao {
         return d;
     }
     
+    /**
+     * @param d
+     */
     public void addDevis(Devis d){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO devis(entreprise, montant, dateD, dateF, idT) VALUES (?, ?, ?, ?, ?)");
@@ -674,6 +809,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param id
+     */
     public void removeDevis(int id){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM devis WHERE id=?");
@@ -686,6 +824,10 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param idT
+     * @param id
+     */
     public void removeAllDevis(int idT, int id){
         try{
             System.out.println("idT "+idT);
@@ -702,6 +844,9 @@ public class DemandeDao {
         }
     }
     
+    /**
+     * @param idT
+     */
     public void removeAllDevis(int idT){
         try{
             PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM devis WHERE idT=?");

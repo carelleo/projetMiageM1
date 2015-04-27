@@ -11,7 +11,12 @@ public class ConnexionBDD {
 
     private static Connection c;
 
+    
+    /**
+     * @return
+     */
     public static Connection getConnection() {
+    	
 
         if (c == null) {
             try {

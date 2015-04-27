@@ -18,9 +18,21 @@ public class Reclamation implements Serializable {
     private int negatif = 0;
     private int idU = 0;
     
+    /**
+     * 
+     */
     public Reclamation(){
     }
     
+    /**
+     * @param s
+     * @param c
+     * @param d
+     * @param p
+     * @param n
+     * @param e
+     * @param i
+     */
     public Reclamation(String s, String c, String d, int p, int n, String e, int i){
         sujet = s;
         contenu = c;
@@ -31,66 +43,114 @@ public class Reclamation implements Serializable {
         idU = i;
     }
     
+    /**
+     * 
+     */
     public void plus() {
         positif++;
     }
     
+    /**
+     * 
+     */
     public void moins() {
         negatif++;
     }
 
+    /**
+     * @return
+     */
     public String getSujet() {
         return sujet;
     }
 
+    /**
+     * @param sujet
+     */
     public void setSujet( String sujet ) {
         this.sujet = sujet;
     }
 
+    /**
+     * @return
+     */
     public String getContenu() {
         return contenu;
     }
 
+    /**
+     * @param contenu
+     */
     public void setContenu( String contenu ) {
         this.contenu = contenu;
     }
 
+    /**
+     * @return
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * @param date
+     */
     public void setDate( String date ) {
         this.date = date;
     }
 
+    /**
+     * @return
+     */
     public String getEtat() {
         return etat;
     }
 
+    /**
+     * @param etat
+     */
     public void setEtat( String etat ) {
         this.etat = etat;
     }
 
+    /**
+     * @return
+     */
     public int getPositif() {
         return positif;
     }
 
+    /**
+     * @param positif
+     */
     public void setPositif( int positif ) {
         this.positif = positif;
     }
 
+    /**
+     * @return
+     */
     public int getNegatif() {
         return negatif;
     }
 
+    /**
+     * @param negatif
+     */
     public void setNegatif( int negatif ) {
         this.negatif = negatif;
     }
 
+    /**
+     * @return
+     */
     public int getIdU() {
         return idU;
     }
 
+    /**
+     * @param idU
+     */
     public void setIdU( int idU ) {
         this.idU = idU;
     }

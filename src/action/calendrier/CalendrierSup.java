@@ -29,6 +29,9 @@ public class CalendrierSup extends ActionSupport implements SessionAware{
     private ArrayList<Evenement> tabE = new ArrayList<Evenement>();
     
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     public String execute() throws Exception {
     	
     	eDao.supprEvenement(titre);
@@ -39,6 +42,9 @@ public class CalendrierSup extends ActionSupport implements SessionAware{
         return SUCCESS;
     }
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#validate()
+     */
     public void validate(){
 		
         if(!eDao.containEvenement(titre)){
@@ -46,50 +52,86 @@ public class CalendrierSup extends ActionSupport implements SessionAware{
         }
     }
 
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+	/**
+	 * @return
+	 */
 	public Date getDate() {
 		return date;
 	}
 
+	/**
+	 * @param date
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/**
+	 * @return
+	 */
 	public ArrayList<Evenement> getTabE() {
 		return tabE;
 	}
 
+	/**
+	 * @param tabE
+	 */
 	public void setTabE(ArrayList<Evenement> tabE) {
 		this.tabE = tabE;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getTitre() {
 		return titre;
 	}
 
+	/**
+	 * @param titre
+	 */
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
 
+	/**
+	 * @return
+	 */
 	public EvenementDao geteDao() {
 		return eDao;
 	}
 
+	/**
+	 * @param eDao
+	 */
 	public void seteDao(EvenementDao eDao) {
 		this.eDao = eDao;
 	}
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }

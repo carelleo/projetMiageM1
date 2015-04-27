@@ -25,6 +25,9 @@ public class ConnexionA extends ActionSupport implements SessionAware{
     private String mdp;
      
  
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     @Override
     public String execute() throws Exception {
         
@@ -46,6 +49,9 @@ public class ConnexionA extends ActionSupport implements SessionAware{
         return s;  
     }
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#validate()
+     */
     public void validate(){
                          
         if(mail==null || mail.trim().length()==0){
@@ -63,42 +69,72 @@ public class ConnexionA extends ActionSupport implements SessionAware{
         }
     }
 
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }
 
+    /**
+     * @return
+     */
     public UtilisateurDao getuDao() {
         return uDao;
     }
 
+    /**
+     * @param uDao
+     */
     public void setuDao( UtilisateurDao uDao ) {
         this.uDao = uDao;
     }
 
+    /**
+     * @return
+     */
     public String getMail() {
         return mail;
     }
 
+    /**
+     * @param mail
+     */
     public void setMail( String mail ) {
         this.mail = mail;
     }
 
+    /**
+     * @return
+     */
     public String getMdp() {
         return mdp;
     }
 
+    /**
+     * @param mdp
+     */
     public void setMdp( String mdp ) {
         this.mdp = mdp;
     }

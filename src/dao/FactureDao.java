@@ -15,13 +15,16 @@ import beans.Resolution;
 
 public class FactureDao {
 	
+	/**
+	 * @param uDao
+	 * @return
+	 */
 	public ArrayList<Factures> getFactures(UtilisateurDao uDao){
 		
 		ArrayList<Factures> liste = new ArrayList<Factures>();
 		
 		try{
 			PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM facture" );
-
 			ResultSet r = p.executeQuery();
 			
 			while(r.next()){
@@ -38,6 +41,10 @@ public class FactureDao {
 	
 
 	
+	/**
+	 * @param sujet
+	 * @param id
+	 */
 	public void supprFacture(String sujet, int id){
 		
 		try{
@@ -52,6 +59,10 @@ public class FactureDao {
 		}
 	}
 	
+	/**
+	 * @param sujet
+	 * @return
+	 */
 	public boolean containFacture(String sujet){
 		
 		boolean b = false;
@@ -73,6 +84,10 @@ public class FactureDao {
 		return b;
 	}
 	
+    /**
+     * @param f
+     * @param id
+     */
     public void addFacture(Factures f, int id){
         try{
         	
@@ -89,6 +104,11 @@ public class FactureDao {
         }
     }
     
+    /**
+     * @param sujet
+     * @param uDao
+     * @return
+     */
     public Factures getOneFacture(String sujet ,UtilisateurDao uDao){
         Factures f = new Factures(null,0,null,null);
         

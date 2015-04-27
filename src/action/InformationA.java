@@ -28,6 +28,9 @@ public class InformationA extends ActionSupport implements SessionAware{
     Syndic s;
     Administrateur a;
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     @Override
     public String execute() throws Exception {
         int id = (int)session.get("idU");
@@ -53,50 +56,86 @@ public class InformationA extends ActionSupport implements SessionAware{
         return SUCCESS;
     }
     
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }
 
+    /**
+     * @return
+     */
     public UtilisateurDao getuDao() {
         return uDao;
     }
 
+    /**
+     * @param uDao
+     */
     public void setuDao( UtilisateurDao uDao ) {
         this.uDao = uDao;
     }
 
+    /**
+     * @return
+     */
     public Coproprietaire getC() {
         return c;
     }
 
+    /**
+     * @param c
+     */
     public void setC( Coproprietaire c ) {
         this.c = c;
     }
 
+    /**
+     * @return
+     */
     public Syndic getS() {
         return s;
     }
 
+    /**
+     * @param s
+     */
     public void setS( Syndic s ) {
         this.s = s;
     }
 
+    /**
+     * @return
+     */
     public Administrateur getA() {
         return a;
     }
 
+    /**
+     * @param a
+     */
     public void setA( Administrateur a ) {
         this.a = a;
     }

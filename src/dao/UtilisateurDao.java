@@ -14,6 +14,10 @@ public class UtilisateurDao {
 	
     /*BDD utilisateurs*/
     
+    /**
+     * @param mail
+     * @return
+     */
     public Utilisateur getOneUtilisateur(String mail){
         
         Utilisateur u = new Utilisateur(0,null,null,null);
@@ -34,6 +38,10 @@ public class UtilisateurDao {
         return u;
     }
     
+    /**
+     * @param id
+     * @return
+     */
     public Utilisateur getOneUtilisateur(int id){
         
         Utilisateur u = new Utilisateur(0,null,null,null);
@@ -54,6 +62,9 @@ public class UtilisateurDao {
         return u;
     }
     
+	/**
+	 * @return
+	 */
 	public ArrayList<Utilisateur> getUtilisateur(){
 		
 		ArrayList<Utilisateur> liste = new ArrayList<Utilisateur>();
@@ -74,6 +85,9 @@ public class UtilisateurDao {
 		return liste;
 	}
 	
+	/**
+	 * @param cp
+	 */
 	public void addCoproprietaire(Coproprietaire cp){
 		
 		try{
@@ -91,6 +105,9 @@ public class UtilisateurDao {
 		}
 	}
 	
+	/**
+	 * @param s
+	 */
 	public void addSyndic(Syndic s){
 		
 		try{
@@ -108,6 +125,9 @@ public class UtilisateurDao {
 		}
 	}
 	
+	/**
+	 * @param a
+	 */
 	public void addAdmin(Administrateur a){
 		
 		try{
@@ -125,6 +145,9 @@ public class UtilisateurDao {
 		}
 	}
 	
+	/**
+	 * @param mail
+	 */
 	public void supprUtilisateur(String mail){
 		
 		try{
@@ -138,6 +161,10 @@ public class UtilisateurDao {
 		}
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	public Coproprietaire getOneCoproprietaire(int id){
         
         Coproprietaire u = new Coproprietaire(null,null,null,null,null,null,null);
@@ -158,6 +185,10 @@ public class UtilisateurDao {
         return u;
     }
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	public Syndic getOneSyndic(int id){
         
 	    Syndic u = new Syndic(null,null,null,null,null,null);
@@ -178,6 +209,10 @@ public class UtilisateurDao {
         return u;
     }
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	public Administrateur getOneAdmin(int id){
         
 	    Administrateur u = new Administrateur(null,null,null,null,null,null);
@@ -198,6 +233,10 @@ public class UtilisateurDao {
         return u;
     }
 	
+	/**
+	 * @param c
+	 * @param id
+	 */
 	public void modifU(Coproprietaire c, int id){
 	    System.out.println("modif "+id+" "+c.getTeleF());
 	    
@@ -219,6 +258,10 @@ public class UtilisateurDao {
         }
     }
 	
+	/**
+	 * @param c
+	 * @param id
+	 */
 	public void modifU(Syndic c, int id){
         System.out.println("modif "+id+" "+c.getTeleF());
         
@@ -240,6 +283,10 @@ public class UtilisateurDao {
         }
     }
 	
+	/**
+	 * @param c
+	 * @param id
+	 */
 	public void modifU(Administrateur c, int id){
         System.out.println("modif "+id+" "+c.getTeleF());
         
@@ -263,6 +310,10 @@ public class UtilisateurDao {
 	
 	/*BDD attutilisateurs*/
 	
+	/**
+	 * @param mail
+	 * @return
+	 */
 	public Utilisateur getOneAttUtilisateur(String mail){
         
         Utilisateur u = new Utilisateur(0,null,null,null);
@@ -283,6 +334,9 @@ public class UtilisateurDao {
         return u;
     }
     
+    /**
+     * @return
+     */
     public ArrayList<Utilisateur> getAttUtilisateur(){
         
         ArrayList<Utilisateur> liste = new ArrayList<Utilisateur>();
@@ -303,6 +357,9 @@ public class UtilisateurDao {
         return liste;
     }
     
+    /**
+     * @param cp
+     */
     public void addAttCoproprietaire(Coproprietaire cp){
         
         try{
@@ -320,6 +377,9 @@ public class UtilisateurDao {
         }
     }
     
+    /**
+     * @param s
+     */
     public void addAttSyndic(Syndic s){
         
         try{
@@ -337,6 +397,9 @@ public class UtilisateurDao {
         }
     }
     
+    /**
+     * @param mail
+     */
     public void supprAttUtilisateur(String mail){
         
         try{
@@ -350,6 +413,10 @@ public class UtilisateurDao {
         }
     }
 
+    /**
+     * @param mail
+     * @return
+     */
     public Syndic getOneAttSyndic( String mail ) {
         Syndic s = new Syndic();
         
@@ -369,6 +436,10 @@ public class UtilisateurDao {
         return s;
     }
     
+    /**
+     * @param mail
+     * @return
+     */
     public Coproprietaire getOneAttCoproprietaire( String mail ) {
         Coproprietaire s = new Coproprietaire();
         

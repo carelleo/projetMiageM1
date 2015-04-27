@@ -26,6 +26,9 @@ public class DTravauxModif extends ActionSupport implements SessionAware{
     ArrayList<DemandeTravaux> listT;
     
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     @Override
     public String execute() throws Exception {
         page = "travaux";
@@ -38,6 +41,9 @@ public class DTravauxModif extends ActionSupport implements SessionAware{
         return SUCCESS;
     }
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#validate()
+     */
     public void validate(){
         
         if ( dt.getSujet().length()==0 || dt.getSujet().trim().equals( "" )){ 
@@ -60,42 +66,72 @@ public class DTravauxModif extends ActionSupport implements SessionAware{
         }
     }
 
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }
 
+    /**
+     * @return
+     */
     public DemandeDao gettDao() {
         return tDao;
     }
 
+    /**
+     * @param tDao
+     */
     public void settDao( DemandeDao tDao ) {
         this.tDao = tDao;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<DemandeTravaux> getListT() {
         return listT;
     }
 
+    /**
+     * @param listT
+     */
     public void setListT( ArrayList<DemandeTravaux> listT ) {
         this.listT = listT;
     }
 
+	/**
+	 * @return
+	 */
 	public DemandeTravaux getDt() {
 		return dt;
 	}
 
+	/**
+	 * @param dt
+	 */
 	public void setDt(DemandeTravaux dt) {
 		this.dt = dt;
 	}

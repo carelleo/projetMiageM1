@@ -33,6 +33,9 @@ public class FactureA extends ActionSupport implements SessionAware{
     private ArrayList<Factures> listF;
     private Factures f;
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     @Override
     public String execute() throws Exception {
     	page = "factures";    	
@@ -48,6 +51,10 @@ public class FactureA extends ActionSupport implements SessionAware{
     
     
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String supprF() throws Exception {
     	
     	page = "facture"; 
@@ -61,6 +68,10 @@ public class FactureA extends ActionSupport implements SessionAware{
     }
 
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String consulterF() throws Exception{
     	System.out.println("Sujet : " + sujet);
     	f = fDao.getOneFacture( sujet ,uDao );
@@ -70,66 +81,108 @@ public class FactureA extends ActionSupport implements SessionAware{
     }
     
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }
     
     
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public FactureDao getfDao() {
         return fDao;
     }
 
+    /**
+     * @param fDao
+     */
     public void setfDao( FactureDao fDao ) {
         this.fDao = fDao;
     }
     
+	/**
+	 * @return
+	 */
 	public UtilisateurDao getuDao() {
 		return uDao;
 	}
 
+	/**
+	 * @param uDao
+	 */
 	public void setuDao(UtilisateurDao uDao) {
 		this.uDao = uDao;
 	}
 
+    /**
+     * @return
+     */
     public ArrayList<Factures> getListF() {
         return listF;
     }
 
+    /**
+     * @param listF
+     */
     public void setListF( ArrayList<Factures> listF ) {
         this.listF = listF;
     }
 
 
+    /**
+     * @return
+     */
     public String getSujet() {
         return sujet;
     }
 
+    /**
+     * @param sujet
+     */
     public void setSujet( String sujet ) {
         this.sujet = sujet;
     }
 
 
 
+	/**
+	 * @return
+	 */
 	public Factures getF() {
 		return f;
 	}
 
 
 
+	/**
+	 * @param f
+	 */
 	public void setF(Factures f) {
 		this.f = f;
 	}
 
 
 
+	/**
+	 * @return
+	 */
 	public Map<String, Object> getSession() {
 		return session;
 	}

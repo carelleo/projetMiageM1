@@ -31,6 +31,9 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     ArrayList<Resolution> listResolution;
     private Resolution dt;
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     @Override
     public String execute() throws Exception {
         
@@ -39,6 +42,10 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String supprR() throws Exception {
         
         page = "resolution";
@@ -49,6 +56,10 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String plusR() throws Exception {
         
         page = "resolution";
@@ -68,6 +79,10 @@ public class ResolutionA extends ActionSupport implements SessionAware {
             return ERROR;
     }
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String moinsR() throws Exception {
         
         page = "resolution";
@@ -87,6 +102,10 @@ public class ResolutionA extends ActionSupport implements SessionAware {
             return ERROR;
     }
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String modifR() throws Exception {
         dt = tDao.getOneResolution( dtSjt );
         
@@ -95,6 +114,10 @@ public class ResolutionA extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
+    /**
+     * @return
+     * @throws Exception
+     */
     public String consulterR() throws Exception{
     	dt = tDao.getOneResolution( dtSjt );
     	prop = uDao.getOneUtilisateur(dt.getIdU()).getMail();
@@ -103,6 +126,10 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     	return SUCCESS;
     }
     
+    /**
+     * @return
+     * @throws Exception
+     */
     public String accepterR() throws Exception{
     	dt = tDao.getOneResolution( sjt );
     	tDao.modifT("ACCEPTER", sjt);
@@ -112,74 +139,128 @@ public class ResolutionA extends ActionSupport implements SessionAware {
     	return SUCCESS;
     }
     
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Resolution> getListR() {
         return listResolution;
     }
 
+    /**
+     * @param listResolution
+     */
     public void setListR( ArrayList<Resolution> listResolution ) {
         this.listResolution = listResolution;
     }
 
+    /**
+     * @return
+     */
     public DemandeDao gettDao() {
         return tDao;
     }
 
+    /**
+     * @param tDao
+     */
     public void settDao( DemandeDao tDao ) {
         this.tDao = tDao;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Resolution> getListResolution() {
         return listResolution;
     }
 
+    /**
+     * @param listResolution
+     */
     public void setListResolution( ArrayList<Resolution> listResolution ) {
         this.listResolution = listResolution;
     }
 
+    /**
+     * @return
+     */
     public String getSjt() {
         return sjt;
     }
 
+    /**
+     * @param sjt
+     */
     public void setSjt( String sjt ) {
         this.sjt = sjt;
     }
 
+    /**
+     * @return
+     */
     public String getDtSjt() {
         return dtSjt;
     }
 
+    /**
+     * @param dtSjt
+     */
     public void setDtSjt( String dtSjt ) {
         this.dtSjt = dtSjt;
     }
 
+    /**
+     * @return
+     */
     public Resolution getDt() {
         return dt;
     }
 
+    /**
+     * @param dt
+     */
     public void setDt( Resolution dt ) {
         this.dt = dt;
     }
 
+	/**
+	 * @return
+	 */
 	public String getProp() {
 		return prop;
 	}
 
+	/**
+	 * @param prop
+	 */
 	public void setProp(String prop) {
 		this.prop = prop;
 	}

@@ -9,7 +9,10 @@ import beans.Resolution;
 
 public class BudgetDao {
 
-	   public ArrayList<Budget> getBudget(){
+	   /**
+	 * @return
+	 */
+	public ArrayList<Budget> getBudget(){
 	        ArrayList<Budget> listU = new ArrayList<Budget>();
 	        
 	        try{
@@ -18,7 +21,7 @@ public class BudgetDao {
 	            ResultSet r = p.executeQuery();
 	            
 	            while(r.next())
-	                listU.add( new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire"), r.getInt( "idSyndic" )) );
+	                listU.add( new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire"),r.getInt("idSyndic")) );
 	                
 	        }catch(Exception e){
 	            e.printStackTrace();
@@ -27,6 +30,10 @@ public class BudgetDao {
 	        return listU;
 	    }
 	    
+	    /**
+	     * @param anne
+	     * @return
+	     */
 	    public Budget getOneBudget(int anne){
 	        Budget b = new Budget(0,0,0,0,0,null,0);
 	        
@@ -37,7 +44,7 @@ public class BudgetDao {
 	            ResultSet r = p.executeQuery();
 	            
 	            while(r.next())
-	                b = new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire"),r.getInt( "idSyndic" ));
+	                b = new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire"),r.getInt("idSyndic"));
 	            
 	        }catch(Exception e){
 	            e.printStackTrace();
@@ -46,6 +53,10 @@ public class BudgetDao {
 	        return b;
 	    }
 	    
+	    /**
+	     * @param b
+	     * @param id
+	     */
 	    public void addBudget(Budget b, int id){
 	        try{
 	            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("INSERT INTO budget(annee, eau, electricite, gaz, entretien, commentaire, idSyndic) VALUES (?, ?, ?, ?,?,?,?)");
@@ -65,6 +76,9 @@ public class BudgetDao {
 	        }
 	    }
 	    
+	    /**
+	     * @param anne
+	     */
 	    public void supprB(int anne){
 	        try{
 	            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("DELETE FROM Budget WHERE annee=?");
@@ -76,6 +90,10 @@ public class BudgetDao {
 	        }
 	    }
 	    
+	    /**
+	     * @param b
+	     * @param anne
+	     */
 	    public void modifB(Budget b, int anne){
 	        try{
 	            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("UPDATE budget SET annee=?, eau=?, electricite=?, gaz=?, entretien=?, commentaire=?  WHERE annee=?");
@@ -95,6 +113,10 @@ public class BudgetDao {
 	    }
 	    
 	
+	    /**
+	     * @param annee
+	     * @return
+	     */
 	    public boolean containtAnnee(int annee){
 			
 			boolean b = false;

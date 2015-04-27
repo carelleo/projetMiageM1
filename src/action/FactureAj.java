@@ -29,6 +29,9 @@ public class FactureAj extends ActionSupport implements SessionAware{
     Factures f;
     ArrayList<Factures> listF;
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#execute()
+     */
     @Override
     public String execute() throws Exception {
     	
@@ -43,6 +46,9 @@ public class FactureAj extends ActionSupport implements SessionAware{
     	}
     }
     
+    /* (non-Javadoc)
+     * @see com.opensymphony.xwork2.ActionSupport#validate()
+     */
     public void validate(){
 
         if ( f.getSujet().length() == 0 || f.getSujet().trim().equals("")){ 
@@ -66,62 +72,107 @@ public class FactureAj extends ActionSupport implements SessionAware{
         
     }
 
+    /**
+     * @return
+     */
     public String getPage() {
         return page;
     }
 
+    /**
+     * @param page
+     */
     public void setPage( String page ) {
         this.page = page;
     }
 
+    /**
+     * @return
+     */
     public Map<String, Object> getSession() {
         return session;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+     */
     public void setSession( Map<String, Object> session ) {
         this.session = session;
     }
 
+    /**
+     * @return
+     */
     public FactureDao gettDao() {
         return fDao;
     }
 
+    /**
+     * @param fDao
+     */
     public void settDao( FactureDao fDao ) {
         this.fDao = fDao;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Factures> getListF() {
         return listF;
     }
 
+    /**
+     * @param listF
+     */
     public void setListT( ArrayList<Factures> listF ) {
         this.listF = listF;
     }
 
+	/**
+	 * @return
+	 */
 	public Factures getF() {
 		return f;
 	}
 
+	/**
+	 * @param f
+	 */
 	public void setF(Factures f) {
 		this.f = f;
 	}
 
+	/**
+	 * @return
+	 */
 	public FactureDao getfDao() {
 		return fDao;
 	}
 
+	/**
+	 * @param fDao
+	 */
 	public void setfDao(FactureDao fDao) {
 		this.fDao = fDao;
 	}
 
+	/**
+	 * @return
+	 */
 	public UtilisateurDao getuDao() {
 		return uDao;
 	}
 
+	/**
+	 * @param uDao
+	 */
 	public void setuDao(UtilisateurDao uDao) {
 		this.uDao = uDao;
 	}
 
+	/**
+	 * @param listF
+	 */
 	public void setListF(ArrayList<Factures> listF) {
 		this.listF = listF;
 	}
