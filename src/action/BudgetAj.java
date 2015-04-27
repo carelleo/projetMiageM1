@@ -40,11 +40,11 @@ public class BudgetAj extends ActionSupport implements SessionAware{
     	
     	
         if ( b.getAnnee() <= 0 ){ 
-            addFieldError( "b.année", "Year is required." );     
+            addFieldError( "b.annee", "Year is required." );     
         }
         
-        else if(bDao.containtAnnée(b.getAnnee())){
-                addFieldError( "b.année", "A budget for this year already exist." );
+        else if(bDao.containtAnnee(b.getAnnee())){
+                addFieldError( "b.annee", "A budget for this year already exist." );
         }
         
         else if(b.getBudgetEau()<=0 ){

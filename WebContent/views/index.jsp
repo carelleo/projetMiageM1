@@ -70,12 +70,6 @@
                 <c:when test="${page=='about'}">
                     <%@include file="about.jsp"%>
                 </c:when>
-
-
-                <c:when test="${page=='budget'}">
-                    <%@include file="budget.jsp"%>
-                </c:when>
-
                 <c:when test="${page=='portfolio'}">
                     <%@include file="portfolio.jsp"%>
                 </c:when>

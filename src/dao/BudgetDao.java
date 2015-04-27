@@ -95,13 +95,13 @@ public class BudgetDao {
 	    }
 	    
 	
-	    public boolean containtAnnée(int année){
+	    public boolean containtAnnee(int annee){
 			
 			boolean b = false;
 			
 			try{
 				PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM budget WHERE annee=?");
-				p.setInt(1, année);
+				p.setInt(1, annee);
 				
 				ResultSet r = p.executeQuery();
 				

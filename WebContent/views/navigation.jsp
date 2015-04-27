@@ -87,7 +87,7 @@
                         </c:url>"
                      >Factures</a></li>
                      <li><a href=
-                           "<c:url value='index'>
+                           "<c:url value='budget'>
                               <c:param name="page" value="budget" />
                            </c:url>"
                      >Budget Prévisionnel</a></li>

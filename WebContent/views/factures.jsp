@@ -82,6 +82,7 @@
 	                        <tr>
 	                          	<th class="date">Sujet</th>
 	                          	<th class="montant">Montant</th>
+	                          	<th class="avis">Action</th>
 	                        </tr>
 	                    </thead>
 	                    <tbody>
@@ -90,13 +91,13 @@
 	                    			<c:when test="${t == null}"></c:when>
 	                    			<c:otherwise>
 	                    				<tr>
-	                			            <td class="sujet">
+	                			            <td class="date">
 				                          		<c:out value="${t.getSujet()}"/>
 				                          	</td>
 				                          	<td class="montant">
 				                          		<c:out value="${t.getMontantAPayer()}"/>
 				                          	</td>
-				                          	<td>
+				                          	<td class="avis">
 				                          		
 						                          	<div class="modif">
 							                          	<a href="<c:url value='consulterFac'><c:param name="sujet" value="${t.getSujet()}" /></c:url>" >

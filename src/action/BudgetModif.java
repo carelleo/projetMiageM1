@@ -52,7 +52,7 @@ public class BudgetModif extends ActionSupport implements SessionAware{
     	}
     	
         else if(!(b.getAnnee() == (int)session.get( "annee" ))){
-            if(bDao.containtAnnée(b.getAnnee())){
+            if(bDao.containtAnnee(b.getAnnee())){
                 addFieldError( "b.annee", "A budget for this year already exist." );
             }
         }

@@ -77,14 +77,15 @@
 			        </h3>
 			    </div>
 		       	<div class="span12" id="budget">
-	           		<table class="table table-striped table-bordered table-hover">
+	           		<table class="table table-striped table-bordered table-hover" >
 						<thead>
 	                        <tr>
 	                          	<th class="date">Année</th>
 	                          	<th class="montant">Budget eau</th>
-	                            <th class="date">Budget électricité</th>
+	                            <th class="montant">Budget électricité</th>
 	                          	<th class="montant">Budget gaz</th>
 	                          	<th class="montant">Budget Entretien</th>
+	                          	<th class="avis">Action</th>
 	                          	
 	                        </tr>
 	                    </thead>
@@ -94,28 +95,28 @@
 	                    			<c:when test="${t == null}"></c:when>
 	                    			<c:otherwise>
 	                    				<tr>
-	                			            <td class="année">
+	                			            <td class="date">
 				                          		<c:out value="${t.getAnnee()}"/>
 				                          	</td>
-				                          	<td class="budgetEau">
+				                          	<td class="montant">
 				                          		<c:out value="${t.getBudgetEau()}"/>
 				                          	</td>
-				                          	<td class="budgetElectricté">
+				                          	<td class="montant">
 				                          		<c:out value="${t.getBudgetElectricite()}"/>
 				                          	</td>
-				                          	<td class="budgetGaz">
+				                          	<td class="montant">
 				                          		<c:out value="${t.getBudgetGaz()}"/>
 				                          	</td>
-				                          	<td class="budgetEntretien">
+				                          	<td class="montant">
 				                          		<c:out value="${t.getBudgetEntretien()}"/>
 				                          	</td>
-				                          	<td>
+				                          	<td class="avis">
 				                          		<div class="modif">
 							                    	<a href="<c:url value='consulterB'><c:param name="annee" value="${t.getAnnee()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini btn-success">Consulter</button>
+						                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
 						                          	</a>
 						                        </div>
-						                        <c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdS()}">
+						                        <c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
 
 						                          	<div class="suppr">
 							                          	<a href="<c:url value='supprB'><c:param name="anne" value="${t.getAnnee()}" /></c:url>" >

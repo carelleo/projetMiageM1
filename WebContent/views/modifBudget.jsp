@@ -79,7 +79,7 @@
 							<s:form action="BudgetFormModif">
 		
 							  	<div class="modal-body">
-							  		<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == b.getIdS()}">
+							  		<c:if test="${sessionScope.type == 'admin' || sessionScope.idU == b.getIdU()}">
 							    		<s:textfield label="Sujet" name="b.annee" value="%{#attr['b.getAnnee()']}" required="required"/>
 										<s:textfield label="Budget eau" name="b.budgetEau" value="%{#attr['b.getBudgetEau()']}" required="required"/>
 										<s:textfield label="Budget électricité" name="b.budgetElectricite" value="%{#attr['b.getBudgetElectricite()']}" required="required" cols="20" rows="10"/>
