@@ -147,10 +147,11 @@
 					</table>
 	           	</div>
 	           	
-	           	<div class="span3">
-	          		<a href="#modalAjoutTrav" role="button" class="btn btn-primary" data-toggle="modal">Ajouter une demande</a>
-	          	</div>
-	           	
+	           	<c:if test="${sessionScope.type != 'syndic'}">
+		           	<div class="span3">
+		          		<a href="#modalAjoutTrav" role="button" class="btn btn-primary" data-toggle="modal">Ajouter une demande</a>
+		          	</div>
+	           	</c:if>
           	</div>
 			
 		</section>

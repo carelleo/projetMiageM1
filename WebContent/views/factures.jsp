@@ -90,31 +90,33 @@
 	                    		<c:choose>
 	                    			<c:when test="${t == null}"></c:when>
 	                    			<c:otherwise>
-	                    				<tr>
-	                			            <td class="date">
-				                          		<c:out value="${t.getSujet()}"/>
-				                          	</td>
-				                          	<td class="montant">
-				                          		<c:out value="${t.getMontantAPayer()}"/>
-				                          	</td>
-				                          	<td class="avis">
-				                          		
+	                    				<c:if test="${sessionScope.mail == t.getMail() || sessionScope.type == 'syndic' || sessionScope.type == 'admin'}">
+		                    				<tr>
+		                			            <td class="date">
+					                          		<c:out value="${t.getSujet()}"/>
+					                          	</td>
+					                          	<td class="montant">
+					                          		<c:out value="${t.getMontantAPayer()}"/>
+					                          	</td>
+					                          	<td class="avis">
+					                          		
 						                          	<div class="modif">
 							                          	<a href="<c:url value='consulterFac'><c:param name="sujet" value="${t.getSujet()}" /></c:url>" >
 						                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
 						                          		</a>
 						                          	</div>
-						                       		<div class="suppr">
-							                          	<a href="<c:url value='supprFac'><c:param name="sujet" value="${t.getSujet()}" /></c:url>" >
-						                          			<button type="button" class="btn btn-mini">Supprimer</button>
-						                          		</a>
-						                          	</div>						                          							              	
-												
-												
-												
-												
-					                        </td>			                          	
-				                        </tr>
+						                          	
+						                          	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+							                       		<div class="suppr">
+								                          	<a href="<c:url value='supprFac'><c:param name="sujet" value="${t.getSujet()}" /></c:url>" >
+							                          			<button type="button" class="btn btn-mini">Supprimer</button>
+							                          		</a>
+							                          	</div>						                          							              	
+													</c:if>
+													
+						                        </td>			                          	
+					                        </tr>
+				                        </c:if>
 	                    			</c:otherwise>
 	                    		</c:choose>
 	                    	</c:forEach>
@@ -122,9 +124,11 @@
 					</table>
 	           	</div>
 	           	
-	           	<div class="span3">
-	          		<a href="#modalEnvoiFacture" role="button" class="btn btn-primary" data-toggle="modal">Envoyer une facture</a>
-	          	</div>
+	           	<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+		           	<div class="span3">
+		          		<a href="#modalEnvoiFacture" role="button" class="btn btn-primary" data-toggle="modal">Envoyer une facture</a>
+		          	</div>
+	           	</c:if>
 	           	
           	</div>
 			

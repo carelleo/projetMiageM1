@@ -72,12 +72,14 @@
 					<div id="calendrier">		           		
 						<div class="annee">
 							<c:out value="${date.getCalendrier()[0][0][0].getYear()}"/>
-							<p id="modAj">
-								<a href="#modalAjoutEv" role="button" class="btn btn-primary" data-toggle="modal">Ajouter Evenement</a>
-			                </p>
-			                <p id="modSuppr">
-			                  	<a href="#modalSupprEv" role="button" class="btn" data-toggle="modal">Supprimer Evenement</a>
-			                </p>
+							<c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+								<p id="modAj">
+									<a href="#modalAjoutEv" role="button" class="btn btn-primary" data-toggle="modal">Ajouter Evenement</a>
+				                </p>
+				                <p id="modSuppr">
+				                  	<a href="#modalSupprEv" role="button" class="btn" data-toggle="modal">Supprimer Evenement</a>
+				                </p>
+			                </c:if>
 						</div>
 						
 						<div class="tabbable">

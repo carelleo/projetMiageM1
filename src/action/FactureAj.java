@@ -38,7 +38,7 @@ public class FactureAj extends ActionSupport implements SessionAware{
     	  	if(!session.containsKey("idU"))
         		return SUCCESS;
         	else{	
-	    		listF = fDao.getFactures((int)session.get( "idU" ), uDao);
+	    		listF = fDao.getFactures(uDao);
 	    		return SUCCESS;
     	}
     }

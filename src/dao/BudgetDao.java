@@ -18,7 +18,7 @@ public class BudgetDao {
 	            ResultSet r = p.executeQuery();
 	            
 	            while(r.next())
-	                listU.add( new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire")) );
+	                listU.add( new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire"), r.getInt( "idSyndic" )) );
 	                
 	        }catch(Exception e){
 	            e.printStackTrace();
@@ -28,7 +28,7 @@ public class BudgetDao {
 	    }
 	    
 	    public Budget getOneBudget(int anne){
-	        Budget b = new Budget(0,0,0,0,0,null);
+	        Budget b = new Budget(0,0,0,0,0,null,0);
 	        
 	        try{
 	            PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM budget WHERE annee=?");
@@ -37,7 +37,7 @@ public class BudgetDao {
 	            ResultSet r = p.executeQuery();
 	            
 	            while(r.next())
-	                b = new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire"));
+	                b = new Budget(r.getInt( "annee" ), r.getInt( "eau" ), r.getInt( "electricite" ), r.getInt( "gaz" ), r.getInt( "entretien" ),r.getString("commentaire"),r.getInt( "idSyndic" ));
 	            
 	        }catch(Exception e){
 	            e.printStackTrace();

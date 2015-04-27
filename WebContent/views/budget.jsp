@@ -116,7 +116,7 @@
 						                          			<button type="button" class="btn btn-mini btn-primary">Consulter</button>
 						                          	</a>
 						                        </div>
-						                        <c:if test="${sessionScope.type == 'admin' || sessionScope.idU == t.getIdU()}">
+						                        <c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
 
 						                          	<div class="suppr">
 							                          	<a href="<c:url value='supprB'><c:param name="anne" value="${t.getAnnee()}" /></c:url>" >

@@ -9,19 +9,21 @@ public class Budget {
 	private int budgetGaz;
 	private int budgetEntretien;
 	private String commentaire;
+	private int idS;
 	
 	
 	public Budget() {
 	}
 
 	
-	public Budget(int annee, int budgetEau, int budgetElectricite, int budgetGaz, int budgetEntretien, String commentaire ) {
+	public Budget(int annee, int budgetEau, int budgetElectricite, int budgetGaz, int budgetEntretien, String commentaire, int idS) {
 		this.annee = annee;
 		this.budgetEau = budgetEau;
 		this.budgetElectricite = budgetElectricite;
 		this.budgetGaz = budgetGaz;
 		this.budgetEntretien = budgetEntretien; 
 		this.commentaire=commentaire;
+		this.idS=idS;
 	}
 
 
@@ -82,6 +84,16 @@ public class Budget {
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
+
+
+    public int getIdS() {
+        return idS;
+    }
+
+
+    public void setIdS( int idS ) {
+        this.idS = idS;
+    }
 
 
 

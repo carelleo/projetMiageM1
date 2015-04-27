@@ -40,7 +40,7 @@ public class FactureA extends ActionSupport implements SessionAware{
     		return SUCCESS;
     	else{
     		int id = (int)session.get( "idU" );
-    		listF = fDao.getFactures(id, uDao);
+    		listF = fDao.getFactures(uDao);
     		return SUCCESS;
     		
     	}
@@ -55,7 +55,7 @@ public class FactureA extends ActionSupport implements SessionAware{
     	int id =  (int)session.get( "idU" );
     	System.out.println("ID  : "+ id);
     	fDao.supprFacture(sujet, (int)session.get("idU") );
-        listF = fDao.getFactures((int)session.get( "idU" ),uDao);
+        listF = fDao.getFactures(uDao);
         
         return SUCCESS;
     }

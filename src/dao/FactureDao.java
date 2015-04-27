@@ -15,13 +15,13 @@ import beans.Resolution;
 
 public class FactureDao {
 	
-	public ArrayList<Factures> getFactures(int idU, UtilisateurDao uDao){
+	public ArrayList<Factures> getFactures(UtilisateurDao uDao){
 		
 		ArrayList<Factures> liste = new ArrayList<Factures>();
 		
 		try{
-			PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM facture WHERE idCoproprietaire = ? " );
-			p.setInt(1, idU);
+			PreparedStatement p = ConnexionBDD.getConnection().prepareStatement("SELECT * FROM facture" );
+
 			ResultSet r = p.executeQuery();
 			
 			while(r.next()){

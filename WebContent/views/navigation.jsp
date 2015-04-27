@@ -46,110 +46,120 @@
                </li>
 
                <!--Calendrier-->
-               <li <c:choose>
-                     <c:when test="${page=='calendrier'}">
-                        class="active"
-                     </c:when>
-                     <c:otherwise>
-                        class=""
-                     </c:otherwise>   
-                  </c:choose>
-               >
-                  <a href=
-                     "<c:url value='calendrier'>
-                        <c:param name="page" value="calendrier" />
-                     </c:url>"
-                  data-description="voir son calendrier">Calendrier</a>
-               </li>
+               <c:if test="${sessionScope.mail != null}">
+	               <li <c:choose>
+	                     <c:when test="${page=='calendrier'}">
+	                        class="active"
+	                     </c:when>
+	                     <c:otherwise>
+	                        class=""
+	                     </c:otherwise>   
+	                  </c:choose>
+	               >
+	                  <a href=
+	                     "<c:url value='calendrier'>
+	                        <c:param name="page" value="calendrier" />
+	                     </c:url>"
+	                  data-description="voir son calendrier">Calendrier</a>
+	               </li>
+               </c:if>
 
                <!--Finances-->
-               <li   <c:choose>
-                        <c:when test="${page=='factures'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:when test="${page=='budget'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:otherwise>
-                           class="dropdown"
-                        </c:otherwise>   
-                     </c:choose> 
-               >
-                  <a href=
-                     "<c:url value='facture'>
-                        <c:param name="page" value="factures" />
-                     </c:url>" 
-                  data-description="gérer les finances" class="dropdown-toggle" data-toggle="dropdown" >Finances  <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                     <li><a href=
-                        "<c:url value='facture'>
-                           <c:param name="page" value="factures" />
-                        </c:url>"
-                     >Factures</a></li>
-                     <li><a href=
-                           "<c:url value='budget'>
-                              <c:param name="page" value="budget" />
-                           </c:url>"
-                     >Budget Prévisionnel</a></li>
-                  </ul>
-               </li>
+               <c:if test="${sessionScope.mail != null}">
+	               <li   <c:choose>
+	                        <c:when test="${page=='factures'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:when test="${page=='budget'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:otherwise>
+	                           class="dropdown"
+	                        </c:otherwise>   
+	                     </c:choose> 
+	               >
+	                  <a href=
+	                     "<c:url value='facture'>
+	                        <c:param name="page" value="factures" />
+	                     </c:url>" 
+	                  data-description="gérer les finances" class="dropdown-toggle" data-toggle="dropdown" >Finances  <b class="caret"></b></a>
+	                  <ul class="dropdown-menu">
+	                     <li><a href=
+	                        "<c:url value='facture'>
+	                           <c:param name="page" value="factures" />
+	                        </c:url>"
+	                     >Factures</a></li>
+	                     <c:if test="${sessionScope.type == 'admin' || sessionScope.type == 'syndic'}">
+		                     <li><a href=
+		                           "<c:url value='budget'>
+		                              <c:param name="page" value="budget" />
+		                           </c:url>"
+		                     >Budget Prévisionnel</a></li>
+	                     </c:if>
+	                  </ul>
+	               </li>
+               </c:if>
                
                <!-- Demandes -->
-               <li   <c:choose>
-                        <c:when test="${page=='travaux'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:when test="${page=='reclamation'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:when test="${page=='resolution'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:otherwise>
-                           class="dropdown"
-                        </c:otherwise>   
-                     </c:choose> 
-               >
-                  <a href=
-                     "<c:url value='demandeTravaux'>
-                        <c:param name="page" value="travaux" />
-                     </c:url>" 
-                  data-description="demandes diverses" class="dropdown-toggle" data-toggle="dropdown" >Demandes  <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                     <li><a href=
-                        "<c:url value='demandeTravaux'>
-                           <c:param name="page" value="travaux" />
-                        </c:url>"
-                     >Travaux</a></li>
-                     <li><a href=
-                           "<c:url value='demandeReclamation'>
-                              <c:param name="page" value="reclamation" />
-                           </c:url>"
-                     >Réclamations</a></li>
-                     <li><a href=
-                        "<c:url value='resolution'>
-                           <c:param name="page" value="resolution" />
-                        </c:url>"
-                     >Résolutions</a></li>
-                  </ul>
-               </li>
+               <c:if test="${sessionScope.mail != null}">
+	               <li   <c:choose>
+	                        <c:when test="${page=='travaux'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:when test="${page=='reclamation'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:when test="${page=='resolution'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:otherwise>
+	                           class="dropdown"
+	                        </c:otherwise>   
+	                     </c:choose> 
+	               >
+	                  <a href=
+	                     "<c:url value='demandeTravaux'>
+	                        <c:param name="page" value="travaux" />
+	                     </c:url>" 
+	                  data-description="demandes diverses" class="dropdown-toggle" data-toggle="dropdown" >Demandes  <b class="caret"></b></a>
+	                  <ul class="dropdown-menu">
+	                     <li><a href=
+	                        "<c:url value='demandeTravaux'>
+	                           <c:param name="page" value="travaux" />
+	                        </c:url>"
+	                     >Travaux</a></li>
+	                     <li><a href=
+	                           "<c:url value='demandeReclamation'>
+	                              <c:param name="page" value="reclamation" />
+	                           </c:url>"
+	                     >Réclamations</a></li>
+	                     <li><a href=
+	                        "<c:url value='resolution'>
+	                           <c:param name="page" value="resolution" />
+	                        </c:url>"
+	                     >Résolutions</a></li>
+	                  </ul>
+	               </li>
+               </c:if>
                 
                <!--Aide avec tous les éléments-->
-               <li   <c:choose>
-                        <c:when test="${page=='portfolio'}">
-                           class="active"
-                        </c:when>
-                        <c:otherwise>
-                           class=""
-                        </c:otherwise>   
-                     </c:choose>
-               >
-                  <a href=
-                     "<c:url value='index'>
-                        <c:param name="page" value="portfolio" />
-                     </c:url>" 
-                  data-description="tous les éléments">Aide </a>
-               </li><!--/.dropdown -->
+               <c:if test="${sessionScope.type == 'admin'}">
+	               <li   <c:choose>
+	                        <c:when test="${page=='portfolio'}">
+	                           class="active"
+	                        </c:when>
+	                        <c:otherwise>
+	                           class=""
+	                        </c:otherwise>   
+	                     </c:choose>
+	               >
+	                  <a href=
+	                     "<c:url value='index'>
+	                        <c:param name="page" value="portfolio" />
+	                     </c:url>" 
+	                  data-description="tous les éléments">Aide </a>
+	               </li>
+               </c:if>
           
                <!--Contact-->
                <li <c:choose>
@@ -169,62 +179,64 @@
                </li>
 
                <!--Mon compte-->
-               <li <c:choose>
-                        <c:when test="${page=='mail'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:when test="${page=='information'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:when test="${page=='copropriete'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:when test="${page=='membre-conseil'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:when test="${page=='administration'}">
-                           class="active dropdown"
-                        </c:when>
-                        <c:otherwise>
-                           class="dropdown"
-                        </c:otherwise>   
-                     </c:choose>
-                  >
-                  <a href=
-                     "<c:url value='index'>
-                        <c:param name="page" value="mail" />
-                     </c:url>" 
-                     data-description="mon espace" class="dropdown-toggle" data-toggle="dropdown" >Mon compte <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                     <li><a href=
-                        "<c:url value='index'>
-                           <c:param name="page" value="mail" />
-                        </c:url>"
-                        >Mon mail</a></li>
-                     <li><a href=
-                        "<c:url value='information'>
-                           <c:param name="page" value="information" />
-                        </c:url>"
-                        >Mes informations</a></li>
-                     <li><a href=
-                        "<c:url value='index'>
-                           <c:param name="page" value="copropriete" />
-                        </c:url>"
-                        >Ma copropriété</a></li>
-                     <li><a href=
-                        "<c:url value='index'>
-                           <c:param name="page" value="membre-conseil" />
-                        </c:url>"
-                        >Membres du conseil</a></li>
-                     <c:if test="${sessionScope.type == 'admin'}">
-                     	<li><a href=
-	                        "<c:url value='administration'>
-	                           <c:param name="page" value="administration" />
+               <c:if test="${sessionScope.mail != null}">
+	               <li <c:choose>
+	                        <c:when test="${page=='mail'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:when test="${page=='information'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:when test="${page=='copropriete'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:when test="${page=='membre-conseil'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:when test="${page=='administration'}">
+	                           class="active dropdown"
+	                        </c:when>
+	                        <c:otherwise>
+	                           class="dropdown"
+	                        </c:otherwise>   
+	                     </c:choose>
+	                  >
+	                  <a href=
+	                     "<c:url value='index'>
+	                        <c:param name="page" value="mail" />
+	                     </c:url>" 
+	                     data-description="mon espace" class="dropdown-toggle" data-toggle="dropdown" >Mon compte <b class="caret"></b></a>
+	                  <ul class="dropdown-menu">
+	                     <li><a href=
+	                        "<c:url value='index'>
+	                           <c:param name="page" value="mail" />
 	                        </c:url>"
-                        	>Administration</a></li>
-                     </c:if>   
-                  </ul>
-               </li>
+	                        >Mon mail</a></li>
+	                     <li><a href=
+	                        "<c:url value='information'>
+	                           <c:param name="page" value="information" />
+	                        </c:url>"
+	                        >Mes informations</a></li>
+	                     <li><a href=
+	                        "<c:url value='index'>
+	                           <c:param name="page" value="copropriete" />
+	                        </c:url>"
+	                        >Ma copropriété</a></li>
+	                     <li><a href=
+	                        "<c:url value='index'>
+	                           <c:param name="page" value="membre-conseil" />
+	                        </c:url>"
+	                        >Membres du conseil</a></li>
+	                     <c:if test="${sessionScope.type == 'admin'}">
+	                     	<li><a href=
+		                        "<c:url value='administration'>
+		                           <c:param name="page" value="administration" />
+		                        </c:url>"
+	                        	>Administration</a></li>
+	                     </c:if>   
+	                  </ul>
+	               </li>
+               </c:if>
 
                <!--Style/couleurs-->
                <li class="dropdown ">
