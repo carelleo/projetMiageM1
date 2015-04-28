@@ -34,7 +34,7 @@
          <div class="span4">
            
             <div class="colored_banner thumb-content-dark">
-               <img src="<c:url value="/resources/img/simpson4.jpg" />" width="260" height="180" />
+               <img src="<c:url value="/resources/img/moi.jpg" />" width="260" height="180" />
                <h3>
                   Carelle Oko
                </h3>
